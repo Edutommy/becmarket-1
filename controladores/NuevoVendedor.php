@@ -79,14 +79,18 @@ class NuevoVendedor{
             'abierto_cerrado'=>"cerrado",
             'vendedorfk'=>$this->vendedorfk,
         ];
-        
         $countV = $vendedor->crearUsuarios($dataVendedor);
-        $countN = $negocio->nuevoNegocio($dataNegocio);
-        if($countV==1 && $countN==1){
-            echo json_encode(["msg"=>"si"]);
+        if($countV == 1){
+            $countN = $negocio->nuevoNegocio($dataNegocio);
+            if($countN == 1){
+                echo json_encode(["msg"=>"si"]);
+            }else{
+                echo json_encode(["msg"=>"no"]);
+            }
         }else{
-            echo json_encode(["msg"=>"mm"]);
+            echo json_encode(["msg"=>"no"]);
         }
+
     }
 }
 $obj = new NuevoVendedor();

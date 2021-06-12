@@ -12,18 +12,12 @@
     <!-- BARRA DE NAVEGACION -->
     <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark px-5">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">BEC Market</a>
+            <a class="navbar-brand" href="index.php">BEC Market</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item pe-5">
-                        <a href="vistas/vendedor/vendedor-inicio.php" class="btn btn-light">Vendedor</a>
-                    </li>
-                    <li class="nav-item pe-5">
-                        <a href="vistas/repartidor/repartidor-inicio.php" class="btn btn-light">Repartidor</a>
-                    </li>
                     <li class="nav-item pe-5">
                         <a href="registro.php" class="btn btn-outline-light">REGISTRARSE</a>
                     </li>
@@ -33,7 +27,7 @@
                 </ul>
             </div>
         </div>
-      </nav>
+    </nav>
     <!-- BARRA DE NAVEGACION -->
 
     <!-- SECCIÓN 1 -->

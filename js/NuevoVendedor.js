@@ -16,7 +16,8 @@ new Vue({
         celular:'',
         email:'',
         password:'',
-
+        
+        mensaje: ''
     },
     methods:{
         guardar: async function(){
@@ -45,18 +46,12 @@ new Vue({
                     body:form,
                 });
                 const resp = await res.json()
-                console.log(resp);
-                //limpiar campos
-                this.nombreNegocio='';
-                this.tipoNegocio='';
-                this.rutEmpresa='';
-                this.direccionNegocio='';
-                this.rut='';
-                this.nombre='';
-                this.apellidos='';
-                this.celular='';
-                this.email='';
-                this.password='';
+                console.log(resp);                
+                if (resp.msg == "si") {
+                    window.location.href=this.url+'revision.html';
+                }else{
+                    this.mensaje = 'El rut de la empresa, su rut o su email ya se encuentran registrados'
+                }
             }catch(error){
                 console.log(error);
             }

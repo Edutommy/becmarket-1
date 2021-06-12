@@ -8,6 +8,15 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
 </head>
 <body>
+    <?php session_start();
+        if(isset($_SESSION['user'])){
+            if($_SESSION['user']['tipo'] == 1){
+                header("Location: vistas/cliente/cliente-inicio.php");
+            } else {
+                header("Location: vistas/vendedor/vendedor-inicio.php");
+            }
+        }
+    ?>
     <div class="container"  style="max-width: 910px;" id="app">
         <h1 class="display-5 text-center mt-5">BEC Market</h1>
 
@@ -60,6 +69,7 @@
                 </div>
 
                 <div class="col-12 px-3 mt-3"> 
+                    <p class="text-danger text-center">{{mensaje}}</p>
                     <p class="lead text-decoration-underline text-center"> 
                         Al registrarte aceptas los Términos & Condiciones y la Política de Privacidad 
                     </p>

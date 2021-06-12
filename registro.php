@@ -11,16 +11,24 @@
 </head>
 
 <body>
+    <?php session_start();
+        if(isset($_SESSION['user'])){
+            if($_SESSION['user']['tipo'] == 1){
+                header("Location: vistas/cliente/cliente-inicio.php");
+            } else {
+                header("Location: vistas/vendedor/vendedor-inicio.php");
+            }
+        }
+    ?>
     <div class="container" style="max-width: 910px;">
         <h2 class="display-5 text-center pt-5">BEC Market</h2>
 
+        <form action="controladores/nuevoUsuario.php" method="POST">
+            <div class="row bg-light mx-auto mt-5 border border-dark rounded-3 pb-3">            
+                <div class="col-12 pt-3">
+                    <h5 class="h4 text-center pb-4">Registrate</h5>
+                </div>
 
-        <div class="row bg-light mx-auto mt-5 border border-dark rounded-3 pb-3">
-
-            <div class="col-12 pt-3">
-                <h5 class="h4 text-center pb-4">Registrate</h5>
-            </div>
-            <form action="controladores/nuevoUsuario.php" method="POST">
                 <div class="col-sm-6 px-4">
                     <label for="inputnombre" class="form-label">Nombre</label>
                     <input type="text" class="form-control mb-3" id="nombre" name="nombre" style="max-width: 400px;">
@@ -42,7 +50,6 @@
                     <label for="inputpw" class="form-label">Contraseña</label>
                     <input type="password" class="form-control mb-3" id="pass" name="pass" style="max-width: 400px;" placeholder="Debe contener de 8 a 20 caracteres">
                 </div>
-                
 
                 <div class="col-12 px-3 mt-3">
                     <p class="lead text-decoration-underline text-center">
@@ -62,15 +69,15 @@
                         if(isset($_SESSION['respuesta'])){echo $_SESSION['respuesta'];} 
                         if(isset($_SESSION['error'])){echo $_SESSION['error'];} 
                         ?>
-                    </div>
-            </form>
-            <div class="col-sm-4 text-center mt-4 mx-auto">
-                <p class="text-center">
-                    ¿Ya tienes cuenta? <a href="login.php">Inicia sesión aquí</a>
-                </p>
+                    </div>            
+                    <div class="col-sm-4 text-center mt-4 mx-auto">
+                        <p class="text-center">
+                            ¿Ya tienes cuenta? <a href="login.php">Inicia sesión aquí</a>
+                        </p>
+                    </div>           
+                </div>
             </div>
-        </div>
-
+        </form>
     </div>
 
     <div class="container text-center" style="margin-top: 100px;">
