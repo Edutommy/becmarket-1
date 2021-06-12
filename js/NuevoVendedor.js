@@ -44,8 +44,8 @@ new Vue({
                     method:"post",
                     body:form,
                 });
-                //const resp = await res.json();
-                //console.log(resp);
+                const resp = await res.json()
+                console.log(resp);
                 //limpiar campos
                 this.nombreNegocio='';
                 this.tipoNegocio='';

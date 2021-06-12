@@ -19,7 +19,7 @@ class Usuario{
         $stm->bindParam(":B",$data['email']);
         $stm->bindParam(":C",$data['nombre']);
         $stm->bindParam(":D",$data['apellidos']);
-        $stm->bindParam(":E",md5($data['contrasena']));
+        $stm->bindParam(":E",$data['contrasena']);
         $stm->bindParam(":F",$data['telefono']);
         $stm->bindParam(":G",$data['estado']);
         $stm->bindParam(":H",$data['direccion']);

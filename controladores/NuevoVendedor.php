@@ -55,7 +55,7 @@ class NuevoVendedor{
             'email'=>$this->email,
             'nombre'=>$this->nombre,
             'apellidos'=>$this->apellidos,
-            'contrasena'=>$this->contrasena,
+            'contrasena'=>md5($this->contrasena),
             'telefono'=>$this->telefono,
             'estado'=>0,
             'direccion'=>"Sin asignar",
