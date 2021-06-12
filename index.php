@@ -33,7 +33,7 @@
                 </ul>
             </div>
         </div>
-    </nav>
+      </nav>
     <!-- BARRA DE NAVEGACION -->
 
     <!-- SECCIÓN 1 -->

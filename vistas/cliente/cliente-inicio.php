@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,6 +12,9 @@
 </head>
 
 <body>
+<?php if (isset($_SESSION['user'])) { ?>
+
+<?php if ($_SESSION['user']['tipo'] == 1) { ?>
     <!-- BARRA DE NAVEGACION -->
     <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark px-5">
         <div class="container-fluid">
@@ -27,7 +31,7 @@
                         <a href="cliente-datos.php" class="text-light text-decoration-none fw-normal">MIS DATOS</a>
                     </li>
                     <li class="nav-item">
-                        <a href="../../controllers/logout.php" class="text-light text-decoration-none fw-normal">CERRAR SESION<i class="fas fa-sign-out-alt ps-2 fs-5"></i></a>
+                        <a href="../../controladores/salir.php" class="text-light text-decoration-none fw-normal">CERRAR SESION<i class="fas fa-sign-out-alt ps-2 fs-5"></i></a>
                     </li>
                 </ul>
             </div>
@@ -91,7 +95,11 @@
         </div>
 
     </div>
-
+    <?php } else { ?>
+            <?php header("Location: ../vendedor/vendedor-inicio.php"); ?>
+        <?php } ?>
+    <?php } else { header("Location: ../../login.php"); ?>     
+    <?php } ?>
     <!-- FOOTER -->
     <div class="container text-center" style="margin-top: 110px;">
         <div class="row">
