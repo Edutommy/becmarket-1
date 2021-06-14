@@ -1,10 +1,5 @@
-<?php 
-    use modelo\Producto as Producto;
+<?php
     session_start(); 
-    $rutN = $_SESSION['negocio']['rut_negocio'];
-    require_once("../../modelo/Producto.php");
-    $model = new Producto();
-    $productos = $model->buscarProductos($rutN);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,6 +13,7 @@
 </head>
 <body>
     <?php if (isset($_SESSION['user'])) { ?>
+
         <?php if ($_SESSION['user']['tipo'] == 2) { ?>
             <!-- BARRA DE NAVEGACION -->
             <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark px-5">
@@ -53,71 +49,42 @@
             </div>
             <!-- BARRA SECUNDARIA -->
 
-            <!-- BUSCAR O AÑADIR -->
-            <div class="container mt-5">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="d-flex flex-row bd-highlight justify-content-center mt-1 mb-3">
-                            <a href="vendedor-nuevo-producto.php" class="link-success btn btn-outline-success btn-lg link-success"> <i class="fas fa-plus me-2"></i> Nuevo producto</a>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <form action="">
-                            <div class="d-flex flex-row bd-highlight justify-content-center">
-                                <div class="p-2 bd-highlight">
-                                    <input type="text" class="form-control mb-3" placeholder="Nombre producto" style="max-width: 168px;">    
+            <!-- NUEVO PRODUCTO -->
+            <div class="container mt-3">
+                <a href="vendedor-productos.php"><i class="fas fa-chevron-circle-left fs-1 text-dark ms-5 mb-3"></i></a>
+                <div class="border border-2 border-dark rounded mx-auto pb-3" style="max-width: 600px;">
+                    <form action="../../controladores/EditarProducto.php" method="POST">
+                        <h5 class="h5 text-center mt-3 mb-4">ACTUALIZAR PRODUCTO</h5>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <img src="<?=$_SESSION['producto']['imagen'] ?>" class="card-img py-2 mx-auto d-block" alt="" style="max-width: 200px;">
+                                <div class="mb-3 d-flex justify-content-center flex-column">   
+                                    <input name="foto" class="form-control form-control-sm mx-auto" id="formFileSm" type="file"style="max-width: 200px;">
                                 </div>
-                                <div class="p-2 bd-highlight">
-                                    <button class="btn btn-dark px-4">BUSCAR</button>
-                                </div>   
                             </div>
-                        </form>
-                    </div>
+                            <div class="col-md-6 px-5">
+                                <label for="nombre" class="form-label fw-bold">Nombre:</label>
+                                <input name="nombre" value="<?=$_SESSION['producto']['nombre'] ?>" class="form-control form-control-sm mb-3" type="text" id="nombre" style="max-width: 400px;">
+
+                                <label for="precio" class="form-label fw-bold">Precio:</label>
+                                <input name="precio" value="<?=$_SESSION['producto']['precio'] ?>" class="form-control form-control-sm mb-3" type="text" id="precio" style="max-width: 400px;">
+
+                                <label for="stock" class="form-label fw-bold">Stock:</label>
+                                <input name="stock" value="<?=$_SESSION['producto']['stock'] ?>" class="form-control form-control-sm mb-3" type="text" id="stock" style="max-width: 400px;">
+                            </div>
+                            <div class="col-md-12 mt-2 px-5">
+                                <p class="fw-bold">Descripción:</p>
+                                <input name="descripcion" value="<?=$_SESSION['producto']['descripcion'] ?>" class="form-control form-control-sm mb-3" type="text" id="stock" style="max-width: 600px;">
+                            </div>
+                            <button class="btn btn-dark mt-4 mx-auto" style="max-width: 200px;">Actualizar producto</button>
+                        </div>
+                    </form>
                 </div>
             </div>
-            <!-- BUSCAR O AÑADIR -->
-                
-            <!-- PRODUCTOS -->
-            <div class="container mt-5">
-                <form action="../../controladores/TablaProductos.php" method="POST">
-                    <table class="table table-hover table-bordered text-center mx-auto align-middle table-responsive" style="max-width: 1000px;">
-                        <thead class="table-dark">
-                            <tr>
-                                <th scope="col">CODIGO</th>
-                                <th scope="col">IMAGEN</th>
-                                <th scope="col">NOMBRE</th>
-                                <th scope="col">STOCK</th>
-                                <th scope="col">PRECIO</th>
-                                <th scope="col">ACCION</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php foreach($productos as $p){ ?>
-                                <tr>
-                                    <th><?= $p['codigo_producto'] ?></th>
-                                    <td><img src="<?= $p['imagen'] ?>" class="card-img py-2" style="max-width: 100px;"></td>
-                                    <td><?= $p['nombre'] ?></td>
-                                    <td><?= $p['stock'] ?></td>
-                                    <td>$<?= $p['precio'] ?></td>
-                                    <td>
-                                        <button class="btn me-2" name="editar" value="<?= $p['codigo_producto'] ?>">
-                                        <i class="far fa-edit fs-2 text-primary"></i></button>
-                                        <button class="btn" name="eliminar" value="<?= $p['codigo_producto'] ?>">
-                                        <i class="far fa-trash-alt fs-2 text-danger"></i></button>
-                                    </td>
-                                </tr>
-                            <?php } ?>
-                        </tbody>
-                    </table> 
-                </form>
-            </div>
-            <!-- PRODUCTOS -->
-        
-
-        <?php 
-            }else{
-                header("Location: ../cliente/cliente-inicio.php"); 
-            } ?>
+            <!-- NUEVO PRODUCTO -->
+        <?php } else { 
+            header("Location: ../cliente/cliente-inicio.php"); 
+        } ?>
     <?php } else { 
         header("Location: ../../login.php"); ?>     
     <?php } ?>
@@ -140,10 +107,6 @@
         </div>
     </div>
     <!-- FIN FOOTER -->
-
-
-    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/40e29f2951.js" crossorigin="anonymous"></script>
 </body>

@@ -20,4 +20,11 @@ class Negocio{
         $stm->bindParam(":K",$data['vendedorfk']);
         return $stm->execute();
     }
+
+    public function buscarNegocioVendedor($codeUser){
+        $stm = Conexion::conector()->prepare("SELECT * FROM negocio WHERE vendedorfk=:A");
+        $stm->bindParam(":A",$codeUser);
+        $stm->execute();
+        return $stm->fetchAll(\PDO::FETCH_ASSOC);
+    }
 }
