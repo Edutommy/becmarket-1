@@ -23,9 +23,10 @@ class Producto{
         return $stm->fetchAll(\PDO::FETCH_ASSOC);
     }
 
-    public function buscarNombre($nombre){
-        $stm = Conexion::conector()->prepare("SELECT * FROM producto WHERE nombre=:A");
+    public function buscarNombre($nombre,$negocio){
+        $stm = Conexion::conector()->prepare("SELECT * FROM producto WHERE nombre=:A AND negociofk=:B");
         $stm->bindParam(":A",$nombre);
+        $stm->bindParam(":B",$negocio);
         $stm->execute();
         return $stm->fetchAll(\PDO::FETCH_ASSOC);
     }

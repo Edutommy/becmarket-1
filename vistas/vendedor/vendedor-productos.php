@@ -61,16 +61,24 @@
                             <a href="vendedor-nuevo-producto.php" class="link-success btn btn-outline-success btn-lg link-success"> <i class="fas fa-plus me-2"></i> Nuevo producto</a>
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <form action="">
+                    <div class="col-md-6" id="app">
+                        <form action="../../controladores/BuscarProducto.php" method="POST">
                             <div class="d-flex flex-row bd-highlight justify-content-center">
                                 <div class="p-2 bd-highlight">
-                                    <input type="text" class="form-control mb-3" placeholder="Nombre producto" style="max-width: 168px;">    
+                                    <input name="nombre" type="text" class="form-control mb-3" placeholder="Nombre producto" style="max-width: 168px;">    
                                 </div>
                                 <div class="p-2 bd-highlight">
                                     <button class="btn btn-dark px-4">BUSCAR</button>
-                                </div>   
+                                </div> 
                             </div>
+                            <p class="text-danger text-center">
+                                <?php 
+                                    if(isset($_SESSION['error'])){
+                                        echo $_SESSION['error'];
+                                        unset($_SESSION['error']);
+                                    }
+                                ?>
+                            </p>  
                         </form>
                     </div>
                 </div>
@@ -92,20 +100,41 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach($productos as $p){ ?>
-                                <tr>
-                                    <th><?= $p['codigo_producto'] ?></th>
-                                    <td><img src="<?= $p['imagen'] ?>" class="card-img py-2" style="max-width: 100px;"></td>
-                                    <td><?= $p['nombre'] ?></td>
-                                    <td><?= $p['stock'] ?></td>
-                                    <td>$<?= $p['precio'] ?></td>
-                                    <td>
-                                        <button class="btn me-2" name="editar" value="<?= $p['codigo_producto'] ?>">
-                                        <i class="far fa-edit fs-2 text-primary"></i></button>
-                                        <button class="btn" name="eliminar" value="<?= $p['codigo_producto'] ?>">
-                                        <i class="far fa-trash-alt fs-2 text-danger"></i></button>
-                                    </td>
-                                </tr>
+                            <?php if(!isset($_SESSION['buscar'])){ ?>
+                                <?php foreach($productos as $p) { ?>
+                                    <tr>
+                                        <th><?= $p['codigo_producto'] ?></th>
+                                        <td><img src="<?= $p['imagen'] ?>" class="card-img py-2" style="max-width: 100px;"></td>
+                                        <td><?= $p['nombre'] ?></td>
+                                        <td><?= $p['stock'] ?></td>
+                                        <td>$<?= $p['precio'] ?></td>
+                                        <td>
+                                            <button class="btn me-2" name="editar" value="<?= $p['codigo_producto'] ?>">
+                                            <i class="far fa-edit fs-2 text-primary"></i></button>
+                                            <button class="btn" name="eliminar" value="<?= $p['codigo_producto'] ?>">
+                                            <i class="far fa-trash-alt fs-2 text-danger"></i></button>
+                                        </td>
+                                    </tr>
+                                <?php } ?>
+                            <?php } else{ 
+                                $nombre =$_SESSION['buscar'];
+                                $buscar = $model->buscarNombre($nombre,$rutN);
+                                ?>
+                                <?php foreach($buscar as $b) { ?>
+                                    <tr>
+                                        <th><?= $b['codigo_producto'] ?></th>
+                                        <td><img src="<?= $b['imagen'] ?>" class="card-img py-2" style="max-width: 100px;"></td>
+                                        <td><?= $b['nombre'] ?></td>
+                                        <td><?= $b['stock'] ?></td>
+                                        <td>$<?= $b['precio'] ?></td>
+                                        <td>
+                                            <button class="btn me-2" name="editar" value="<?= $b['codigo_producto'] ?>">
+                                            <i class="far fa-edit fs-2 text-primary"></i></button>
+                                            <button class="btn" name="eliminar" value="<?= $b['codigo_producto'] ?>">
+                                            <i class="far fa-trash-alt fs-2 text-danger"></i></button>
+                                        </td>
+                                    </tr>
+                                <?php } unset($_SESSION['buscar']); ?>
                             <?php } ?>
                         </tbody>
                     </table> 
