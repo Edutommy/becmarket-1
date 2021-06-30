@@ -45,4 +45,11 @@ class Negocio{
         $stm->bindParam(":F",$negocio);
         return $stm->execute();
     }
+
+    public function cambiarAtencion($atencion,$rut){
+        $stm = Conexion::conector()->prepare("UPDATE negocio SET abierto_cerrado=:A WHERE rut_negocio=:B");
+        $stm->bindParam(":A",$atencion);
+        $stm->bindParam(":B",$rut);
+        return $stm->execute();
+    }
 }

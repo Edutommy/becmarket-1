@@ -44,7 +44,7 @@
                 <div class="col-xl-4 mb-4">
                     <div class="row d-flex justify-content-center border p-3 border-dark rounded">
                         <div class="col-xl-7">
-                            <img src="../../img/noimg.png" class="card-img py-2 mx-auto d-block" alt="" style="max-width: 230px;">
+                            <img src="<?= $_SESSION['user']['imagen'] ?>" class="card-img py-2 mx-auto d-block" alt="" style="max-width: 230px;">
                             <div class="mb-3 d-flex justify-content-center flex-column">   
                                 <input class="form-control form-control-sm mx-auto" id="formFileSm" type="file"style="max-width: 200px;">
                                 <button class="btn btn-dark mt-2 mx-auto btn-sm" style="max-width: 200px;">Cambiar imagen</button>
@@ -56,25 +56,26 @@
                                     <i class="fas fa-user fs-5 pb-3"></i> 
                                 </div>
                                 <div class="col-9">
-                                    <span>Nombre y apellidos</span> 
+                                    <span><?= $_SESSION['user']['nombre'] ?></span> 
+                                    <span><?= $_SESSION['user']['apellidos'] ?></span>
                                 </div>
                                 <div class="col-3 text-end">
                                     <i class="fas fa-map-marker-alt fs-5 pb-3"></i>
                                 </div>
                                 <div class="col-9">
-                                    <span>Dirección</span> 
+                                    <span><?= $_SESSION['user']['direccion'] ?></span> 
                                 </div>
                                 <div class="col-3 text-end">
                                     <i class="far fa-envelope fs-5 pb-3"></i>
                                 </div>
                                 <div class="col-9">
-                                    <span>example@example.cl</span>
+                                    <span><?= $_SESSION['user']['email'] ?></span>
                                 </div>
                                 <div class="col-3 text-end">
                                     <i class="fas fa-phone fs-5 pb-3"></i>
                                 </div>
                                 <div class="col-9">
-                                    <span>+56987654321</span>
+                                    <span>+<?= $_SESSION['user']['telefono'] ?></span>
                                 </div>
                             </div>
                         </div>

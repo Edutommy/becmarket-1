@@ -13,7 +13,6 @@
 
 <body>
     <?php if (isset($_SESSION['user'])) { ?>
-
         <?php if ($_SESSION['user']['tipo'] == 2) { ?>
             <!-- BARRA DE NAVEGACION -->
             <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark px-5">
@@ -65,23 +64,29 @@
                                 <!--VISTA >LG -->
                                 <div class="d-none d-md-block">
                                     <div class="row mt-2">
-                                        <div class="col-1  pb-3">
-                                            <i class="fas fa-unlock"></i>
-                                        </div>
-                                        
                                         <?php if($_SESSION['negocio']['abierto_cerrado'] == 'abierto'){?>
+                                            <div class="col-1  pb-3">
+                                                <i class="fas fa-unlock"></i>
+                                            </div>
                                             <div class="col-5">
                                                 <span class="text-success"><?= strtoupper($_SESSION['negocio']['abierto_cerrado']) ?></span>
                                             </div>
                                             <div class="col-6">
-                                                <a href="#">CERRAR ATENCIÓN</a>
+                                                <form action="../../controladores/AbrirCerrarAtencion.php" method="POST">
+                                                    <button name="cambiar" class="btn link-danger btn-sm text-decoration-underline" value="<?= $_SESSION['negocio']['abierto_cerrado'] ?>">CERRAR ATENCIÓN</button>
+                                                </form>
                                             </div>
                                         <?php }else{ ?>
+                                            <div class="col-1  pb-3">
+                                                <i class="fas fa-lock"></i>
+                                            </div>
                                             <div class="col-5">
                                                 <span class="text-danger"><?= strtoupper($_SESSION['negocio']['abierto_cerrado']) ?></span>
                                             </div>
                                             <div class="col-6">
-                                                <a href="#">ABRIR ATENCIÓN</a>
+                                                <form action="../../controladores/AbrirCerrarAtencion.php" method="POST">
+                                                    <button name="cambiar" class="btn link-success btn-sm text-decoration-underline" value="<?= $_SESSION['negocio']['abierto_cerrado'] ?>">ABRIR ATENCIÓN</button>
+                                                </form>
                                             </div>
                                         <?php } ?>
                                         
@@ -139,15 +144,19 @@
                                                 <span class="text-success"><?= strtoupper($_SESSION['negocio']['abierto_cerrado']) ?></span>
                                             </div>
                                             <div class="col-12 text-center pb-3">
-                                                <button class="btn btn-outline-danger" value="<?= $_SESSION['negocio']['rut_negocio'] ?>">CERRAR ATENCIÓN</button>
+                                                <form action="../../controladores/AbrirCerrarAtencion.php" method="POST">
+                                                    <button name="cambiar" class="btn link-danger btn-sm text-decoration-underline" value="<?= $_SESSION['negocio']['rut_negocio'] ?>">CERRAR ATENCIÓN</button>
+                                                </form>
                                             </div>
                                         <?php }else{ ?>
                                             <div class="col-12 text-center">
-                                                <i class="fas fa-unlock"></i>
+                                                <i class="fas fa-lock"></i>
                                                 <span class="text-danger"><?= strtoupper($_SESSION['negocio']['abierto_cerrado']) ?></span>
                                             </div>
                                             <div class="col-12 text-center pb-3">
-                                                <button class="btn btn-outline-success" value="<?= $_SESSION['negocio']['rut_negocio'] ?>">ABRIR ATENCIÓN</button>
+                                                <form action="../../controladores/AbrirCerrarAtencion.php" method="POST">
+                                                    <button name="cambiar" class="btn link-success btn-sm text-decoration-underline" value="<?= $_SESSION['negocio']['rut_negocio'] ?>">ABRIR ATENCIÓN</button>
+                                                </form>
                                             </div>
                                         <?php } ?>
                                         
@@ -223,15 +232,6 @@
                                 </div>
                             </div>
                             <button class="btn btn-dark mt-4 mx-auto d-block" style="max-width: 200px;">Cambiar datos</button>
-                            
-                            <p>
-                                <?php 
-                                    if(isset($_SESSION['msg'])){
-                                        echo $_SESSION['msg'];
-                                        unset($_SESSION['msg']);
-                                    }
-                                ?>
-                            </p>
                         </form>
                     </div>
                 </div>
