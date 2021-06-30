@@ -27,4 +27,22 @@ class Negocio{
         $stm->execute();
         return $stm->fetchAll(\PDO::FETCH_ASSOC);
     }
+
+    public function buscarNegocio($negocio){
+        $stm = Conexion::conector()->prepare("SELECT * FROM negocio WHERE rut_negocio=:A");
+        $stm->bindParam(":A",$negocio);
+        $stm->execute();
+        return $stm->fetchAll(\PDO::FETCH_ASSOC);
+    }
+
+    public function editarDatos($data,$negocio){
+        $stm = Conexion::conector()->prepare("UPDATE negocio SET diasAtencion=:A, horarioAtencion=:B, telefono=:C, email=:D, costoEnvio=:E WHERE rut_negocio=:F");
+        $stm->bindParam(":A",$data['diasAtencion']);
+        $stm->bindParam(":B",$data['horarioAtencion']);
+        $stm->bindParam(":C",$data['telefono']);
+        $stm->bindParam(":D",$data['email']);
+        $stm->bindParam(":E",$data['costoEnvio']);
+        $stm->bindParam(":F",$negocio);
+        return $stm->execute();
+    }
 }

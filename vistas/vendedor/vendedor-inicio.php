@@ -52,10 +52,10 @@
             <div class="container mt-5">
                 <!-- DATOS NEGOCIO-->
                 <div class="row mt-5 mx-5 d-flex justify-content-center justify-content-lg-evenly">
-                    <div class="col-xl-5 border p-3 border-dark rounded mb-4" style="max-width: 430px;">
+                    <div class="col-xl-5 border p-3 border-dark rounded mb-4" style="max-width: 480px;">
                         <div class="row d-flex justify-content-center">
                             <div class="col-xl-7">
-                                <img src="../../img/lider.png" class="card-img py-2 mx-auto d-block" alt="" style="max-width: 230px;">
+                                <img src="<?= $_SESSION['negocio']['imagen'] ?>" class="card-img py-2 mx-auto d-block" alt="" style="max-width: 230px;">
                                 <div class="mb-3 d-flex justify-content-center flex-column">
                                     <input class="form-control form-control-sm mx-auto" id="formFileSm" type="file" style="max-width: 200px;">
                                     <button class="btn btn-dark mt-2 mx-auto btn-sm" style="max-width: 200px;">Cambiar imagen</button>
@@ -68,55 +68,63 @@
                                         <div class="col-1  pb-3">
                                             <i class="fas fa-unlock"></i>
                                         </div>
-                                        <div class="col-5">
-                                            <span class="text-success">ABIERTO</span>
-                                        </div>
-                                        <div class="col-6">
-                                            <a href="#">CERRAR ATENCIÓN</a>
-                                        </div>
+                                        
+                                        <?php if($_SESSION['negocio']['abierto_cerrado'] == 'abierto'){?>
+                                            <div class="col-5">
+                                                <span class="text-success"><?= strtoupper($_SESSION['negocio']['abierto_cerrado']) ?></span>
+                                            </div>
+                                            <div class="col-6">
+                                                <a href="#">CERRAR ATENCIÓN</a>
+                                            </div>
+                                        <?php }else{ ?>
+                                            <div class="col-5">
+                                                <span class="text-danger"><?= strtoupper($_SESSION['negocio']['abierto_cerrado']) ?></span>
+                                            </div>
+                                            <div class="col-6">
+                                                <a href="#">ABRIR ATENCIÓN</a>
+                                            </div>
+                                        <?php } ?>
+                                        
                                         <div class="col-1 pb-3">
                                             <i class="fas fa-cash-register fs-5"></i>
                                         </div>
                                         <div class="col-5">
-                                            <span>Lider Express</span>
+                                            <span><?= $_SESSION['negocio']['nombre'] ?></span>
                                         </div>
                                         <div class="col-1 pb-3">
                                             <i class="far fa-envelope fs-5"></i>
                                         </div>
                                         <div class="col-5">
-                                            <span>example@example.cl</span>
+                                            <span><?= $_SESSION['negocio']['email'] ?></span>
                                         </div>
-                                        <div class="col-1 pb-3">
+                                        <div class="col-1 ">
                                             <i class="fas fa-map-marker-alt fs-5"></i>
                                         </div>
                                         <div class="col-5">
-                                            <span>Chorrillos #1138</span>
+                                            <span><?= $_SESSION['negocio']['direccion'] ?></span>
+                                        </div>
+                                        <div class="col-1 ">
+                                            <i class="fas fa-phone fs-5 pb-3"></i>
+                                        </div>
+                                        <div class="col-5">
+                                            <span>+<?= $_SESSION['negocio']['telefono'] ?></span>
+                                        </div>
+                                        <div class="col-1 pb-3">
+                                            <i class="far fa-calendar-alt fs-5"></i>
+                                        </div>
+                                        <div class="col-5">
+                                            Horario de atención <br>
+                                            <span class="fw-bold"><?= $_SESSION['negocio']['diasAtencion'] ?></span>
+                                            <span class="fw-bold">desde las</span>
+                                            <span class="fw-bold"><?= $_SESSION['negocio']['horarioAtencion'] ?></span>
+                                            <span class="fw-bold">hrs.</span>
                                         </div>
                                         <div class="col-1 pb-3">
                                             <i class="far fa-money-bill-alt fs-5"></i>
                                         </div>
                                         <div class="col-5">
                                             Costo envío <br>
-                                            <span class="fw-bold">$890</span>
-                                        </div>
-                                        <div class="col-1 pb-3">
-                                            <i class="fas fa-phone fs-5 pb-3"></i>
-                                        </div>
-                                        <div class="col-5">
-                                            <span>+56987654321</span>
-                                        </div>
-                                        <div class="col-1 pb-3">
-                                            <i class="far fa-clock fs-5"></i>
-                                        </div>
-                                        <div class="col-5">
-                                            Tiempo espera <br>
-                                            <span class="fw-bold">30-50 mins</span>
-                                        </div>
-                                        <div class="col-3  text-end">
-                                            <i class="fas fa-motorcycle"></i>
-                                        </div>
-                                        <div class="col-9">
-                                            <span>Envío a cargo de BEC Market</span>
+                                            <span class="fw-bold">$<?= $_SESSION['negocio']['costoEnvio'] ?></span>
                                         </div>
                                     </div>
                                 </div>
@@ -125,42 +133,52 @@
                                 <!-- VISTA <LG -->
                                 <div class="d-md-none">
                                     <div class="row mt-2">
-                                        <div class="col-12 text-center">
-                                            <i class="fas fa-unlock"></i>
-                                            <span class="text-success">ABIERTO</span>
-                                        </div>
-                                        <div class="col-12 text-center pb-3">
-                                            <a href="#">CERRAR ATENCIÓN</a>
-                                        </div>
+                                        <?php if($_SESSION['negocio']['abierto_cerrado'] == 'abierto'){ ?>
+                                            <div class="col-12 text-center">
+                                                <i class="fas fa-unlock"></i>
+                                                <span class="text-success"><?= strtoupper($_SESSION['negocio']['abierto_cerrado']) ?></span>
+                                            </div>
+                                            <div class="col-12 text-center pb-3">
+                                                <a href="#">CERRAR ATENCIÓN</a>
+                                            </div>
+                                        <?php }else{ ?>
+                                            <div class="col-12 text-center">
+                                                <i class="fas fa-unlock"></i>
+                                                <span class="text-danger"><?= strtoupper($_SESSION['negocio']['abierto_cerrado']) ?></span>
+                                            </div>
+                                            <div class="col-12 text-center pb-3">
+                                                <a href="#">ABRIR ATENCIÓN</a>
+                                            </div>
+                                        <?php } ?>
+                                        
                                         <div class="col-12 text-center pb-3">
                                             <i class="fas fa-cash-register fs-5"></i>
-                                            <span>Lider Express</span>
+                                            <span><?= $_SESSION['negocio']['nombre'] ?></span>
                                         </div>
                                         <div class="col-12 text-center pb-3">
                                             <i class="far fa-envelope fs-5"></i>
-                                            <span>example@example.cl</span>
+                                            <span><?= $_SESSION['negocio']['email'] ?></span>
                                         </div>
                                         <div class="col-12 text-center pb-3">
                                             <i class="fas fa-map-marker-alt fs-5"></i>
-                                            <span>Chorrillos #1138</span>
+                                            <span><?= $_SESSION['negocio']['direccion'] ?></span>
                                         </div>
                                         <div class="col-12 text-center pb-3">
                                             <i class="far fa-money-bill-alt fs-5"></i>
                                             Costo envío <br>
-                                            <span class="fw-bold">$890</span>
+                                            <span class="fw-bold"><?= $_SESSION['negocio']['costoEnvio'] ?></span>
                                         </div>
                                         <div class="col-12 text-center pb-3">
                                             <i class="fas fa-phone fs-5"></i>
-                                            <span>+56987654321</span>
+                                            <span>+<?= $_SESSION['negocio']['telefono'] ?></span>
                                         </div>
                                         <div class="col-12 text-center pb-3">
-                                            <i class="far fa-clock fs-5"></i>
-                                            Tiempo espera <br>
-                                            <span class="fw-bold">30-50 mins</span>
-                                        </div>
-                                        <div class="col-12 text-center pb-2">
-                                            <i class="fas fa-motorcycle"></i>
-                                            <span>Envío a cargo de BEC Market</span>
+                                            <i class="far fa-calendar-alt fs-5"></i>
+                                            Horario de atención <br>
+                                            <span class="fw-bold"><?= $_SESSION['negocio']['diasAtencion'] ?></span>
+                                            <span class="fw-bold">desde las</span>
+                                            <span class="fw-bold"><?= $_SESSION['negocio']['horarioAtencion'] ?></span>
+                                            <span class="fw-bold">hrs.</span>
                                         </div>
                                     </div>
                                 </div>
@@ -170,51 +188,51 @@
                     </div>
                     <!-- DATOS NEGOCIO-->
                     <!-- EDITAR DATOS -->
-                    <div class="col-xl-6 border p-3 border-dark rounded mb-4" style="max-width: 500px;">
-                        <div class="row mt-2">
-                            <div class="col-md-10 mx-auto">
-                                <label for="horario" class="form-label fw-bold">Horario de atención:</label>
-                                <select class="form-select mb-3" id="horario" style="max-width: 380px;">
-                                    <option selected>Seleccione horario</option>
-                                    <option value="1">Lunes a viernes</option>
-                                    <option value="2">Lunes a sábado</option>
-                                    <option value="3">Todos los días</option>
-                                </select>
-                            </div>
-                            <div class="col-md-10 d-flex mx-auto">
-                                <div class="col-md-6 text-end d-flex me-1">
-                                    <label for="desde" class="form-label me-2">Desde:</label>
-                                    <input class="form-control form-control-sm" type="text" id="desde" placeholder="Hora" style="max-width: 70px;">
-                                </div>
-                                <div class="col-md-6 d-flex">
-                                    <label for="hasta" class="form-label me-2">Hasta:</label>
-                                    <input class="form-control form-control-sm" type="text" id="hasta" placeholder="Hora" style="max-width: 70px;">
-                                </div>
-                            </div>
-                            <div class="col-md-10 mx-auto mt-3">
-                                <label for="cd" class="form-label fw-bold">Teléfono:</label>
-                                <input type="text" class="form-control" id="cd" style="max-width: 400px;" placeholder="+56987654321">
-                            </div>
-                            <div class="col-md-10 mx-auto mt-3">
-                                <label for="ed" class="form-label fw-bold">E-mail</label>
-                                <input type="text" class="form-control" id="ed" style="max-width: 400px;" placeholder="correo@example.com">
-                            </div>
-                            <div class="col-md-10 mx-auto mt-3 d-flex">
-                                <div class="col-md-7">
-                                    <label for="horario" class="form-label fw-bold">Tipo envio:</label>
-                                    <select class="form-select mb-3" id="horario" style="max-width: 380px;">
-                                        <option selected>Seleccione tipo</option>
-                                        <option value="1">A cargo del negocio</option>
-                                        <option value="2">A cargo de BEC Market</option>
+                    <div class="col-xl-6 border p-3 border-dark rounded mb-4" style="max-width: 500px;" id="app">
+                        <form action="../../controladores/EditarNegocio.php" method="POST">
+                            <div class="row mt-2">
+                                <div class="col-md-10 mx-auto">
+                                    <label for="horario" class="form-label fw-bold">Horario de atención:</label>
+                                    <select name="dias" class="form-select mb-3" id="horario" style="max-width: 380px;" v-model="dias">
+                                        <option value="Lunes a viernes">Lunes a viernes</option>
+                                        <option value="Lunes a sabado">Lunes a sabado</option>
+                                        <option value="Todos los dias">Todos los dias</option>
                                     </select>
                                 </div>
-                                <div class="col-md-5 ms-4">
-                                    <label for="costo" class="form-label fw-bold">Costo envío:</label>
-                                    <input type="text" class="form-control" id="costo" style="max-width: 100px;">
+                                <div class="col-md-10 d-flex mx-auto">
+                                    <div class="col-md-6 text-end d-flex me-1">
+                                        <label for="desde" class="form-label me-2">Desde:</label>
+                                        <input name="h1" v-model="h1" class="form-control form-control-sm" type="text" id="desde" placeholder="Hora" style="max-width: 70px;">
+                                    </div>
+                                    <div class="col-md-6 d-flex">
+                                        <label for="hasta" class="form-label me-2">Hasta:</label>
+                                        <input name="h2" v-model="h2" class="form-control form-control-sm" type="text" id="hasta" placeholder="Hora" style="max-width: 70px;">
+                                    </div>
+                                </div>
+                                <div class="col-md-10 mx-auto mt-3">
+                                    <label for="cd" class="form-label fw-bold">Teléfono:</label>
+                                    <input name="tele" v-model="tele" type="text" class="form-control" id="cd" style="max-width: 400px;" placeholder="+56987654321">
+                                </div>
+                                <div class="col-md-10 mx-auto mt-3">
+                                    <label for="ed" class="form-label fw-bold">E-mail:</label>
+                                    <input name="email" v-model="email" type="text" class="form-control" id="ed" style="max-width: 400px;" placeholder="correo@example.com">
+                                </div>
+                                <div class="col-md-10 mx-auto mt-3">
+                                    <label for="ed" class="form-label fw-bold">Costo envío:</label>
+                                    <input name="costo" v-model="costo" type="text" class="form-control" id="ed" style="max-width: 400px;" placeholder="$999">
                                 </div>
                             </div>
-                        </div>
-                        <button class="btn btn-dark mt-3 mx-auto d-block" style="max-width: 200px;">Cambiar datos</button>
+                            <button class="btn btn-dark mt-4 mx-auto d-block" style="max-width: 200px;">Cambiar datos</button>
+                            
+                            <p>
+                                <?php 
+                                    if(isset($_SESSION['msg'])){
+                                        echo $_SESSION['msg'];
+                                        unset($_SESSION['msg']);
+                                    }
+                                ?>
+                            </p>
+                        </form>
                     </div>
                 </div>
                 <!-- EDITAR DATOS -->
@@ -243,6 +261,9 @@
         </div>
     </div>
     <!-- FIN FOOTER -->
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="../../js/EditarDatosNegocio.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/40e29f2951.js" crossorigin="anonymous"></script>
 </body>

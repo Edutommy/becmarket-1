@@ -45,12 +45,12 @@ new Vue({
                     method:"post",
                     body:form,
                 });
-                const resp = await res.json()
+                const resp = await res.json();
                 console.log(resp);                
                 if (resp.msg == "si") {
                     window.location.href=this.url+'revision.html';
                 }else{
-                    this.mensaje = 'El rut de la empresa, su rut o su email ya se encuentran registrados'
+                    M.toast({html:"El rut de la empresa, su rut o su email ya se encuentran registrados"});
                 }
             }catch(error){
                 console.log(error);

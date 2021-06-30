@@ -24,7 +24,7 @@ class Producto{
     }
 
     public function buscarNombre($nombre,$negocio){
-        $stm = Conexion::conector()->prepare("SELECT * FROM producto WHERE nombre=:A AND negociofk=:B");
+        $stm = Conexion::conector()->prepare("SELECT * FROM producto WHERE nombre LIKE '%' :A '%' AND negociofk=:B");
         $stm->bindParam(":A",$nombre);
         $stm->bindParam(":B",$negocio);
         $stm->execute();
