@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,226 +10,233 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
 </head>
 <body>
-    <!-- BARRA DE NAVEGACION -->
-    <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark px-5">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">BEC Market</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item pe-5">
-                        <a href="vendedor-inicio.php" class="text-light text-decoration-none fw-normal">INICIO</a>
-                    </li>
-                    <li class="nav-item pe-5">
-                        <a href="vendedor-datos.php" class="text-light text-decoration-none fw-normal">MIS DATOS</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="../../index.php" class="text-light text-decoration-none fw-normal">CERRAR SESION<i class="fas fa-sign-out-alt ps-2 fs-5"></i></a>
-                    </li>
-                </ul>
+<?php if (isset($_SESSION['user'])) { ?>
+
+    <?php if ($_SESSION['user']['tipo'] == 2) { ?>
+        <!-- BARRA DE NAVEGACION -->
+        <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark px-5">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">BEC Market</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item pe-5">
+                            <a href="vendedor-inicio.php" class="text-light text-decoration-none fw-normal">INICIO</a>
+                        </li>
+                        <li class="nav-item pe-5">
+                            <a href="vendedor-datos.php" class="text-light text-decoration-none fw-normal">MIS DATOS</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../../controladores/salir.php" class="text-light text-decoration-none fw-normal">CERRAR SESION<i class="fas fa-sign-out-alt ps-2 fs-5"></i></a>
+                        </li>
+                    </ul>
+                </div>
             </div>
+        </nav>
+        <!-- BARRA DE NAVEGACION -->
+
+        <!-- BARRA SECUNDARIA -->
+        <div class="container">
+            <nav class="nav nav-pills flex-column flex-sm-row mt-5 mx-auto" style="max-width: 500px;">
+                <a class="flex-sm-fill text-sm-center nav-link link-dark" href="vendedor-inicio.php" style="background-color: #adb5bd;">MI NEGOCIO</a>
+                <a class="flex-sm-fill text-sm-center nav-link link-dark" href="vendedor-productos.php" style="background-color: #adb5bd;">MIS PRODUCTOS</a>
+                <a class="flex-sm-fill text-sm-center nav-link bg-dark active" href="vendedor-pedidos.php">PEDIDOS</a>
+            </nav>
         </div>
-      </nav>
-    <!-- BARRA DE NAVEGACION -->
+        <!-- BARRA SECUNDARIA -->
 
-    <!-- BARRA SECUNDARIA -->
-      <div class="container">
-        <nav class="nav nav-pills flex-column flex-sm-row mt-5 mx-auto" style="max-width: 500px;">
-            <a class="flex-sm-fill text-sm-center nav-link link-dark" href="vendedor-inicio.php" style="background-color: #adb5bd;">MI NEGOCIO</a>
-            <a class="flex-sm-fill text-sm-center nav-link link-dark" href="vendedor-productos.php" style="background-color: #adb5bd;">MIS PRODUCTOS</a>
-            <a class="flex-sm-fill text-sm-center nav-link bg-dark active" href="vendedor-pedidos.php">PEDIDOS</a>
-        </nav>
-      </div>
-    <!-- BARRA SECUNDARIA -->
+        <!-- TERCERA BARRA -->
+        <div class="container">
+            <nav class="nav nav-pills flex-column flex-sm-row mt-5 mx-auto" style="max-width: 400px;">            
+                <a class="flex-sm-fill text-sm-center nav-link link-dark small" href="vendedor-pedidos.php" style="background-color: #adb5bd;">ACEPTADOS</a>
+                <a class="flex-sm-fill text-sm-center nav-link link-dark small" href="vendedor-pedidos-sinaceptar.php" style="background-color: #adb5bd;">SIN ACEPTAR</a>
+                <a class="flex-sm-fill text-sm-center nav-link link-dark small" href="vendedor-pedidos-historial.php" style="background-color: #adb5bd;">HISTORIAL</a>
+            </nav>
+        </div>
+        <!-- TERCERA BARRA -->
 
-    <!-- TERCERA BARRA -->
-    <div class="container">
-        <nav class="nav nav-pills flex-column flex-sm-row mt-5 mx-auto" style="max-width: 400px;">            
-            <a class="flex-sm-fill text-sm-center nav-link link-dark small" href="vendedor-pedidos.php" style="background-color: #adb5bd;">ACEPTADOS</a>
-            <a class="flex-sm-fill text-sm-center nav-link link-dark small" href="vendedor-pedidos-sinaceptar.php" style="background-color: #adb5bd;">SIN ACEPTAR</a>
-            <a class="flex-sm-fill text-sm-center nav-link link-dark small" href="vendedor-pedidos-historial.php" style="background-color: #adb5bd;">HISTORIAL</a>
-        </nav>
-    </div>
-    <!-- TERCERA BARRA -->
+        <!--DETALLE PEDIDO-->
+        <div class="container mt-3">
+            <a href="vendedor-pedidos.php"><i class="fas fa-chevron-circle-left fs-1 text-dark ms-5 mb-3"></i></a>
+            <div class="border border-2 border-dark rounded mx-auto pb-3" style="max-width: 800px;">
+                <h5 class="h5 text-center mt-3 mb-4">DETALLE DEL PEDIDO: <span>ABC299</span></h5>
+                <!-- VISTA <LG -->
+                <div class="d-none d-md-block">
+                    <div class="row">
+                        <div class="col-3">
+                            <p class="text-end fw-bold">Cliente: </p>
+                        </div>
+                        <div class="col-3">
+                            <p>Eduardo Maureira</p>
+                        </div>
+                        <div class="col-3">
+                            <p class="text-end fw-bold">Fecha y hora:</p>
+                        </div>
+                        <div class="col-3">
+                            <p>18:06 29-04-2021</p>
+                        </div>
+                        <div class="col-3">
+                            <p class="text-end fw-bold">Repartidor:</p>
+                        </div>
+                        <div class="col-3">
+                            <p>Benjamin Muñoz</p>
+                        </div>
+                        <div class="col-3">
+                            <p class="text-end fw-bold">Estado del pedido:</p>
+                        </div>
+                        <div class="col-3">
+                            <p>En espera</p>
+                        </div>
+                        <div class="col-3">
+                            <p class="text-end fw-bold">Metodo de pago:</p>
+                        </div>
+                        <div class="col-3">
+                            <p>Efectivo</p>
+                        </div>
+                        <div class="col-3">
+                            <p class="text-end fw-bold">Monto:</p>
+                        </div>
+                        <div class="col-3">
+                            <p>$6000</p>
+                        </div>
+                        <div class="col-3">
+                            <p class="text-end fw-bold">Dirección:</p>
+                        </div>
+                        <div class="col-3">
+                            <p>Bicentenario, Pasaje Reconquista #1351, San Javier</p>
+                        </div>
+                        <div class="col-3">
+                            <p class="text-end fw-bold">Telefono:</p>
+                        </div>
+                        <div class="col-3">
+                            <p>+56987654321</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- VISTA <LG -->
 
-    <!--DETALLE PEDIDO-->
-    <div class="container mt-3">
-        <a href="vendedor-pedidos.php"><i class="fas fa-chevron-circle-left fs-1 text-dark ms-5 mb-3"></i></a>
-        <div class="border border-2 border-dark rounded mx-auto pb-3" style="max-width: 800px;">
-            <h5 class="h5 text-center mt-3 mb-4">DETALLE DEL PEDIDO: <span>ABC299</span></h5>
-            <!-- VISTA <LG -->
-            <div class="d-none d-md-block">
+                <!-- VISTA >MD -->
+                <div class="d-md-none">
+                    <div class="row">
+                        <div class="col-6">
+                            <p class="text-end fw-bold">Cliente:</p>
+                        </div>
+                        <div class="col-5">
+                            <p>Eduardo Maureira</p>
+                        </div>
+                        <div class="col-6">
+                            <p class="text-end fw-bold">Fecha y hora:</p>
+                        </div>
+                        <div class="col-6">
+                            <p>18:06 29-04-2021</p>
+                        </div>
+                        <div class="col-6">
+                            <p class="text-end fw-bold">Repartidor:</p>
+                        </div>
+                        <div class="col-6">
+                            <p>Benjamin Muñoz</p>
+                        </div>
+                        <div class="col-6">
+                            <p class="text-end fw-bold">Estado del pedido:</p>
+                        </div>
+                        <div class="col-6">
+                            <p>En espera</p>
+                        </div>
+                        <div class="col-6">
+                            <p class="text-end fw-bold">Metodo de pago:</p>
+                        </div>
+                        <div class="col-6">
+                            <p>Efectivo</p>
+                        </div>
+                        <div class="col-6">
+                            <p class="text-end fw-bold">Monto:</p>
+                        </div>
+                        <div class="col-6">
+                            <p>$6000</p>
+                        </div>
+                        <div class="col-6">
+                            <p class="text-end fw-bold">Telefono:</p>
+                        </div>
+                        <div class="col-6">
+                            <p>+56987654321</p>
+                        </div>
+                        <div class="col-6">
+                            <p class="text-end fw-bold">Dirección:</p>
+                        </div>
+                        <div class="col-5">
+                            <p>Bicentenario, Pasaje Reconquista #1351, San Javier</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- VISTA >MD -->
+                <h5 class="h5 text-center mt-3 mb-4">Detalles del pedido</h5>
+                <table class="table table-hover table-bordered text-center mx-auto table-responsive" style="max-width: 500px;">
+                    <thead class="table-dark">
+                        <tr>
+                            <th scope="col">Codigo</th>
+                            <th scope="col">Producto</th>
+                            <th scope="col">Cantidad</th>
+                            <th scope="col">Precio</th>
+                            <th scope="col">Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>CHO123</td>
+                            <td>Chocolate Vizzio</td>
+                            <td>2</td>
+                            <td>$1700</td>
+                            <td>$3400</td>
+                        </tr>
+                        <tr>
+                            <td>JUG284</td>
+                            <td>Jugo Watts</td>
+                            <td>1</td>
+                            <td>$1300</td>
+                            <td>$1300</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="fw-bold text-end">Envio:</td>
+                            <td>$890</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="fw-bold text-end">Total a pagar:</td>
+                            <td>$5700</td>
+                        </tr>
+                    </tbody>
+                </table>  
                 <div class="row">
-                    <div class="col-3">
-                        <p class="text-end fw-bold">Cliente: </p>
+                    <div class="col-sm-6">
+                        <div class="d-flex flex-row bd-highlight justify-content-center">
+                            <div class="p-2 bd-highlight">
+                                <button class="btn btn-success px-4"> <i class="fas fa-check me-2"></i> Aceptar pedido</button>
+                            </div>           
+                        </div>
                     </div>
-                    <div class="col-3">
-                        <p>Eduardo Maureira</p>
-                    </div>
-                    <div class="col-3">
-                        <p class="text-end fw-bold">Fecha y hora:</p>
-                    </div>
-                    <div class="col-3">
-                        <p>18:06 29-04-2021</p>
-                    </div>
-                    <div class="col-3">
-                        <p class="text-end fw-bold">Repartidor:</p>
-                    </div>
-                    <div class="col-3">
-                        <p>Benjamin Muñoz</p>
-                    </div>
-                    <div class="col-3">
-                        <p class="text-end fw-bold">Estado del pedido:</p>
-                    </div>
-                    <div class="col-3">
-                        <p>En espera</p>
-                    </div>
-                    <div class="col-3">
-                        <p class="text-end fw-bold">Metodo de pago:</p>
-                    </div>
-                    <div class="col-3">
-                        <p>Efectivo</p>
-                    </div>
-                    <div class="col-3">
-                        <p class="text-end fw-bold">Monto:</p>
-                    </div>
-                    <div class="col-3">
-                        <p>$6000</p>
-                    </div>
-                    <div class="col-3">
-                        <p class="text-end fw-bold">Dirección:</p>
-                    </div>
-                    <div class="col-3">
-                        <p>Bicentenario, Pasaje Reconquista #1351, San Javier</p>
-                    </div>
-                    <div class="col-3">
-                        <p class="text-end fw-bold">Telefono:</p>
-                    </div>
-                    <div class="col-3">
-                        <p>+56987654321</p>
-                    </div>
-                </div>
-            </div>
-            <!-- VISTA <LG -->
-
-            <!-- VISTA >MD -->
-            <div class="d-md-none">
-                <div class="row">
-                    <div class="col-6">
-                        <p class="text-end fw-bold">Cliente:</p>
-                    </div>
-                    <div class="col-5">
-                        <p>Eduardo Maureira</p>
-                    </div>
-                    <div class="col-6">
-                        <p class="text-end fw-bold">Fecha y hora:</p>
-                    </div>
-                    <div class="col-6">
-                        <p>18:06 29-04-2021</p>
-                    </div>
-                    <div class="col-6">
-                        <p class="text-end fw-bold">Repartidor:</p>
-                    </div>
-                    <div class="col-6">
-                        <p>Benjamin Muñoz</p>
-                    </div>
-                    <div class="col-6">
-                        <p class="text-end fw-bold">Estado del pedido:</p>
-                    </div>
-                    <div class="col-6">
-                        <p>En espera</p>
-                    </div>
-                    <div class="col-6">
-                        <p class="text-end fw-bold">Metodo de pago:</p>
-                    </div>
-                    <div class="col-6">
-                        <p>Efectivo</p>
-                    </div>
-                    <div class="col-6">
-                        <p class="text-end fw-bold">Monto:</p>
-                    </div>
-                    <div class="col-6">
-                        <p>$6000</p>
-                    </div>
-                    <div class="col-6">
-                        <p class="text-end fw-bold">Telefono:</p>
-                    </div>
-                    <div class="col-6">
-                        <p>+56987654321</p>
-                    </div>
-                    <div class="col-6">
-                        <p class="text-end fw-bold">Dirección:</p>
-                    </div>
-                    <div class="col-5">
-                        <p>Bicentenario, Pasaje Reconquista #1351, San Javier</p>
-                    </div>
-                </div>
-            </div>
-            <!-- VISTA >MD -->
-            <h5 class="h5 text-center mt-3 mb-4">Detalles del pedido</h5>
-            <table class="table table-hover table-bordered text-center mx-auto table-responsive" style="max-width: 500px;">
-                <thead class="table-dark">
-                    <tr>
-                        <th scope="col">Codigo</th>
-                        <th scope="col">Producto</th>
-                        <th scope="col">Cantidad</th>
-                        <th scope="col">Precio</th>
-                        <th scope="col">Total</th>
-                      </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>CHO123</td>
-                        <td>Chocolate Vizzio</td>
-                        <td>2</td>
-                        <td>$1700</td>
-                        <td>$3400</td>
-                    </tr>
-                    <tr>
-                        <td>JUG284</td>
-                        <td>Jugo Watts</td>
-                        <td>1</td>
-                        <td>$1300</td>
-                        <td>$1300</td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td class="fw-bold text-end">Envio:</td>
-                        <td>$890</td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td class="fw-bold text-end">Total a pagar:</td>
-                        <td>$5700</td>
-                    </tr>
-                </tbody>
-            </table>  
-            <div class="row">
-                <div class="col-sm-6">
-                    <div class="d-flex flex-row bd-highlight justify-content-center">
-                        <div class="p-2 bd-highlight">
-                            <button class="btn btn-success px-4"> <i class="fas fa-check me-2"></i> Aceptar pedido</button>
-                        </div>           
-                    </div>
-                </div>
-                <div class="col-sm-6">
-                    <div class="d-flex flex-row bd-highlight justify-content-center">
-                        <div class="p-2 bd-highlight">
-                            <button class="btn btn-danger px-4"> <i class="fas fa-times me-2"></i>Rechazar pedido</button>
+                    <div class="col-sm-6">
+                        <div class="d-flex flex-row bd-highlight justify-content-center">
+                            <div class="p-2 bd-highlight">
+                                <button class="btn btn-danger px-4"> <i class="fas fa-times me-2"></i>Rechazar pedido</button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!--DETALLE PEDIDO-->
-
+        <!--DETALLE PEDIDO-->
+    <?php } else { ?>
+        <?php header("Location: ../cliente/cliente-inicio.php"); ?>
+    <?php } ?>
+<?php } else { header("Location: ../../login.php"); ?>     
+<?php } ?>
     <!-- FOOTER -->
     <div class="container text-center" style="margin-top: 110px;">
         <div class="row">

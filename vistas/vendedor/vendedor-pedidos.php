@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,145 +10,153 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
 </head>
 <body>
-    <!-- BARRA DE NAVEGACION -->
-    <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark px-5">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">BEC Market</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item pe-5">
-                        <a href="vendedor-inicio.php" class="text-light text-decoration-none fw-normal">INICIO</a>
-                    </li>
-                    <li class="nav-item pe-5">
-                        <a href="vendedor-datos.php" class="text-light text-decoration-none fw-normal">MIS DATOS</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="../../index.php" class="text-light text-decoration-none fw-normal">CERRAR SESION<i class="fas fa-sign-out-alt ps-2 fs-5"></i></a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-      </nav>
-    <!-- BARRA DE NAVEGACION -->
+    <?php if (isset($_SESSION['user'])) { ?>
+        <?php if ($_SESSION['user']['tipo'] == 2) { ?>
 
-    <!-- BARRA SECUNDARIA -->
-      <div class="container">
-        <nav class="nav nav-pills flex-column flex-sm-row mt-5 mx-auto" style="max-width: 500px;">
-            <a class="flex-sm-fill text-sm-center nav-link link-dark" href="vendedor-inicio.php" style="background-color: #adb5bd;">MI NEGOCIO</a>
-            <a class="flex-sm-fill text-sm-center nav-link link-dark" style="background-color: #adb5bd;" href="vendedor-productos.php">MIS PRODUCTOS</a>
-            <a class="flex-sm-fill text-sm-center nav-link bg-dark active" href="vendedor-pedidos.php" >PEDIDOS</a>
-        </nav>
-      </div>
-    <!-- BARRA SECUNDARIA -->
-
-    <!-- TERCERA BARRA -->
-    <div class="container">
-        <nav class="nav nav-pills flex-column flex-sm-row mt-5 mx-auto" style="max-width: 400px;">            
-            <a class="flex-sm-fill text-sm-center nav-link bg-dark active small" href="vendedor-pedidos.php">ACEPTADOS</a>
-            <a class="flex-sm-fill text-sm-center nav-link link-dark small" href="vendedor-pedidos-sinaceptar.php" style="background-color: #adb5bd;">SIN ACEPTAR</a>
-            <a class="flex-sm-fill text-sm-center nav-link link-dark small" href="vendedor-pedidos-historial.php" style="background-color: #adb5bd;">HISTORIAL</a>
-        </nav>
-    </div>
-    <!-- TERCERA BARRA -->
-
-    <!-- BUSQUEDA -->
-    <div class="container mt-4">
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="d-flex flex-row bd-highlight justify-content-center">
-                    <div class="p-2 bd-highlight">
-                        <input type="text" class="form-control mb-3" placeholder="Buscar por cliente" style="max-width: 168px;">    
-                    </div>
-                    <div class="p-2 bd-highlight">
-                        <button type="button" class="btn btn-dark px-4">BUSCAR</button>
-                    </div>           
-                </div>
-            </div>
-            <div class="col-sm-6">
-                <div class="d-flex flex-row bd-highlight justify-content-center">
-                    <div class="p-2 bd-highlight">
-                        <select class="form-select mb-3" style="max-width: 300px;">
-                            <option selected>Buscar por estado</option>
-                            <option value="1">Aceptado</option>
-                            <option value="2">En preparación</option>
-                            <option value="3">Entregado al repartidor</option>
-                        </select>
-                    </div>
-                    <div class="p-2 bd-highlight">
-                        <button type="button" class="btn btn-dark px-4">BUSCAR</button>
+            <!-- BARRA DE NAVEGACION -->
+            <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark px-5">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#">BEC Market</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ms-auto">
+                            <li class="nav-item pe-5">
+                                <a href="vendedor-inicio.php" class="text-light text-decoration-none fw-normal">INICIO</a>
+                            </li>
+                            <li class="nav-item pe-5">
+                                <a href="vendedor-datos.php" class="text-light text-decoration-none fw-normal">MIS DATOS</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../../controladores/salir.php" class="text-light text-decoration-none fw-normal">CERRAR SESION<i class="fas fa-sign-out-alt ps-2 fs-5"></i></a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
+            </nav>
+            <!-- BARRA DE NAVEGACION -->
+
+            <!-- BARRA SECUNDARIA -->
+            <div class="container">
+                <nav class="nav nav-pills flex-column flex-sm-row mt-5 mx-auto" style="max-width: 500px;">
+                    <a class="flex-sm-fill text-sm-center nav-link link-dark" href="vendedor-inicio.php" style="background-color: #adb5bd;">MI NEGOCIO</a>
+                    <a class="flex-sm-fill text-sm-center nav-link link-dark" style="background-color: #adb5bd;" href="vendedor-productos.php">MIS PRODUCTOS</a>
+                    <a class="flex-sm-fill text-sm-center nav-link bg-dark active" href="vendedor-pedidos.php" >PEDIDOS</a>
+                </nav>
             </div>
-        </div>
-    </div>
-    <!-- BUSQUEDA -->
+            <!-- BARRA SECUNDARIA -->
 
-    <!-- TABLA PEDIDOS -->
-    <div class="container mt-3 d-none d-lg-block">
-        <table class="table table-hover table-bordered text-center mx-auto align-middle" style="max-width: 1100px;">
-            <thead class="table-dark">
-                <tr>
-                    <th scope="col">Fecha y hora</th>
-                    <th scope="col">Cliente</th>
-                    <th scope="col">Repartidor</th>
-                    <th scope="col">Total</th>
-                    <th scope="col">Detalles</th>
-                    <th scope="col">Estado</th>
-                  </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">18:06 29-04-2020</th>
-                    <td>Eduardo Maureira</td>
-                    <td>Benjamin Muñoz</td>
-                    <td>$1700</td>
-                    <td><a href="vendedor-pedido-detalle.php">Ver detalles</a></td>
-                    <td class="text-success">Aceptado <button class="btn ms-2"><i class="far fa-edit fs-2 text-primary"></i></button></td>
-                </tr>
-                <tr>
-                    <th scope="row">18:06 29-04-2020</th>
-                    <td>Nombre Apellido</td>
-                    <td>Nombre Apellido</td>
-                    <td>$999</td>
-                    <td><a href="#">Ver detalles</a></td>
-                    <td class="text-success">Estado <button class="btn ms-2"><i class="far fa-edit fs-2 text-primary"></i></button></td>
-                </tr>
-            </tbody>
-          </table>    
-    </div>  
-    <!-- TABLA PEDIDOS -->
+            <!-- TERCERA BARRA -->
+            <div class="container">
+                <nav class="nav nav-pills flex-column flex-sm-row mt-5 mx-auto" style="max-width: 400px;">            
+                    <a class="flex-sm-fill text-sm-center nav-link bg-dark active small" href="vendedor-pedidos.php">ACEPTADOS</a>
+                    <a class="flex-sm-fill text-sm-center nav-link link-dark small" href="vendedor-pedidos-sinaceptar.php" style="background-color: #adb5bd;">SIN ACEPTAR</a>
+                    <a class="flex-sm-fill text-sm-center nav-link link-dark small" href="vendedor-pedidos-historial.php" style="background-color: #adb5bd;">HISTORIAL</a>
+                </nav>
+            </div>
+            <!-- TERCERA BARRA -->
 
-    <!-- PEDIDOS PANTALLA CHICA -->
-    <div class="container mt-5 d-lg-none">
-        <div class="row justify-content-center mx-2">
-            <div class="col-lg-7 border p-3 border-dark rounded-3 mb-3 d-flex align-items-center" style="max-width: 300px;">
-                <div class="ps-3">
-                    <p class="h5 fw-bold">Eduardo Maureira</p>
-                    <span>18:06 29-04-2020</span> -
-                    <span>$1700</span> <br>
-                    Repartidor: <span>Benjamin Muñoz</span> <br>
-                    <span class="text-success">Aceptado</span>
-                    <br>
-                    <a href="vendedor-pedido-detalle.php">Ver detalles</a>
+            <!-- BUSQUEDA -->
+            <div class="container mt-4">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="d-flex flex-row bd-highlight justify-content-center">
+                            <div class="p-2 bd-highlight">
+                                <input type="text" class="form-control mb-3" placeholder="Buscar por cliente" style="max-width: 168px;">    
+                            </div>
+                            <div class="p-2 bd-highlight">
+                                <button type="button" class="btn btn-dark px-4">BUSCAR</button>
+                            </div>           
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="d-flex flex-row bd-highlight justify-content-center">
+                            <div class="p-2 bd-highlight">
+                                <select class="form-select mb-3" style="max-width: 300px;">
+                                    <option selected>Buscar por estado</option>
+                                    <option value="1">Aceptado</option>
+                                    <option value="2">En preparación</option>
+                                    <option value="3">Entregado al repartidor</option>
+                                </select>
+                            </div>
+                            <div class="p-2 bd-highlight">
+                                <button type="button" class="btn btn-dark px-4">BUSCAR</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="col-lg-7 border p-3 border-dark rounded-3 mb-3 d-flex align-items-center" style="max-width: 300px;">
-                <div class="ps-3">
-                    <p class="h5 fw-bold">Nombre Apellido</p>
-                    <span>18:06 29-04-2020</span> -
-                    <span>$999</span> <br>
-                    Repartidor: <span>Nombre Apellido</span> <br>
-                    <span class="text-success">Estado</span>
-                    <br>
-                    <a href="#">Ver detalles</a>
+            <!-- BUSQUEDA -->
+
+            <!-- TABLA PEDIDOS -->
+            <div class="container mt-3 d-none d-lg-block">
+                <table class="table table-hover table-bordered text-center mx-auto align-middle" style="max-width: 1100px;">
+                    <thead class="table-dark">
+                        <tr>
+                            <th scope="col">Fecha y hora</th>
+                            <th scope="col">Cliente</th>
+                            <th scope="col">Repartidor</th>
+                            <th scope="col">Total</th>
+                            <th scope="col">Detalles</th>
+                            <th scope="col">Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">18:06 29-04-2020</th>
+                            <td>Eduardo Maureira</td>
+                            <td>Benjamin Muñoz</td>
+                            <td>$1700</td>
+                            <td><a href="vendedor-pedido-detalle.php">Ver detalles</a></td>
+                            <td class="text-success">Aceptado <button class="btn ms-2"><i class="far fa-edit fs-2 text-primary"></i></button></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">18:06 29-04-2020</th>
+                            <td>Nombre Apellido</td>
+                            <td>Nombre Apellido</td>
+                            <td>$999</td>
+                            <td><a href="#">Ver detalles</a></td>
+                            <td class="text-success">Estado <button class="btn ms-2"><i class="far fa-edit fs-2 text-primary"></i></button></td>
+                        </tr>
+                    </tbody>
+                </table>    
+            </div>  
+            <!-- TABLA PEDIDOS -->
+
+            <!-- PEDIDOS PANTALLA CHICA -->
+            <div class="container mt-5 d-lg-none">
+                <div class="row justify-content-center mx-2">
+                    <div class="col-lg-7 border p-3 border-dark rounded-3 mb-3 d-flex align-items-center" style="max-width: 300px;">
+                        <div class="ps-3">
+                            <p class="h5 fw-bold">Eduardo Maureira</p>
+                            <span>18:06 29-04-2020</span> -
+                            <span>$1700</span> <br>
+                            Repartidor: <span>Benjamin Muñoz</span> <br>
+                            <span class="text-success">Aceptado</span>
+                            <br>
+                            <a href="vendedor-pedido-detalle.php">Ver detalles</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-7 border p-3 border-dark rounded-3 mb-3 d-flex align-items-center" style="max-width: 300px;">
+                        <div class="ps-3">
+                            <p class="h5 fw-bold">Nombre Apellido</p>
+                            <span>18:06 29-04-2020</span> -
+                            <span>$999</span> <br>
+                            Repartidor: <span>Nombre Apellido</span> <br>
+                            <span class="text-success">Estado</span>
+                            <br>
+                            <a href="#">Ver detalles</a>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-    <!-- PEDIDOS PANTALLA CHICA -->
+            <!-- PEDIDOS PANTALLA CHICA -->
+        <?php } else { ?>
+            <?php header("Location: ../cliente/cliente-inicio.php"); ?>
+        <?php } ?>
+    <?php } else { header("Location: ../../login.php"); ?>     
+    <?php } ?>
 
     <!-- FOOTER -->
     <div class="container text-center" style="margin-top: 110px;">

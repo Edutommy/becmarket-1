@@ -139,7 +139,7 @@
                                                 <span class="text-success"><?= strtoupper($_SESSION['negocio']['abierto_cerrado']) ?></span>
                                             </div>
                                             <div class="col-12 text-center pb-3">
-                                                <a href="#">CERRAR ATENCIÓN</a>
+                                                <button class="btn btn-outline-danger" value="<?= $_SESSION['negocio']['rut_negocio'] ?>">CERRAR ATENCIÓN</button>
                                             </div>
                                         <?php }else{ ?>
                                             <div class="col-12 text-center">
@@ -147,7 +147,7 @@
                                                 <span class="text-danger"><?= strtoupper($_SESSION['negocio']['abierto_cerrado']) ?></span>
                                             </div>
                                             <div class="col-12 text-center pb-3">
-                                                <a href="#">ABRIR ATENCIÓN</a>
+                                                <button class="btn btn-outline-success" value="<?= $_SESSION['negocio']['rut_negocio'] ?>">ABRIR ATENCIÓN</button>
                                             </div>
                                         <?php } ?>
                                         
