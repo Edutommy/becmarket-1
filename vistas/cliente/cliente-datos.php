@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <title>Mis Datos | BEC Market</title>
+    <?php include_once '../../header.php' ?>
 </head>
+
 <body>
     <!-- BARRA DE NAVEGACION -->
     <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark px-5">
@@ -30,9 +28,9 @@
                 </ul>
             </div>
         </div>
-      </nav>
+    </nav>
     <!-- BARRA DE NAVEGACION -->
-    
+
     <!-- DATOS -->
     <div class="container mt-5">
         <p class="h3 text-center">Mis datos</p>
@@ -41,24 +39,24 @@
                 <div class="row d-flex justify-content-center border p-3 border-dark rounded">
                     <div class="col-xl-7">
                         <img src="../../img/papas.jpg" class="card-img py-2 mx-auto d-block" alt="" style="max-width: 230px;">
-                        <div class="mb-3 d-flex justify-content-center flex-column">   
-                            <input class="form-control form-control-sm mx-auto" id="formFileSm" type="file"style="max-width: 200px;">
+                        <div class="mb-3 d-flex justify-content-center flex-column">
+                            <input class="form-control form-control-sm mx-auto" id="formFileSm" type="file" style="max-width: 200px;">
                             <button class="btn btn-dark mt-2 mx-auto btn-sm" style="max-width: 200px;">Cambiar imagen</button>
                         </div>
                     </div>
                     <div class="col-xl-7">
                         <div class="row mt-2">
                             <div class="col-3 text-end">
-                                <i class="fas fa-user fs-5 pb-3"></i> 
+                                <i class="fas fa-user fs-5 pb-3"></i>
                             </div>
                             <div class="col-9">
-                                <span>Nombre y apellidos</span> 
+                                <span>Nombre y apellidos</span>
                             </div>
                             <div class="col-3 text-end">
                                 <i class="fas fa-map-marker-alt fs-5 pb-3"></i>
                             </div>
                             <div class="col-9">
-                                <span>Dirección</span> 
+                                <span>Dirección</span>
                             </div>
                             <div class="col-3 text-end">
                                 <i class="far fa-envelope fs-5 pb-3"></i>
@@ -105,14 +103,14 @@
                     </div>
                     <div class="col-12 px-4 mb-2">
                         <div class="form-floating mb-3">
-                            <input type="email" class="form-control" id="email" placeholder="name@example.com" value="test@example.com" readonly> 
+                            <input type="email" class="form-control" id="email" placeholder="name@example.com" value="test@example.com" readonly>
                             <label for="email">Email</label>
                             <p class="text-end"><a href="#">Cambiar</a></p>
                         </div>
                     </div>
                     <div class="col-12 px-4 mb-2">
                         <div class="form-floating mb-3">
-                            <input type="password" class="form-control" id="pass" placeholder="name@example.com" value="12345" readonly> 
+                            <input type="password" class="form-control" id="pass" placeholder="name@example.com" value="12345" readonly>
                             <label for="pass">Contraseña</label>
                             <p class="text-end"><a href="#">Cambiar</a></p>
                         </div>
@@ -123,27 +121,7 @@
         </div>
     </div>
     <!-- DATOS -->
-
-    <!-- FOOTER -->
-    <div class="container text-center" style="margin-top: 110px;">
-        <div class="row">
-          <div class="col-sm pb-5">
-            <h2 class="display-5">BEC Market</h2>
-          </div>
-          <div class="col-sm pb-5">
-                <p class="lead pb-2"><strong>NUESTRAS REDES</strong></p>
-                <a href="#"><i class="fab fa-facebook-f fs-4 text-dark me-5"></i></a>
-                <a href="#"><i class="fab fa-twitter fs-4 text-dark me-5"></i></a>
-                <a href="#"><i class="fab fa-instagram fs-4 text-dark"></i></a>
-          </div>
-          <div class="col-sm pb-5">
-            <p class="lead"><strong>CONTACTO</strong></p>
-            <a href="MAILTO:contacto@example.com" class="text-decoration-none lead">contacto@example.com</a></span></p>
-          </div>
-        </div>
-    </div>
-    <!-- FIN FOOTER -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
-    <script src="https://kit.fontawesome.com/40e29f2951.js" crossorigin="anonymous"></script>
+    <?php include_once '../../footer.php' ?>
 </body>
+
 </html>

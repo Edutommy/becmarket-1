@@ -74,9 +74,11 @@ class NuevoVendedor{
             'estadoNegocio'=>0,
             'costoEnvio'=>0,
             'tipoNegocio'=>$this->tipoNegocio,
-            'horarioAntencion'=>"Sin asignar",
-            'diasAntencion'=>"Sin asignar",
+            'horarioAtencion'=>"Sin asignar",
+            'diasAtencion'=>"Sin asignar",
             'abierto_cerrado'=>"cerrado",
+            'emailNegocio'=>"Sin asignar",
+            'telefonoNegocio'=>"Sin asignar",
             'vendedorfk'=>$this->vendedorfk,
         ];
         $countV = $vendedor->crearUsuarios($dataVendedor);
@@ -85,10 +87,11 @@ class NuevoVendedor{
             if($countN == 1){
                 echo json_encode(["msg"=>"si"]);
             }else{
-                echo json_encode(["msg"=>"no"]);
+                $vendedor->quitarUsuario($this->codigo_usuario);
+                echo json_encode(["msg"=>"negocio"]);
             }
         }else{
-            echo json_encode(["msg"=>"no"]);
+            echo json_encode(["msg"=>"vendedor"]);
         }
 
     }

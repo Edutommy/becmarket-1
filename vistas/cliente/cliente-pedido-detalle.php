@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,6 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.gstatic.com">
 </head>
+
 <body>
     <!-- BARRA DE NAVEGACION -->
     <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark px-5">
@@ -30,12 +32,12 @@
                 </ul>
             </div>
         </div>
-      </nav>
+    </nav>
     <!-- BARRA DE NAVEGACION -->
-    
+
     <!-- BARRA SECUNDARIA -->
     <div class="container">
-        <nav class="nav nav-pills flex-column flex-sm-row mt-5 mx-auto" style="max-width: 500px;">            
+        <nav class="nav nav-pills flex-column flex-sm-row mt-5 mx-auto" style="max-width: 500px;">
             <a class="flex-sm-fill text-sm-center nav-link link-dark" href="cliente-inicio.php" style="background-color: #adb5bd;">POPULARES</a>
             <a class="flex-sm-fill text-sm-center nav-link link-dark" href="cliente-negocio.php" style="background-color: #adb5bd;">NEGOCIOS</a>
             <a class="flex-sm-fill text-sm-center nav-link bg-dark active" aria-current="page" href="cliente-mispedidos.php">MIS PEDIDOS</a>
@@ -45,7 +47,7 @@
 
     <!-- TERCERA BARRA -->
     <div class="container">
-        <nav class="nav nav-pills flex-column flex-sm-row mt-5 mx-auto" style="max-width: 250px;">            
+        <nav class="nav nav-pills flex-column flex-sm-row mt-5 mx-auto" style="max-width: 250px;">
             <a class="flex-sm-fill text-sm-center nav-link link-dark small" href="cliente-mispedidos.php" style="background-color: #adb5bd;">EN CURSO</a>
             <a class="flex-sm-fill text-sm-center nav-link link-dark small" href="cliente-pedidos-historial.php" style="background-color: #adb5bd;">HISTORIAL</a>
         </nav>
@@ -150,7 +152,7 @@
                         <th scope="col">Cantidad</th>
                         <th scope="col">Precio</th>
                         <th scope="col">Total</th>
-                      </tr>
+                    </tr>
                 </thead>
                 <tbody>
                     <tr>
@@ -184,7 +186,7 @@
                         <td>$5700</td>
                     </tr>
                 </tbody>
-            </table>  
+            </table>
 
         </div>
 
@@ -194,23 +196,24 @@
     <!-- FOOTER -->
     <div class="container text-center" style="margin-top: 110px;">
         <div class="row">
-          <div class="col-sm pb-5">
-            <h2 class="display-5">BEC Market</h2>
-          </div>
-          <div class="col-sm pb-5">
+            <div class="col-sm pb-5">
+                <h2 class="display-5">BEC Market</h2>
+            </div>
+            <div class="col-sm pb-5">
                 <p class="lead pb-2"><strong>NUESTRAS REDES</strong></p>
                 <a href="#"><i class="fab fa-facebook-f fs-4 text-dark me-5"></i></a>
                 <a href="#"><i class="fab fa-twitter fs-4 text-dark me-5"></i></a>
                 <a href="#"><i class="fab fa-instagram fs-4 text-dark"></i></a>
-          </div>
-          <div class="col-sm pb-5">
-            <p class="lead"><strong>CONTACTO</strong></p>
-            <a href="MAILTO:contacto@example.com" class="text-decoration-none lead">contacto@example.com</a></span></p>
-          </div>
+            </div>
+            <div class="col-sm pb-5">
+                <p class="lead"><strong>CONTACTO</strong></p>
+                <a href="MAILTO:contacto@example.com" class="text-decoration-none lead">contacto@example.com</a></span></p>
+            </div>
         </div>
     </div>
     <!-- FIN FOOTER -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/40e29f2951.js" crossorigin="anonymous"></script>
 </body>
+
 </html>

@@ -29,5 +29,9 @@ class Usuario{
         return $stm->execute();
     }
     
-
+    public function quitarUsuario($codigo){
+        $stm = Conexion::conector()->prepare("DELETE FROM usuario WHERE codigo_usuario=:A");
+        $stm->bindParam(":A",$codigo);
+        return $stm->execute();
+    }
 }

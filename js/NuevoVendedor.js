@@ -50,7 +50,11 @@ new Vue({
                 if (resp.msg == "si") {
                     window.location.href=this.url+'revision.html';
                 }else{
-                    M.toast({html:"El rut de la empresa, su rut o su email ya se encuentran registrados"});
+                    if(resp.msg == "vendedor"){
+                        this.mensaje = "Su rut o email ya se encuentran registrados";
+                    }else{
+                        this.mensaje = "El rut de la empresa ya se encuentra registrado";
+                    }
                 }
             }catch(error){
                 console.log(error);
