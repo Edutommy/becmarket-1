@@ -34,4 +34,29 @@ class Usuario{
         $stm->bindParam(":A",$codigo);
         return $stm->execute();
     }
+
+    public function editarDatos($data,$codigo){
+        $stm = Conexion::conector()->prepare("UPDATE usuario SET nombre=:A, apellidos=:B, direccion=:C, telefono=:D WHERE codigo_usuario=:E");
+        $stm->bindParam(":A",$data['nombre']);
+        $stm->bindParam(":B",$data['apellidos']);
+        $stm->bindParam(":C",$data['direccion']);
+        $stm->bindParam(":D",$data['telefono']);
+        $stm->bindParam(":E",$codigo);
+        return $stm->execute();
+    }
+
+    public function cambiarContrasena($nueva,$codigo){
+        $stm = Conexion::conector()->prepare("UPDATE usuario SET contrasena=:A WHERE codigo_usuario=:B");
+        $stm->bindParam(":A",$nueva);
+        $stm->bindParam(":B",$codigo);
+        return $stm->execute();
+    }
+
+    public function actualizar($codigo){
+        $stm = Conexion::conector()->prepare("SELECT * FROM usuario WHERE codigo_usuario=:A");
+        $stm->bindParam(":A",$codigo);
+        $stm->execute();
+        return $stm->fetchAll(\PDO::FETCH_ASSOC);
+    }
+
 }

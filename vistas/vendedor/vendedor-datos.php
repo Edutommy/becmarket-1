@@ -43,7 +43,7 @@
         <div class="container mt-5">
             <p class="h3 text-center">Mis datos</p>
             <div class="row mt-5 mx-5 d-flex justify-content-center justify-content-lg-evenly">
-                <div class="col-xl-4 mb-4">
+                <div class="col-xl-4">
                     <div class="row d-flex justify-content-center border p-3 border-dark rounded">
                         <div class="col-xl-7">
                             <img src="<?= $_SESSION['user']['imagen'] ?>" class="card-img py-2 mx-auto d-block" alt="" style="max-width: 230px;">
@@ -83,7 +83,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-6 border p-3 border-dark rounded mb-4">
+                <div class="col-xl-6 border p-3 border-dark rounded">
                     <p class="h5 ms-4 mt-1">Editar datos</p>
                     <div class="row mt-4">
                         <div class="col-12 mb-2 px-4">
@@ -110,22 +110,17 @@
                                 <label for="celu">Teléfono</label>
                             </div>
                         </div>
-                        <div class="col-12 px-4 mb-2">
-                            <div class="form-floating mb-3">
-                                <input type="email" class="form-control" id="email" placeholder="name@example.com" value="test@example.com" readonly> 
-                                <label for="email">Email</label>
-                                <p class="text-end"><a href="#">Cambiar</a></p>
-                            </div>
-                        </div>
-                        <div class="col-12 px-4 mb-2">
-                            <div class="form-floating mb-3">
-                                <input type="password" class="form-control" id="pass" placeholder="name@example.com" value="12345" readonly> 
-                                <label for="pass">Contraseña</label>
-                                <p class="text-end"><a href="#">Cambiar</a></p>
-                            </div>
-                        </div>
                     </div>
                     <button class="btn btn-dark mt-3 mx-auto d-block" style="max-width: 200px;">Cambiar datos</button>
+                    <p class="text-end mt-4">
+                        <a href="../cambiarcontrasenia.php">Cambiar contraseña</a>
+                    </p>
+                    <p class="text-center text-success">
+                        <?php if(isset($_SESSION['msg'])){
+                            echo $_SESSION['msg'];
+                            unset($_SESSION['msg']);
+                        } ?>
+                    </p>
                 </div>
             </div>
         </div>

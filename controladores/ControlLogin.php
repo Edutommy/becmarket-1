@@ -19,7 +19,7 @@ class ControlLogin{
     public function iniciarSesion(){
         session_start();
         $usuario = new Usuario();
-        $array = $usuario->inicarSesion($this->email, $this->contrasena);
+        $array = $usuario->inicarSesion($this->email, md5($this->contrasena));
         if(count($array) == 0){
             $_SESSION['error'] = 'Datos incorrectos';
             header("Location: ../login.php");
