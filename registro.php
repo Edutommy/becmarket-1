@@ -17,8 +17,10 @@
     }
     ?>
     <div class="container" style="max-width: 910px;" id="app">
-        <h2 class="display-5 text-center pt-5">BEC Market</h2>
-
+        <p class="text-center mt-5">
+            <img src="img/logo.png" alt="" width="250">
+        </p>
+        
         <form @submit.prevent="guardar">
             <div class="row bg-light mx-auto mt-5 border border-dark rounded-3 pb-3">
                 <div class="col-12 pt-3">

@@ -19,11 +19,13 @@
         }
     ?>
     <div class="container"  style="max-width: 910px;" id="app">
-        <h1 class="display-5 text-center mt-5">BEC Market</h1>
+        <p class="text-center mt-3">
+            <img src="img/logo.png" alt="" width="250">
+        </p>
 
         <!-- FORMULARIO DE REGISTRO -->
         <form @submit.prevent="guardar">
-            <div class="row bg-light mx-auto mt-5 border border-dark rounded-3 pb-3">
+            <div class="row bg-light mx-auto mt-3 border border-dark rounded-3 pb-3">
                 <div class="col-12">
                     <p class="h4 text-center pb-4 pt-4">Registra tu negocio</p>
                 </div>

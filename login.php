@@ -20,7 +20,9 @@
         }
     ?>
     <div class="container" style="max-width: 450px;">
-        <h2 class="display-5 text-center pt-5">BEC Market</h2>
+        <p class="text-center mt-5">
+            <img src="img/logo.png" alt="" width="250">
+        </p>
 
         <div class="row bg-light mx-auto mt-5 border border-dark rounded-3 pb-3">
             <form action="controladores/ControlLogin.php" method="POST">

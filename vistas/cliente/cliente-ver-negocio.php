@@ -12,7 +12,9 @@
     <!-- BARRA DE NAVEGACION -->
     <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark px-5">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">BEC Market</a>
+            <a class="navbar-brand" href="#">
+                <img src="../../img/logo2.png" alt="" width="120">
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -25,7 +27,7 @@
                         <a href="cliente-datos.php" class="text-light text-decoration-none fw-normal">MIS DATOS</a>
                     </li>
                     <li class="nav-item">
-                        <a href="../../index.php" class="text-light text-decoration-none fw-normal">CERRAR SESION<i class="fas fa-sign-out-alt ps-2 fs-5"></i></a>
+                        <a href="../../controladores/salir.php" class="text-light text-decoration-none fw-normal">CERRAR SESION<i class="fas fa-sign-out-alt ps-2 fs-5"></i></a>
                     </li>
                 </ul>
             </div>
@@ -100,8 +102,8 @@
     </div>
     <!-- INFORMACION NEGOCIO -->
     <hr style="height:3px; max-width: 1000px;" class="mx-auto">
-    <!-- PRODUCTOS -->
 
+    <!-- PRODUCTOS -->
     <div class="container">
         <div class="row d-flex mx-3 flex-lg-row-reverse">
             <div class="col-lg-4">
@@ -114,7 +116,7 @@
                 <p class="text-center fw-bold h5 mt-3 mb-4">PRODUCTOS</p>
                 <div class="row d-flex justify-content-center justify-content-lg-evenly">
                     <div class="col-xxl-5 d-flex align-items-center border p-3 border-dark rounded-3 mb-5" style="max-width: 500px;">
-                        <img src="../../img/choco.webp" class="card-img py-2" alt="" style="max-width: 140px;">
+                        <img src="../../uploads/choco.png" class="card-img py-2" alt="" style="max-width: 140px;">
                         <div class="ps-3">
                             <p class="h5 fw-bold">Chocolate Vizzio</p>
                             <p>Almendras cubiertas de chocolate, 120g.</p>
@@ -123,7 +125,7 @@
                         </div>
                     </div>
                     <div class="col-xxl-5  d-flex align-items-center border p-3 border-dark rounded-3 mb-5" style="max-width: 500px;">
-                        <img src="../../img/nectaar.png" class="card-img py-2" alt="" style="max-width: 140px;">
+                        <img src="../../uploads/nectar.png" class="card-img py-2" alt="" style="max-width: 140px;">
                         <div class="ps-3">
                             <p class="h5 fw-bold">Néctar Durazno</p>
                             <p>Néctar Watts sabor durazno, 1.5L</p>
@@ -132,7 +134,7 @@
                         </div>
                     </div>
                     <div class="col-xxl-5  d-flex align-items-center border p-3 border-dark rounded-3 mb-5" style="max-width: 500px;">
-                        <img src="../../img/nectaar.png" class="card-img py-2" alt="" style="max-width: 140px;">
+                        <img src="../../uploads/nectar.png" class="card-img py-2" alt="" style="max-width: 140px;">
                         <div class="ps-3">
                             <p class="h5 fw-bold">Néctar Durazno</p>
                             <p>Néctar Watts sabor durazno, 1.5L</p>
@@ -141,7 +143,7 @@
                         </div>
                     </div>
                     <div class="col-xxl-5  d-flex align-items-center border p-3 border-dark rounded-3 mb-5" style="max-width: 500px;">
-                        <img src="../../img/nectaar.png" class="card-img py-2" alt="" style="max-width: 140px;">
+                        <img src="../../uploads/nectar.png" class="card-img py-2" alt="" style="max-width: 140px;">
                         <div class="ps-3">
                             <p class="h5 fw-bold">Néctar Durazno</p>
                             <p>Néctar Watts sabor durazno, 1.5L</p>
