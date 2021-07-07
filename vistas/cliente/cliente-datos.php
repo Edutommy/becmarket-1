@@ -81,38 +81,41 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-6 border p-3 border-dark rounded mb-4" style="max-width: 500px;">
+                    <!-- EDITAR DATOS -->
+                    <div id="app" class="col-xl-6 border p-3 border-dark rounded mb-4" style="max-width: 500px;">
                         <p class="h5 ms-4 mt-1">Editar datos</p>
-                        <div class="row mt-4">
-                            <div class="col-12 mb-2 px-4">
-                                <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="nombre" placeholder="nombre">
-                                    <label for="nombre">Nombre</label>
+                        <form @submit.prevent="editar">
+                            <div class="row mt-4">
+                                <div class="col-12 mb-2 px-4">
+                                    <div class="form-floating mb-3">
+                                        <input v-model="nombre" type="text" class="form-control" id="nombre" placeholder="nombre">
+                                        <label for="nombre">Nombre</label>
+                                    </div>
+                                </div>
+                                <div class="col-12 mb-2 px-4">
+                                    <div class="form-floating mb-3">
+                                        <input v-model="apellidos" type="text" class="form-control" id="ape" placeholder="apellidos">
+                                        <label for="ape">Apellidos</label>
+                                    </div>
+                                </div>
+                                <div class="col-12 mb-2 px-4">
+                                    <div class="form-floating mb-3">
+                                        <input v-model="direccion" type="text" class="form-control" id="dire" placeholder="direccion">
+                                        <label for="dire">Dirección</label>
+                                    </div>
+                                </div>
+                                <div class="col-12 mb-2 px-4">
+                                    <div class="form-floating mb-3">
+                                        <input v-model="telefono" type="text" class="form-control" id="tele" placeholder="telefono">
+                                        <label for="celu">Teléfono</label>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-12 mb-2 px-4">
-                                <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="ape" placeholder="apellidos">
-                                    <label for="ape">Apellidos</label>
-                                </div>
-                            </div>
-                            <div class="col-12 mb-2 px-4">
-                                <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="dire" placeholder="direccion">
-                                    <label for="dire">Dirección</label>
-                                </div>
-                            </div>
-                            <div class="col-12 mb-2 px-4">
-                                <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="tele" placeholder="telefono">
-                                    <label for="celu">Teléfono</label>
-                                </div>
-                            </div>
-                        </div>
-                        <button class="btn btn-dark mt-3 mx-auto d-block" style="max-width: 200px;">Cambiar datos</button>
+                            <button class="btn btn-dark mt-3 mx-auto d-block" style="max-width: 200px;">Cambiar datos</button>
+                        </form>
                         <p class="text-end mt-4">
-                                <a href="../cambiarcontrasenia.php">Cambiar contraseña</a>
-                            </p>
+                            <a href="../cambiarcontrasenia.php">Cambiar contraseña</a>
+                        </p>
                         <p class="text-center text-success">
                             <?php if(isset($_SESSION['msg'])){
                                 echo $_SESSION['msg'];
@@ -129,6 +132,9 @@
     <?php } else {
         header("Location: ../../login.php"); ?>
     <?php } ?>
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="../../js/EditarDatosUsuario.js"></script>
 
     <?php include_once '../../footer.php' ?>
 </body>

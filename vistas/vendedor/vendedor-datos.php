@@ -39,16 +39,15 @@
         </nav>
         <!-- BARRA DE NAVEGACION -->
         
-        <!-- DATOS -->
         <div class="container mt-5">
             <p class="h3 text-center">Mis datos</p>
             <div class="row mt-5 mx-5 d-flex justify-content-center justify-content-lg-evenly">
-                <div class="col-xl-4">
+                <div class="col-xl-4 mb-4" style="max-width: 400px;">
                     <div class="row d-flex justify-content-center border p-3 border-dark rounded">
                         <div class="col-xl-7">
                             <img src="<?= $_SESSION['user']['imagen'] ?>" class="card-img py-2 mx-auto d-block" alt="" style="max-width: 230px;">
-                            <div class="mb-3 d-flex justify-content-center flex-column">   
-                                <input class="form-control form-control-sm mx-auto" id="formFileSm" type="file"style="max-width: 200px;">
+                            <div class="mb-3 d-flex justify-content-center flex-column">
+                                <input class="form-control form-control-sm mx-auto" id="formFileSm" type="file" style="max-width: 200px;">
                                 <button class="btn btn-dark mt-2 mx-auto btn-sm" style="max-width: 200px;">Cambiar imagen</button>
                             </div>
                         </div>
@@ -83,35 +82,38 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-6 border p-3 border-dark rounded">
+                <!-- EDITAR DATOS -->
+                <div id="app" class="col-xl-6 border p-3 border-dark rounded mb-4" style="max-width: 500px;">
                     <p class="h5 ms-4 mt-1">Editar datos</p>
-                    <div class="row mt-4">
-                        <div class="col-12 mb-2 px-4">
-                            <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="nombre" placeholder="nombre">
-                                <label for="nombre">Nombre</label>
+                    <form @submit.prevent="editar">
+                        <div class="row mt-4">
+                            <div class="col-12 mb-2 px-4">
+                                <div class="form-floating mb-3">
+                                    <input v-model="nombre" type="text" class="form-control" id="nombre" placeholder="nombre">
+                                    <label for="nombre">Nombre</label>
+                                </div>
+                            </div>
+                            <div class="col-12 mb-2 px-4">
+                                <div class="form-floating mb-3">
+                                    <input v-model="apellidos" type="text" class="form-control" id="ape" placeholder="apellidos">
+                                    <label for="ape">Apellidos</label>
+                                </div>
+                            </div>
+                            <div class="col-12 mb-2 px-4">
+                                <div class="form-floating mb-3">
+                                    <input v-model="direccion" type="text" class="form-control" id="dire" placeholder="direccion">
+                                    <label for="dire">Dirección</label>
+                                </div>
+                            </div>
+                            <div class="col-12 mb-2 px-4">
+                                <div class="form-floating mb-3">
+                                    <input v-model="telefono" type="text" class="form-control" id="tele" placeholder="telefono">
+                                    <label for="celu">Teléfono</label>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-12 mb-2 px-4">
-                            <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="ape" placeholder="apellidos">
-                                <label for="ape">Apellidos</label>
-                            </div>
-                        </div>
-                        <div class="col-12 mb-2 px-4">
-                            <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="dire" placeholder="direccion">
-                                <label for="dire">Dirección</label>
-                            </div>
-                        </div>
-                        <div class="col-12 mb-2 px-4">
-                            <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="tele" placeholder="telefono">
-                                <label for="celu">Teléfono</label>
-                            </div>
-                        </div>
-                    </div>
-                    <button class="btn btn-dark mt-3 mx-auto d-block" style="max-width: 200px;">Cambiar datos</button>
+                        <button class="btn btn-dark mt-3 mx-auto d-block" style="max-width: 200px;">Cambiar datos</button>
+                    </form>
                     <p class="text-end mt-4">
                         <a href="../cambiarcontrasenia.php">Cambiar contraseña</a>
                     </p>
@@ -130,6 +132,7 @@
     <?php } ?>
 <?php } else { header("Location: ../../login.php"); ?>     
 <?php } ?>
+
     <!-- FOOTER -->
     <div class="container text-center" style="margin-top: 110px;">
         <div class="row">
@@ -149,6 +152,9 @@
         </div>
     </div>
     <!-- FIN FOOTER -->
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="../../js/EditarDatosUsuario.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/40e29f2951.js" crossorigin="anonymous"></script>
 </body>
