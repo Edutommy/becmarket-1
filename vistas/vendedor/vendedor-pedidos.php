@@ -1,4 +1,14 @@
-<?php session_start(); ?>
+<?php 
+    session_start(); 
+    use modelo\Pedidos as Pedidos;
+    require_once("../../modelo/Pedidos.php");
+    use modelo\Usuario as Usuario;
+    require_once("../../modelo/Usuario.php");
+    $negocio = $_SESSION['negocio']['rut_negocio'];
+    $estado = 'aceptado';
+    $modelo = new Pedidos();
+    $pedidos = $modelo->pedidosNegocio($estado,$negocio);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -79,7 +89,7 @@
                                     <option selected>Buscar por estado</option>
                                     <option value="1">Aceptado</option>
                                     <option value="2">En preparación</option>
-                                    <option value="3">Entregado al repartidor</option>
+                                    <option value="3">Entregado</option>
                                 </select>
                             </div>
                             <div class="p-2 bd-highlight">
@@ -98,59 +108,66 @@
                         <tr>
                             <th scope="col">Fecha y hora</th>
                             <th scope="col">Cliente</th>
-                            <th scope="col">Repartidor</th>
                             <th scope="col">Total</th>
                             <th scope="col">Detalles</th>
                             <th scope="col">Estado</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th scope="row">18:06 29-04-2020</th>
-                            <td>Eduardo Maureira</td>
-                            <td>Benjamin Muñoz</td>
-                            <td>$1700</td>
-                            <td><a href="vendedor-pedido-detalle.php">Ver detalles</a></td>
-                            <td class="text-success">Aceptado <button class="btn ms-2"><i class="far fa-edit fs-2 text-primary"></i></button></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">18:06 29-04-2020</th>
-                            <td>Nombre Apellido</td>
-                            <td>Nombre Apellido</td>
-                            <td>$999</td>
-                            <td><a href="#">Ver detalles</a></td>
-                            <td class="text-success">Estado <button class="btn ms-2"><i class="far fa-edit fs-2 text-primary"></i></button></td>
-                        </tr>
+                        <?php foreach($pedidos as $p){ 
+                            $c =  new Usuario();
+                            $codigoC = $p['compradorfk'];
+                            $arr = $c->actualizar($codigoC);
+                            $cliente = $arr[0];
+                            ?>
+                            <tr>
+                                <th>
+                                    <span><?= $p['fecha'] ?></span>
+                                    <span><?= $p['hora'] ?></span>
+                                </th>
+                                <td>
+                                    <span><?= $cliente['nombre'] ?></span>
+                                    <span><?= $cliente['apellidos'] ?></span>
+                                </td>
+                                <td>$<?= $p['precio_Total'] ?></td>
+                                <td><a href="vendedor-pedido-detalle.php">Ver detalles</a></td>
+                                <td class="text-success"><?= ucwords($p['estado']) ?><button class="btn ms-2"><i class="far fa-edit fs-2 text-primary"></i></button></td>
+                            </tr>
+                        <?php } ?>
                     </tbody>
                 </table>    
             </div>  
             <!-- TABLA PEDIDOS -->
-
+            
             <!-- PEDIDOS PANTALLA CHICA -->
             <div class="container mt-5 d-lg-none">
                 <div class="row justify-content-center mx-2">
-                    <div class="col-lg-7 border p-3 border-dark rounded-3 mb-3 d-flex align-items-center" style="max-width: 300px;">
-                        <div class="ps-3">
-                            <p class="h5 fw-bold">Eduardo Maureira</p>
-                            <span>18:06 29-04-2020</span> -
-                            <span>$1700</span> <br>
-                            Repartidor: <span>Benjamin Muñoz</span> <br>
-                            <span class="text-success">Aceptado</span>
-                            <br>
-                            <a href="vendedor-pedido-detalle.php">Ver detalles</a>
+                    <?php foreach($pedidos as $p){ 
+                        $c =  new Usuario();
+                        $codigoC = $p['compradorfk'];
+                        $arr = $c->actualizar($codigoC);
+                        $cliente = $arr[0];
+                        ?>
+                        <div class="col-lg-7 border p-3 border-dark rounded-3 mb-3 d-flex align-items-center" style="max-width: 300px;">
+                            <div class="ps-3">
+                                <p class="h5 fw-bold">
+                                    <span><?= $cliente['nombre'] ?></span>
+                                    <span><?= $cliente['apellidos'] ?></span>
+                                </p>
+                                <span>
+                                    <?= $p['fecha'] ?> 
+                                    <?= $p['hora'] ?>
+                                </span> 
+                                <br>
+                                <span>$<?= $p['precio_Total'] ?></span> <br>
+                                <span class="text-success"><?= ucwords($p['estado']) ?>
+                                    <button class="btn ms-2"><i class="far fa-edit fs-4 text-primary"></i></button>
+                                </span>
+                                <br>
+                                <a href="vendedor-pedido-detalle.php">Ver detalles</a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-lg-7 border p-3 border-dark rounded-3 mb-3 d-flex align-items-center" style="max-width: 300px;">
-                        <div class="ps-3">
-                            <p class="h5 fw-bold">Nombre Apellido</p>
-                            <span>18:06 29-04-2020</span> -
-                            <span>$999</span> <br>
-                            Repartidor: <span>Nombre Apellido</span> <br>
-                            <span class="text-success">Estado</span>
-                            <br>
-                            <a href="#">Ver detalles</a>
-                        </div>
-                    </div>
+                    <?php } ?>
                 </div>
             </div>
             <!-- PEDIDOS PANTALLA CHICA -->

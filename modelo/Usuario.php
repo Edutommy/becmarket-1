@@ -59,4 +59,11 @@ class Usuario{
         return $stm->fetchAll(\PDO::FETCH_ASSOC);
     }
 
+    public function nombreCliente($codigo){
+        $stm = Conexion::conector()->prepare("SELECT nombre, apellidos FROM usuario WHERE codigo_usuario=:A");
+        $stm->bindParam(":A",$codigo);
+        $stm->execute();
+        return $stm->fetchAll(\PDO::FETCH_ASSOC);
+    }
+
 }
