@@ -230,7 +230,7 @@
                                 </div>
                                 <div class="col-md-10 mx-auto mt-3">
                                     <label for="cd" class="form-label fw-bold">Teléfono:</label>
-                                    <input required name="tele" v-model="tele" type="text" class="form-control" id="cd" style="max-width: 400px;" placeholder="56987654321">
+                                    <input required name="tele" v-model="tele" type="text" class="form-control" id="cd" style="max-width: 400px;" placeholder="987654321" pattern="[0-9]{9}">
                                 </div>
                                 <div class="col-md-10 mx-auto mt-3">
                                     <label for="ed" class="form-label fw-bold">E-mail:</label>
