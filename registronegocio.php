@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     
 </head>
-<body>
+<body style="background-image: url(img/fondo.jpg);">
     <?php session_start();
         if(isset($_SESSION['user'])){
             if($_SESSION['user']['tipo'] == 1){
@@ -20,7 +20,7 @@
     ?>
     <div class="container"  style="max-width: 910px;" id="app">
         <p class="text-center mt-3">
-            <img src="img/logo.png" alt="" width="250">
+            <img src="img/logo.png" alt="" width="250" style="background-color: rgba(255, 255, 255, 0.55);">
         </p>
 
         <!-- FORMULARIO DE REGISTRO -->
@@ -61,7 +61,7 @@
                     <input type="text" required class="form-control mb-3" id="ad" style="max-width: 400px;" v-model="apellidos">
 
                     <label for="cd" class="form-label">Celular</label>
-                    <input type="text" required class="form-control mb-3" id="cd" style="max-width: 400px;" placeholder="+56987654321" v-model="celular">
+                    <input type="text" required class="form-control mb-3" id="cd" style="max-width: 400px;" placeholder="56987654321" v-model="celular">
 
                     <label for="ed" class="form-label">E-mail</label>
                     <input type="email" required class="form-control mb-3" id="ed" style="max-width: 400px;" placeholder="correo@example.com" v-model="email">
@@ -98,26 +98,7 @@
         <!-- FORMULARIO DE REGISTRO -->
     </div>
 
-    <div class="container">
-    
-        <div class="row text-center" style="margin-top: 100px;">
-            <div class="col-sm pb-5">
-              <h2 class="display-5">BEC Market</h2>
-            </div>
-            <div class="col-sm pb-5">
-                  <p class="lead pb-2"><strong>NUESTRAS REDES</strong></p>
-                  <a href="#"><i class="fab fa-facebook-f fs-4 text-dark me-5"></i></a>
-                  <a href="#"><i class="fab fa-twitter fs-4 text-dark me-5"></i></a>
-                  <a href="#"><i class="fab fa-instagram fs-4 text-dark"></i></a>
-            </div>
-            <div class="col-sm pb-5">
-              <p class="lead"><strong>CONTACTO</strong></p>
-              <a href="MAILTO:contacto@example.com" class="text-decoration-none lead">contacto@example.com</a></span></p>
-            </div>
-        </div>
-    </div>
-
-            
+    <?php include_once 'footer.php' ?>
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <script src="js/NuevoVendedor.js"></script>

@@ -16,7 +16,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.gstatic.com">
 </head>
-<body>
+<body style="background-image: url(../../img/fondo.jpg);">
     <?php if (isset($_SESSION['user'])) { ?>
         <?php if ($_SESSION['user']['tipo'] == 2) { ?>
             <!-- BARRA DE NAVEGACION -->
@@ -60,7 +60,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="d-flex flex-row bd-highlight justify-content-center mt-1 mb-3">
-                            <a href="vendedor-nuevo-producto.php" class="link-success btn btn-outline-success btn-lg link-success"> <i class="fas fa-plus me-2"></i> Nuevo producto</a>
+                            <a href="vendedor-nuevo-producto.php" class="bg-light link-success btn btn-outline-success btn-lg link-success"> <i class="fas fa-plus me-2"></i> Nuevo producto</a>
                         </div>
                     </div>
                     <div class="col-md-6" id="app">
@@ -90,7 +90,7 @@
             <!-- PRODUCTOS -->
             <div class="container mt-5">
                 <form action="../../controladores/TablaProductos.php" method="POST">
-                    <table class="table table-hover table-bordered text-center mx-auto align-middle table-responsive" style="max-width: 1000px;">
+                    <table class="bg-light table table-hover table-bordered text-center mx-auto align-middle table-responsive" style="max-width: 1000px;">
                         <thead class="table-dark">
                             <tr>
                                 <th scope="col">CODIGO</th>
@@ -152,25 +152,8 @@
     <?php } else { 
         header("Location: ../../login.php"); ?>     
     <?php } ?>
-    <!-- FOOTER -->
-    <div class="container text-center" style="margin-top: 110px;">
-        <div class="row">
-          <div class="col-md pb-5">
-            <h2 class="display-5">BEC Market</h2>
-          </div>
-          <div class="col-md pb-5">
-                <p class="lead pb-2"><strong>NUESTRAS REDES</strong></p>
-                <a href="#"><i class="fab fa-facebook-f fs-4 text-dark me-5"></i></a>
-                <a href="#"><i class="fab fa-twitter fs-4 text-dark me-5"></i></a>
-                <a href="#"><i class="fab fa-instagram fs-4 text-dark"></i></a>
-          </div>
-          <div class="col-md pb-5">
-            <p class="lead"><strong>CONTACTO</strong></p>
-            <a href="MAILTO:contacto@example.com" class="text-decoration-none lead">contacto@example.com</a></span></p>
-          </div>
-        </div>
-    </div>
-    <!-- FIN FOOTER -->
+    
+    <?php include_once '../../footer.php' ?>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/40e29f2951.js" crossorigin="anonymous"></script>

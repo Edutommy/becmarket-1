@@ -1,5 +1,5 @@
     <!-- FOOTER -->
-    <div class="container text-center" style="margin-top: 110px;">
+    <div class="container text-center pt-5" style="margin-top: 110px;  background-color: rgba(255, 255, 255, 0.55);">
         <div class="row">
             <div class="col-sm pb-5">
                 <h2 class="display-5">BEC Market</h2>

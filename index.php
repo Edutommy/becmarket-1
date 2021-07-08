@@ -8,7 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.gstatic.com">
 </head>
-<body>
+<body style="background-image: url(img/fondo.jpg);">
     <!-- BARRA DE NAVEGACION -->
     <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark px-5">
         <div class="container-fluid">
@@ -35,7 +35,7 @@
     <!-- SECCIÓN 1 -->
     <div class="container pb-5">
         <div class="row">
-            <div class="col-sm pt-5">
+            <div class="col-sm pt-5" style="background-color: rgba(255, 255, 255, 0.55);">
                 <h2 class="display-5">Lorem ipsum dolor sit amet</h2>
                 <p class="lead">
                     Informacion general de la aplicación junto con algunos de los negocios ascociados
@@ -131,7 +131,7 @@
     <!-- FIN SECCION 2 -->
 
     <!-- FOOTER -->
-    <div class="container text-center" style="margin-top: 110px;">
+    <div class="container text-center  pt-5" style="margin-top: 110px; background-color: rgba(255, 255, 255, 0.55);">
         <div class="row">
           <div class="col-md pb-5">
             <h2 class="display-5">BEC Market</h2>

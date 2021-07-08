@@ -9,7 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.gstatic.com">
 </head>
-<body>
+<body style="background-image: url(img/fondo.jpg);">
     <?php session_start();
         if(isset($_SESSION['user'])){
             if($_SESSION['user']['tipo'] == 1){
@@ -21,7 +21,7 @@
     ?>
     <div class="container" style="max-width: 450px;">
         <p class="text-center mt-5">
-            <img src="img/logo.png" alt="" width="250">
+            <img src="img/logo.png" alt="" width="250" style="background-color: rgba(255, 255, 255, 0.55);">
         </p>
 
         <div class="row bg-light mx-auto mt-5 border border-dark rounded-3 pb-3">
@@ -87,23 +87,8 @@
         </div>
 
     </div>
-    <div class="container text-center" style="margin-top: 110px;">
-        <div class="row">
-            <div class="col-sm pb-5">
-                <h2 class="display-5">BEC Market</h2>
-            </div>
-            <div class="col-sm pb-5">
-                <p class="lead pb-2"><strong>NUESTRAS REDES</strong></p>
-                <a href="#"><i class="fab fa-facebook-f fs-4 text-dark me-5"></i></a>
-                <a href="#"><i class="fab fa-twitter fs-4 text-dark me-5"></i></a>
-                <a href="#"><i class="fab fa-instagram fs-4 text-dark"></i></a>
-            </div>
-            <div class="col-sm pb-5">
-                <p class="lead"><strong>CONTACTO</strong></p>
-                <a href="MAILTO:contacto@example.com" class="text-decoration-none lead">contacto@example.com</a></span></p>
-            </div>
-        </div>
-    </div>
+
+    <?php include_once 'footer.php' ?>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/40e29f2951.js" crossorigin="anonymous"></script>

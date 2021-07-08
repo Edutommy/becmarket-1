@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
 </head>
 
-<body>
+<body style="background-image: url(../../img/fondo.jpg);">
     <?php if (isset($_SESSION['user'])) { ?>
         <?php if ($_SESSION['user']['tipo'] == 2) { ?>
             <!-- BARRA DE NAVEGACION -->
@@ -53,7 +53,7 @@
             <div class="container mt-5">
                 <!-- DATOS NEGOCIO-->
                 <div class="row mt-5 mx-5 d-flex justify-content-center justify-content-lg-evenly">
-                    <div class="col-xl-5 border p-3 border-dark rounded mb-4" style="max-width: 480px;">
+                    <div class="col-xl-5 border p-3 border-dark rounded mb-4 bg-light" style="max-width: 480px;">
                         <div class="row d-flex justify-content-center">
                             <div class="col-xl-7">
                                 <img src="<?= $_SESSION['negocio']['imagen'] ?>" class="card-img py-2 mx-auto d-block" alt="" style="max-width: 230px;">
@@ -121,17 +121,25 @@
                                         </div>
                                         <div class="col-5">
                                             Horario de atención <br>
-                                            <span class="fw-bold"><?= $_SESSION['negocio']['diasAtencion'] ?></span>
-                                            <span class="fw-bold">desde las</span>
-                                            <span class="fw-bold"><?= $_SESSION['negocio']['horarioAtencion'] ?></span>
-                                            <span class="fw-bold">hrs.</span>
+                                            <?php if($_SESSION['negocio']['diasAtencion'] == '0'){ ?>
+                                                <span class="fw-bold">Sin asignar</span>
+                                            <?php }else{ ?>
+                                                <span class="fw-bold"><?= $_SESSION['negocio']['diasAtencion'] ?></span>
+                                                <span class="fw-bold">desde las</span>
+                                                <span class="fw-bold"><?= $_SESSION['negocio']['horarioAtencion'] ?></span>
+                                                <span class="fw-bold">hrs.</span>
+                                            <?php } ?>
                                         </div>
                                         <div class="col-1 pb-3">
                                             <i class="far fa-money-bill-alt fs-5"></i>
                                         </div>
                                         <div class="col-5">
                                             Costo envío <br>
-                                            <span class="fw-bold">$<?= $_SESSION['negocio']['costoEnvio'] ?></span>
+                                            <?php if($_SESSION['negocio']['costoEnvio'] == '0'){ ?>
+                                                <span class="fw-bold">Gratis</span>
+                                            <?php }else{ ?>
+                                                <span class="fw-bold">$<?= $_SESSION['negocio']['costoEnvio'] ?></span>
+                                            <?php } ?>                                           
                                         </div>
                                     </div>
                                 </div>
@@ -199,7 +207,7 @@
                     </div>
                     <!-- DATOS NEGOCIO-->
                     <!-- EDITAR DATOS -->
-                    <div class="col-xl-6 border p-3 border-dark rounded mb-4" style="max-width: 500px;" id="app">
+                    <div class="col-xl-6 border p-3 border-dark rounded mb-4 bg-light" style="max-width: 500px;" id="app">
                         <form action="../../controladores/EditarNegocio.php" method="POST">
                             <div class="row mt-2">
                                 <div class="col-md-10 mx-auto">
@@ -222,7 +230,7 @@
                                 </div>
                                 <div class="col-md-10 mx-auto mt-3">
                                     <label for="cd" class="form-label fw-bold">Teléfono:</label>
-                                    <input name="tele" v-model="tele" type="text" class="form-control" id="cd" style="max-width: 400px;" placeholder="+56987654321">
+                                    <input name="tele" v-model="tele" type="text" class="form-control" id="cd" style="max-width: 400px;" placeholder="56987654321">
                                 </div>
                                 <div class="col-md-10 mx-auto mt-3">
                                     <label for="ed" class="form-label fw-bold">E-mail:</label>
@@ -230,7 +238,7 @@
                                 </div>
                                 <div class="col-md-10 mx-auto mt-3">
                                     <label for="ed" class="form-label fw-bold">Costo envío:</label>
-                                    <input name="costo" v-model="costo" type="text" class="form-control" id="ed" style="max-width: 400px;" placeholder="$999">
+                                    <input name="costo" v-model="costo" type="text" class="form-control" id="ed" style="max-width: 400px;" placeholder="999">
                                 </div>
                             </div>
                             <button class="btn btn-dark mt-4 mx-auto d-block" style="max-width: 200px;">Cambiar datos</button>
@@ -244,25 +252,8 @@
         <?php } ?>
     <?php } else { header("Location: ../../login.php"); ?>     
     <?php } ?>
-    <!-- FOOTER -->
-    <div class="container text-center" style="margin-top: 110px;">
-        <div class="row">
-            <div class="col-md pb-5">
-                <h2 class="display-5">BEC Market</h2>
-            </div>
-            <div class="col-md pb-5">
-                <p class="lead pb-2"><strong>NUESTRAS REDES</strong></p>
-                <a href="#"><i class="fab fa-facebook-f fs-4 text-dark me-5"></i></a>
-                <a href="#"><i class="fab fa-twitter fs-4 text-dark me-5"></i></a>
-                <a href="#"><i class="fab fa-instagram fs-4 text-dark"></i></a>
-            </div>
-            <div class="col-md pb-5">
-                <p class="lead"><strong>CONTACTO</strong></p>
-                <a href="MAILTO:contacto@example.com" class="text-decoration-none lead">contacto@example.com</a></span></p>
-            </div>
-        </div>
-    </div>
-    <!-- FIN FOOTER -->
+    
+    <?php include_once '../../footer.php' ?>
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <script src="../../js/EditarDatosNegocio.js"></script>

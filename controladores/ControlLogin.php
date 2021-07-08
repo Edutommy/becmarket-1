@@ -28,7 +28,7 @@ class ControlLogin{
         $a = $array[0];
         $_SESSION['user'] = $a;
         
-        if($_SESSION['user']['estado']==1){
+        //if($_SESSION['user']['estado']==1){
             if($_SESSION['user']['tipo'] == 1){
                 header("Location: ../vistas/cliente/cliente-inicio.php");
             }else if($_SESSION['user']['tipo']==2){
@@ -39,10 +39,10 @@ class ControlLogin{
                 $_SESSION['negocio'] = $r;
                 header("Location: ../vistas/vendedor/vendedor-inicio.php");
             }
-        }else{
-            $_SESSION['error'] = 'Usuario no habilitado';
-            header("Location: ../login.php");
-        }
+        //}else{
+        //    $_SESSION['error'] = 'Usuario no habilitado';
+        //    header("Location: ../login.php");
+        //}
     }
 }
 $obj = new ControlLogin();
