@@ -76,7 +76,7 @@
                                     <i class="fas fa-phone fs-5 pb-3"></i>
                                 </div>
                                 <div class="col-9">
-                                    <span>+<?= $_SESSION['user']['telefono'] ?></span>
+                                    <span>+56 <?= $_SESSION['user']['telefono'] ?></span>
                                 </div>
                             </div>
                         </div>
@@ -84,35 +84,30 @@
                 </div>
                 <!-- EDITAR DATOS -->
                 <div id="app" class="col-xl-6 border p-3 border-dark rounded mb-4" style="max-width: 500px;">
-                    <p class="h5 ms-4 mt-1">Editar datos</p>
+                    
                     <form @submit.prevent="editar">
-                        <div class="row mt-4">
-                            <div class="col-12 mb-2 px-4">
-                                <div class="form-floating mb-3">
-                                    <input v-model="nombre" type="text" class="form-control" id="nombre" placeholder="nombre">
-                                    <label for="nombre">Nombre</label>
-                                </div>
+                        <div class="row mt-2">
+                            <div class="col-md-10 mx-auto mb-2">
+                                <p class="h5">Editar datos</p>
                             </div>
-                            <div class="col-12 mb-2 px-4">
-                                <div class="form-floating mb-3">
-                                    <input v-model="apellidos" type="text" class="form-control" id="ape" placeholder="apellidos">
-                                    <label for="ape">Apellidos</label>
-                                </div>
+                            <div class="col-md-10 mx-auto mt-3">
+                                <label for="cd" class="form-label fw-bold">Nombre:</label>
+                                <input required name="tele" v-model="nombre" type="text" class="form-control" id="cd" style="max-width: 400px;" placeholder="">
                             </div>
-                            <div class="col-12 mb-2 px-4">
-                                <div class="form-floating mb-3">
-                                    <input v-model="direccion" type="text" class="form-control" id="dire" placeholder="direccion">
-                                    <label for="dire">Dirección</label>
-                                </div>
+                            <div class="col-md-10 mx-auto mt-3">
+                                <label for="ed" class="form-label fw-bold">Apellidos:</label>
+                                <input required name="email" v-model="apellidos" type="text" class="form-control" id="ed" style="max-width: 400px;" placeholder="">
                             </div>
-                            <div class="col-12 mb-2 px-4">
-                                <div class="form-floating mb-3">
-                                    <input v-model="telefono" type="text" class="form-control" id="tele" placeholder="telefono">
-                                    <label for="celu">Teléfono</label>
-                                </div>
+                            <div class="col-md-10 mx-auto mt-3">
+                                <label for="cd" class="form-label fw-bold">Direccion:</label>
+                                <input required name="tele" v-model="direccion" type="text" class="form-control" id="cd" style="max-width: 400px;" placeholder="Casa #numero">
+                            </div>
+                            <div class="col-md-10 mx-auto mt-3">
+                                <label for="ed" class="form-label fw-bold">Telefono:</label>
+                                <input required name="email" v-model="telefono" type="text" class="form-control" id="ed" style="max-width: 400px;" placeholder="987654321" pattern="[0-9]{9}">
                             </div>
                         </div>
-                        <button class="btn btn-dark mt-3 mx-auto d-block" style="max-width: 200px;">Cambiar datos</button>
+                        <button class="btn btn-dark mt-4 mx-auto d-block" style="max-width: 200px;">Cambiar datos</button>
                     </form>
                     <p class="text-end mt-4">
                         <a href="../cambiarcontrasenia.php">Cambiar contraseña</a>

@@ -212,7 +212,7 @@
                             <div class="row mt-2">
                                 <div class="col-md-10 mx-auto">
                                     <label for="horario" class="form-label fw-bold">Horario de atención:</label>
-                                    <select name="dias" class="form-select mb-3" id="horario" style="max-width: 380px;" v-model="dias">
+                                    <select required name="dias" class="form-select mb-3" id="horario" style="max-width: 380px;" v-model="dias">
                                         <option value="Lunes a viernes">Lunes a viernes</option>
                                         <option value="Lunes a sabado">Lunes a sabado</option>
                                         <option value="Todos los dias">Todos los dias</option>
@@ -221,24 +221,24 @@
                                 <div class="col-md-10 d-flex mx-auto">
                                     <div class="col-md-6 text-end d-flex me-1">
                                         <label for="desde" class="form-label me-2">Desde:</label>
-                                        <input name="h1" v-model="h1" class="form-control form-control-sm" type="text" id="desde" placeholder="Hora" style="max-width: 70px;">
+                                        <input required name="h1" v-model="h1" class="form-control form-control-sm" type="text" id="desde" placeholder="Hora" style="max-width: 70px;">
                                     </div>
                                     <div class="col-md-6 d-flex">
                                         <label for="hasta" class="form-label me-2">Hasta:</label>
-                                        <input name="h2" v-model="h2" class="form-control form-control-sm" type="text" id="hasta" placeholder="Hora" style="max-width: 70px;">
+                                        <input required name="h2" v-model="h2" class="form-control form-control-sm" type="text" id="hasta" placeholder="Hora" style="max-width: 70px;">
                                     </div>
                                 </div>
                                 <div class="col-md-10 mx-auto mt-3">
                                     <label for="cd" class="form-label fw-bold">Teléfono:</label>
-                                    <input name="tele" v-model="tele" type="text" class="form-control" id="cd" style="max-width: 400px;" placeholder="56987654321">
+                                    <input required name="tele" v-model="tele" type="text" class="form-control" id="cd" style="max-width: 400px;" placeholder="56987654321">
                                 </div>
                                 <div class="col-md-10 mx-auto mt-3">
                                     <label for="ed" class="form-label fw-bold">E-mail:</label>
-                                    <input name="email" v-model="email" type="text" class="form-control" id="ed" style="max-width: 400px;" placeholder="correo@example.com">
+                                    <input required name="email" v-model="email" type="text" class="form-control" id="ed" style="max-width: 400px;" placeholder="correo@example.com">
                                 </div>
                                 <div class="col-md-10 mx-auto mt-3">
                                     <label for="ed" class="form-label fw-bold">Costo envío:</label>
-                                    <input name="costo" v-model="costo" type="text" class="form-control" id="ed" style="max-width: 400px;" placeholder="999">
+                                    <input required name="costo" v-model="costo" type="text" class="form-control" id="ed" style="max-width: 400px;" placeholder="999">
                                 </div>
                             </div>
                             <button class="btn btn-dark mt-4 mx-auto d-block" style="max-width: 200px;">Cambiar datos</button>

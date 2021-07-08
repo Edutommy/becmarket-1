@@ -28,25 +28,34 @@ class EditarDatosNegocio{
 
     public function editar(){
         session_start();
-        $rut = $_SESSION['negocio']['rut_negocio'];
-        $horario = $this->h1 . " a " . $this->h2;
-        $negocio = new Negocio();
-        $data = [
-            'diasAtencion'=>$this->dias,
-            'horarioAtencion'=>$horario,
-            'telefono'=>$this->tele,
-            'email'=>$this->email,
-            'costoEnvio'=>$this->costo
-        ];
-        $c = $negocio->editarDatos($data,$rut);
-        if($c == 1){
-            $a = $negocio->buscarNegocio($rut);
-            $update = $a[0];
-            $_SESSION['negocio'] = $update;
-            echo json_encode(["msg"=>"si"]);
+        if (isset($_SESSION['user'])) {
+            if($_SESSION['user']['tipo'] == 2){
+                $rut = $_SESSION['negocio']['rut_negocio'];
+                $horario = $this->h1 . " a " . $this->h2;
+                $negocio = new Negocio();
+                $data = [
+                    'diasAtencion'=>$this->dias,
+                    'horarioAtencion'=>$horario,
+                    'telefono'=>$this->tele,
+                    'email'=>$this->email,
+                    'costoEnvio'=>$this->costo
+                ];
+                $c = $negocio->editarDatos($data,$rut);
+                if($c == 1){
+                    $a = $negocio->buscarNegocio($rut);
+                    $update = $a[0];
+                    $_SESSION['negocio'] = $update;
+                    echo json_encode(["msg"=>"si"]);
+                }else{
+                    echo json_encode(["msg"=>"si"]);
+                }       
+            }else{
+                echo json_encode(["msg"=>"Usuario no autorizado"]);
+            }
         }else{
-            echo json_encode(["msg"=>"si"]);
-        }           
+            echo json_encode(["msg"=>"Acceso denegado"]);
+        }
+            
     }
 
 }

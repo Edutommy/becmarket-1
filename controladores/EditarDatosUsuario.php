@@ -23,24 +23,28 @@ class EditarDatosUsuario{
     }
 
     public function editar(){
-        session_start();
-        $codigo = $_SESSION['user']['codigo_usuario'];
-        $usuario = new Usuario();
-        $data = [
-            'nombre'=>$this->nombre,
-            'apellidos'=>$this->apellidos,
-            'direccion'=>$this->direccion,
-            'telefono'=>$this->telefono
-        ];
-
-        $c = $usuario->editarDatos($data,$codigo);
-        if ($c == 1) {
-            $n = $usuario->actualizar($codigo);
-            $_SESSION['user'] = $n[0];
-            echo json_encode(["msg"=>"si"]);
+        session_start(); 
+        if(isset($_SESSION['user'])){
+            $codigo = $_SESSION['user']['codigo_usuario'];
+            $usuario = new Usuario();
+            $data = [
+                'nombre'=>$this->nombre,
+                'apellidos'=>$this->apellidos,
+                'direccion'=>$this->direccion,
+                'telefono'=>$this->telefono
+            ];
+            $c = $usuario->editarDatos($data,$codigo);
+            if ($c == 1) {
+                $n = $usuario->actualizar($codigo);
+                $_SESSION['user'] = $n[0];
+                echo json_encode(["msg"=>"si"]);
+            }else{
+                echo json_encode(["msg"=>"no"]);
+            }
         }else{
-            echo json_encode(["msg"=>"no"]);
+            echo json_encode(["msg"=>"acceso denegado"]);
         }
+
     }
 
 }
