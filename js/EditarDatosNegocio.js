@@ -16,7 +16,7 @@ new Vue({
             //datos
             form.append("dias",this.dias);
             form.append("h1",this.h1);
-            form.append("h1",this.h2);
+            form.append("h2",this.h2);
             form.append("tele",this.tele);
             form.append("email",this.email);
             form.append("costo",this.costo);
@@ -26,9 +26,9 @@ new Vue({
                     method: 'post',
                     body: form,
                 });
-                const resp = await res.json();
+                const resp = await res.text();
                 console.log(resp);                
-            
+                location.reload();
             } catch (error) {
                 console.log(error);
             }

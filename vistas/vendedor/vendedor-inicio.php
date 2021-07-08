@@ -208,7 +208,7 @@
                     <!-- DATOS NEGOCIO-->
                     <!-- EDITAR DATOS -->
                     <div class="col-xl-6 border p-3 border-dark rounded mb-4 bg-light" style="max-width: 500px;" id="app">
-                        <form action="../../controladores/EditarNegocio.php" method="POST">
+                        <form  @submit.prevent="editar">
                             <div class="row mt-2">
                                 <div class="col-md-10 mx-auto">
                                     <label for="horario" class="form-label fw-bold">Horario de atención:</label>

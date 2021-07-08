@@ -43,11 +43,10 @@ class EditarDatosNegocio{
             $a = $negocio->buscarNegocio($rut);
             $update = $a[0];
             $_SESSION['negocio'] = $update;
-            $msg = ["msg" => "si"];
+            echo json_encode(["msg"=>"si"]);
         }else{
-            $msg = ["msg" => "no"];
-        }
-        echo json_encode($msg);            
+            echo json_encode(["msg"=>"si"]);
+        }           
     }
 
 }
