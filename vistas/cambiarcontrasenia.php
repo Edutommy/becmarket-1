@@ -6,7 +6,7 @@
     <?php include_once '../header.php' ?>
     <title>Registrarse | BEC Market</title>
 </head>
-<body> 
+<body style="background-image: url(../img/fondo.jpg);"> 
     <?php if(isset($_SESSION['user'])){ ?>
         <?php if($_SESSION['user']['tipo'] == 1){?>
             <!-- BARRA DE NAVEGACION -->

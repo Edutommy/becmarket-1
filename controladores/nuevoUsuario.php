@@ -48,12 +48,14 @@ class nuevoUsuario
             'direccion'=>$this->direccion,
             'estado'=>1,
             'tipo'=>1,
-            'imagen'=>"https://localhost/bec_market/img/noimg.png",
+            'imagen'=>"https://localhost/BECMarket/img/noimg.png",
             'fechaCreacion'=>$this->fechaCreacion,
         ];
         
         $countC = $comprador->crearUsuarios($dataCompra);
         if($countC == 1){
+            //$a = $comprador->actualizar($this->rand);
+            //$_SESSION['user'] = $a[0];
             echo json_encode(["msg"=>"si"]);
         }else{
             echo json_encode(["msg"=>"no"]);

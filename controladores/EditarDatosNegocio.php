@@ -28,7 +28,7 @@ class EditarDatosNegocio{
 
     public function editar(){
         session_start();
-        if (isset($_SESSION['user'])) {
+        //if (isset($_SESSION['user'])) {
             if($_SESSION['user']['tipo'] == 2){
                 $rut = $_SESSION['negocio']['rut_negocio'];
                 $horario = $this->h1 . " a " . $this->h2;
@@ -52,9 +52,9 @@ class EditarDatosNegocio{
             }else{
                 echo json_encode(["msg"=>"Usuario no autorizado"]);
             }
-        }else{
-            echo json_encode(["msg"=>"Acceso denegado"]);
-        }
+        //}else{
+        //    echo json_encode(["msg"=>"Acceso denegado"]);
+        //}
             
     }
 

@@ -61,7 +61,7 @@
                     <input type="text" required class="form-control mb-3" id="ad" style="max-width: 400px;" v-model="apellidos">
 
                     <label for="cd" class="form-label">Celular</label>
-                    <input type="text" required class="form-control mb-3" id="cd" style="max-width: 400px;" placeholder="56987654321" v-model="celular">
+                    <input type="text" required class="form-control mb-3" id="cd" style="max-width: 400px;" placeholder="987654321" pattern="[0-9]{9}" v-model="celular">
 
                     <label for="ed" class="form-label">E-mail</label>
                     <input type="email" required class="form-control mb-3" id="ed" style="max-width: 400px;" placeholder="correo@example.com" v-model="email">

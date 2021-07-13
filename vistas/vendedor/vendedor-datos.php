@@ -9,7 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.gstatic.com">
 </head>
-<body>
+<body style="background-image: url(../../img/fondo.jpg);">
 <?php if (isset($_SESSION['user'])) { ?>
 
     <?php if ($_SESSION['user']['tipo'] == 2) { ?>
@@ -39,10 +39,11 @@
         </nav>
         <!-- BARRA DE NAVEGACION -->
         
+        <!-- DATOS -->
         <div class="container mt-5">
-            <p class="h3 text-center">Mis datos</p>
+            <p class="h3 text-center" style="background-color: rgba(255, 255, 255, 0.55);">Mis datos</p>
             <div class="row mt-5 mx-5 d-flex justify-content-center justify-content-lg-evenly">
-                <div class="col-xl-4 mb-4" style="max-width: 400px;">
+                <div class="col-xl-4 mb-4 bg-light" style="max-width: 400px;">
                     <div class="row d-flex justify-content-center border p-3 border-dark rounded">
                         <div class="col-xl-7">
                             <img src="<?= $_SESSION['user']['imagen'] ?>" class="card-img py-2 mx-auto d-block" alt="" style="max-width: 230px;">
@@ -83,7 +84,7 @@
                     </div>
                 </div>
                 <!-- EDITAR DATOS -->
-                <div id="app" class="col-xl-6 border p-3 border-dark rounded mb-4" style="max-width: 500px;">
+                <div id="app" class="col-xl-6 border bg-light p-3 border-dark rounded mb-4" style="max-width: 500px;">
                     
                     <form @submit.prevent="editar">
                         <div class="row mt-2">
@@ -128,25 +129,7 @@
 <?php } else { header("Location: ../../login.php"); ?>     
 <?php } ?>
 
-    <!-- FOOTER -->
-    <div class="container text-center" style="margin-top: 110px;">
-        <div class="row">
-          <div class="col-sm pb-5">
-            <h2 class="display-5">BEC Market</h2>
-          </div>
-          <div class="col-sm pb-5">
-                <p class="lead pb-2"><strong>NUESTRAS REDES</strong></p>
-                <a href="#"><i class="fab fa-facebook-f fs-4 text-dark me-5"></i></a>
-                <a href="#"><i class="fab fa-twitter fs-4 text-dark me-5"></i></a>
-                <a href="#"><i class="fab fa-instagram fs-4 text-dark"></i></a>
-          </div>
-          <div class="col-sm pb-5">
-            <p class="lead"><strong>CONTACTO</strong></p>
-            <a href="MAILTO:contacto@example.com" class="text-decoration-none lead">contacto@example.com</a></span></p>
-          </div>
-        </div>
-    </div>
-    <!-- FIN FOOTER -->
+<?php include_once '../../footer.php' ?>
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <script src="../../js/EditarDatosUsuario.js"></script>

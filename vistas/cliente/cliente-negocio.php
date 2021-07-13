@@ -99,78 +99,85 @@ $negocios = $model->getAllNegocio();
             <!-- BUSQUEDA -->
             <!-- CONTENIDO  -->
             <div class="container mt-4">
-                <?php if (!isset($_SESSION['buscar'])) { ?>
-                    <?php foreach ($negocios as $n) { ?>
-                        <div class="row justify-content-center mx-2">
-                            <div class="col-lg-7 border p-3 border-dark rounded-3 mb-3 d-flex align-items-center" style="max-width: 700px;">
-                                <img src="<?= $n['imagen'] ?>" class="card-img py-2" alt="" style="max-width: 140px;">
-                                <div class="container">
-                                    <div class="row align-items-center">
-                                        <div class="col-lg-6">
-                                            <span class="h5 fw-bold"> <?= $n['nombre'] ?></span>
+                <form action="../../controladores/VerNegocio.php" method="POST">
+                    <?php if (!isset($_SESSION['buscar'])) { ?>
+                        <?php foreach ($negocios as $n) { ?>
+                            <div class="row justify-content-center mx-2">
+                                <div class="col-lg-7 border p-3 border-dark rounded-3 mb-3 d-flex align-items-center" style="max-width: 700px;">
+                                    <img src="<?= $n['imagen'] ?>" class="card-img py-2" alt="" style="max-width: 140px;">
+                                    <div class="container">
+                                        <div class="row align-items-center">
+                                            <div class="col-lg-6">
+                                                <span class="h5 fw-bold"> <?= $n['nombre'] ?></span>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <span><?= $n['direccion'] ?></span>
-                                    <br>
-                                    <span class="text-success">Abierto hasta las 21:00 hrs</span>
-                                    <div class="row mt-2">
-                                        <div class="col-lg-4">
-                                            <span>N° de contacto</span>
-                                            <br>
-                                            <span class="fw-bold">+<?= $n['telefono'] ?></span>
-
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <span>Costo de envío</span>
-                                            <br>
-                                            <span class="fw-bold">$<?= $n['costoEnvio'] ?></span>
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <a class="btn btn-dark mt-2" href="cliente-ver-negocio.php">Ver negocio</a>
+                                        <span><?= $n['direccion'] ?></span>
+                                        <br>
+                                        <span class="text-success">Abierto desde las
+                                            <?= $n['horarioAtencion'] ?>
+                                            hrs.
+                                        </span>
+                                        <div class="row mt-2">
+                                            <div class="col-lg-4">
+                                                <span>N° de contacto</span>
+                                                <br>
+                                                <span class="fw-bold">+56 <?= $n['telefono'] ?></span>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <span>Costo de envío</span>
+                                                <br>
+                                                <span class="fw-bold">$<?= $n['costoEnvio'] ?></span>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <button name="rutNegocio" class="btn btn-dark mt-2" value="<?= $n['rut_negocio'] ?>">Ver negocio</button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        <?php } ?>
+                    <?php } else {
+                        $nombre = $_SESSION['buscar'];
+                        $buscar = $model->buscarNombre($nombre);
+                    ?>
+                        <?php foreach ($buscar as $b) { ?>
+                            <div class="row justify-content-center mx-2">
+                                <div class="col-lg-7 border p-3 border-dark rounded-3 mb-3 d-flex align-items-center" style="max-width: 700px;">
+                                    <img src="<?= $b['imagen'] ?>" class="card-img py-2" alt="" style="max-width: 140px;">
+                                    <div class="container">
+                                        <div class="row align-items-center">
+                                            <div class="col-lg-6">
+                                                <span class="h5 fw-bold"> <?= $b['nombre'] ?></span>
+                                            </div>
+                                        </div>
+                                        <span><?= $b['direccion'] ?></span>
+                                        <br>
+                                        <span class="text-success">Abierto desde las
+                                            <?= $n['horarioAtencion'] ?>
+                                            hrs.
+                                        </span>
+                                        <div class="row mt-2">
+                                            <div class="col-lg-4">
+                                                <span>Tiempo de espera</span>
+                                                <br>
+                                                <span class="fw-bold">30-50 mins</span>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <span>Costo de envío</span>
+                                                <br>
+                                                <span class="fw-bold"><?= $n['costoEnvio'] ?></span>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <button name="rutNegocio" class="btn btn-dark mt-2" value="<?=$n['rut_negocio'] ?>">Ver negocio</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php }
+                        unset($_SESSION['buscar']); ?>
                     <?php } ?>
-                <?php } else {
-                    $nombre = $_SESSION['buscar'];
-                    $buscar = $model->buscarNombre($nombre);
-                ?>
-                    <?php foreach ($buscar as $b) { ?>
-                        <div class="row justify-content-center mx-2">
-                            <div class="col-lg-7 border p-3 border-dark rounded-3 mb-3 d-flex align-items-center" style="max-width: 700px;">
-                                <img src="<?= $b['imagen'] ?>" class="card-img py-2" alt="" style="max-width: 140px;">
-                                <div class="container">
-                                    <div class="row align-items-center">
-                                        <div class="col-lg-6">
-                                            <span class="h5 fw-bold"> <?= $b['nombre'] ?></span>
-                                        </div>
-                                    </div>
-                                    <span><?= $b['direccion'] ?></span>
-                                    <br>
-                                    <span class="text-success">Abierto hasta las 21:00 hrs</span>
-                                    <div class="row mt-2">
-                                        <div class="col-lg-4">
-                                            <span>Tiempo de espera</span>
-                                            <br>
-                                            <span class="fw-bold">30-50 mins</span>
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <span>Costo de envío</span>
-                                            <br>
-                                            <span class="fw-bold"><?= $n['costoEnvio'] ?></span>
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <a class="btn btn-dark mt-2" href="cliente-ver-negocio.php">Ver negocio</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    <?php }
-                    unset($_SESSION['buscar']); ?>
-                <?php } ?>
+                </form>
             </div>
             <!-- CONTENIDO  -->
         <?php } else { ?>

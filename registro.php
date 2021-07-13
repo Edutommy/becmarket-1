@@ -6,7 +6,7 @@
     <title>Registrarse | BEC Market</title>
 </head>
 
-<body style="background-image: url(img/fondo.jpg);">
+<body>
     <?php session_start();
     if (isset($_SESSION['user'])) {
         if ($_SESSION['user']['tipo'] == 1) {
@@ -17,10 +17,8 @@
     }
     ?>
     <div class="container" style="max-width: 910px;" id="app">
-        <p class="text-center mt-5">
-            <img src="img/logo.png" alt="" width="250" style="background-color: rgba(255, 255, 255, 0.55);">
-        </p>
-        
+        <h2 class="display-5 text-center pt-5">BEC Market</h2>
+
         <form @submit.prevent="guardar">
             <div class="row bg-light mx-auto mt-5 border border-dark rounded-3 pb-3">
                 <div class="col-12 pt-3">

@@ -24,7 +24,7 @@ class EditarDatosUsuario{
 
     public function editar(){
         session_start(); 
-        if(isset($_SESSION['user'])){
+        //if(isset($_SESSION['user'])){
             $codigo = $_SESSION['user']['codigo_usuario'];
             $usuario = new Usuario();
             $data = [
@@ -41,9 +41,9 @@ class EditarDatosUsuario{
             }else{
                 echo json_encode(["msg"=>"no"]);
             }
-        }else{
-            echo json_encode(["msg"=>"acceso denegado"]);
-        }
+        //}else{
+        //    echo json_encode(["msg"=>"acceso denegado"]);
+        //}
 
     }
 

@@ -120,7 +120,7 @@
                 <div class="card-body">
                     <h5 class="card-title display-6 pt-5"><strong>Trabaja como repartidor</strong></h5>
                     <p class="card-text lead pt-5 px-4">
-                        Aca basicamente lo mismo que al lado pero para los repartidores, poner como funciones y ventajas no se xd
+                        Aca lo mismo que al lado pero para los repartidores, poner como funciones y ventajas no se xd
                         Y el boton que mande el registro para ellos xd
                     </p>
                     <a href="registrorepartidor.php" class="btn btn-dark mt-4 mb-4"><strong>REGISTRATE</strong></a>

@@ -75,7 +75,7 @@
                                         <i class="fas fa-phone fs-5 pb-3"></i>
                                     </div>
                                     <div class="col-9">
-                                        <span>+<?= $_SESSION['user']['telefono'] ?></span>
+                                        <span>+56 <?= $_SESSION['user']['telefono'] ?></span>
                                     </div>
                                 </div>
                             </div>

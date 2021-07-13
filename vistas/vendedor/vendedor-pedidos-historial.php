@@ -19,7 +19,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.gstatic.com">
 </head>
-<body>
+<body style="background-image: url(../../img/fondo.jpg);">
     <?php if (isset($_SESSION['user'])) { ?>
         <?php if ($_SESSION['user']['tipo'] == 2) { ?>
             <!-- BARRA DE NAVEGACION -->
@@ -97,7 +97,7 @@
 
             <!-- TABLA PEDIDOS -->
             <div class="container mt-3 d-none d-lg-block" id="app">
-                <table class="table table-hover table-bordered text-center mx-auto align-middle" style="max-width: 1100px;">
+                <table class="bg-light table table-hover table-bordered text-center mx-auto align-middle" style="max-width: 1100px;">
                     <thead class="table-dark">
                         <tr>
                             <th scope="col">Fecha y hora</th>
@@ -142,7 +142,7 @@
                         $arr = $c->actualizar($codigoC);
                         $cliente = $arr[0];
                         ?>
-                        <div class="col-lg-7 border p-3 border-dark rounded-3 mb-3 d-flex align-items-center" style="max-width: 300px;">
+                        <div class="col-lg-7 bg-light border p-3 border-dark rounded-3 mb-3 d-flex align-items-center" style="max-width: 300px;">
                             <div class="ps-3">
                                 <p class="h5 fw-bold">
                                     <span><?= $cliente['nombre'] ?></span>
@@ -169,25 +169,7 @@
     <?php } else { header("Location: ../../login.php"); ?>     
     <?php } ?>
 
-     <!-- FOOTER -->
-     <div class="container text-center" style="margin-top: 110px;">
-        <div class="row">
-          <div class="col-md pb-5">
-            <h2 class="display-5">BEC Market</h2>
-          </div>
-          <div class="col-md pb-5">
-                <p class="lead pb-2"><strong>NUESTRAS REDES</strong></p>
-                <a href="#"><i class="fab fa-facebook-f fs-4 text-dark me-5"></i></a>
-                <a href="#"><i class="fab fa-twitter fs-4 text-dark me-5"></i></a>
-                <a href="#"><i class="fab fa-instagram fs-4 text-dark"></i></a>
-          </div>
-          <div class="col-md pb-5">
-            <p class="lead"><strong>CONTACTO</strong></p>
-            <a href="MAILTO:contacto@example.com" class="text-decoration-none lead">contacto@example.com</a></span></p>
-          </div>
-        </div>
-    </div>
-    <!-- FIN FOOTER -->
+    <?php include_once '../../footer.php' ?>
 
     <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>

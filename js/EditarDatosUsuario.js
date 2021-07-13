@@ -21,7 +21,7 @@ new Vue({
                     method: 'post',
                     body: form,
                 });
-                const resp = await res.json();
+                const resp = await res.text();
                 console.log(resp);
                 location.reload();
             } catch (error) {
