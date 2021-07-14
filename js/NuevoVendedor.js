@@ -45,7 +45,7 @@ new Vue({
                     method:"post",
                     body:form,
                 });
-                const resp = await res.json();
+                const resp = await res.text();
                 console.log(resp);                
                 if (resp.msg == "si") {
                     window.location.href=this.url+'revision.html';
