@@ -76,7 +76,7 @@
                                     <i class="fas fa-cash-register fs-5"></i>
                                 </div>
                                 <div class="col-10">
-                                    <span class="h5 fw-bold"><?= $_SESSION['ne']['nombre'] ?></span>
+                                    <span class="h5 fw-bold"><?= $_SESSION['ne'] ?></span>
                                 </div>
                                 <div class="col-2">
                                     <i class="fas fa-map-marker-alt fs-5"></i>

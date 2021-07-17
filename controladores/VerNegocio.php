@@ -16,8 +16,14 @@ class VerNegocio{
         $negocio = new Negocio();
         $rut = $this->rutNegocio;
         $n = $negocio->buscarNegocio($rut);
-        $_SESSION['ne'] = $n[0];
-        header("Location: ../vistas/cliente/cliente-ver-negocio.php");
+        if($n == 1){
+            $_SESSION['ne'] = $n[0];
+            header("Location: ../vistas/cliente/cliente-ver-negocio.php");
+        }else{
+            $_SESSION['error'] = "NO SEEEEEEEEEEEEEEE";
+            header("Location: ../vistas/cliente/cliente-negocio.php");
+        }
+        
     }
 }
 $obj = new VerNegocio();
