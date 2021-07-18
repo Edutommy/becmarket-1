@@ -14,6 +14,8 @@ class VerDetalle{
     }
 
     public function verDetalle(){
+        #AWEONA 
+        session_start();
         $code = $this->codigo;
         $pedido = new Pedidos();
         $p = $pedido->pedido($code);

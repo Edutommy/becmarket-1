@@ -62,8 +62,15 @@ class Negocio{
     }
 
     public function buscarNombre($nombre){
-        $stm = Conexion::conector()->prepare("SELECT * FROM producto WHERE nombre LIKE '%' :A '%'");
+        $stm = Conexion::conector()->prepare("SELECT * FROM negocio WHERE nombre LIKE '%' :A '%'");
         $stm->bindParam(":A",$nombre);
+        $stm->execute();
+        return $stm->fetchAll(\PDO::FETCH_ASSOC);
+    }
+
+    public function nombreNegocio($codigo){
+        $stm = Conexion::conector()->prepare("SELECT nombre FROM negocio WHERE rut_negocio=:A");
+        $stm->bindParam(":A",$codigo);
         $stm->execute();
         return $stm->fetchAll(\PDO::FETCH_ASSOC);
     }

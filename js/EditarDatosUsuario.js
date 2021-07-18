@@ -23,7 +23,7 @@ new Vue({
                 });
                 const resp = await res.text();
                 console.log(resp);
-                location.reload();
+                //location.reload();
             } catch (error) {
                 console.log(error);
             }

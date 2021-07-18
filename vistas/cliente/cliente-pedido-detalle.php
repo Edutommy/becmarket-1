@@ -2,6 +2,9 @@
     session_start();
     require_once("../../modelo/Detalle.php");
     use modelo\Detalle as Detalle;
+    require_once("../../modelo/Negocio.php");
+    use modelo\Negocio as Negocio;
+    $ne = new Negocio();
     #$pedido = $_SESSION['pedido']['codigo_pedido'];
     #$md = new Detalle();
     #$detalle = $md->detalleCliente($pedido);
@@ -67,7 +70,12 @@
             <div class="container mt-3">
                 <a href="cliente-mispedidos.php"><i class="fas fa-chevron-circle-left fs-1 text-dark ms-5 mb-3"></i></a>
                 <div class="border border-2 border-dark rounded mx-auto pb-3" style="max-width: 800px;">
-                    <h5 class="h5 text-center mt-3 mb-4">Pedido a <span>Lider Express</span></h5>
+                    <?php 
+                        $rut = $_SESSION['pedido']['negociofk'];
+                        $nombre = $ne->nombreNegocio($rut);
+                        $n = $nombre[0];
+                    ?>
+                    <h5 class="h5 text-center mt-3 mb-4">Pedido a <span><?=  $n['nombre'] ?></span></h5>
                     <!-- VISTA <LG -->
                     <div class="d-none d-md-block">
                         <div class="row">
@@ -83,26 +91,26 @@
                             <div class="col-3">
                                 <p>
                                     <span><?= $_SESSION['pedido']['hora'] ?></span>
-                                    <span></span>
+                                    <span><?= $_SESSION['pedido']['fecha'] ?></span>
                                 </p>
                             </div>
                             <div class="col-3">
                                 <p class="text-end fw-bold">Estado del pedido:</p>
                             </div>
                             <div class="col-3">
-                                <p>En preparación</p>
+                                <p><?= ucwords($_SESSION['pedido']['estado']) ?></p>
                             </div>
                             <div class="col-3">
                                 <p class="text-end fw-bold">Metodo de pago:</p>
                             </div>
                             <div class="col-3">
-                                <p>Efectivo</p>
+                                <p><?= ucwords($_SESSION['pedido']['metodo_pago']) ?></p>
                             </div>
                             <div class="col-3">
                                 <p class="text-end fw-bold">Monto:</p>
                             </div>
                             <div class="col-3">
-                                <p>$6000</p>
+                                <p>$<?= $_SESSION['pedido']['monto'] ?></p>
                             </div>
                         </div>
                     </div>
@@ -115,37 +123,34 @@
                                 <p class="text-end fw-bold">Enviado a: </p>
                             </div>
                             <div class="col-5">
-                                <p>Bicentenario, Pasaje Reconquista #1351, San Javier</p>
+                                <p><?= $_SESSION['user']['direccion'] ?></p>
                             </div>
                             <div class="col-6">
                                 <p class="text-end fw-bold">Fecha y hora:</p>
                             </div>
                             <div class="col-6">
-                                <p>18:06 29-04-2021</p>
-                            </div>
-                            <div class="col-6">
-                                <p class="text-end fw-bold">Repartidor:</p>
-                            </div>
-                            <div class="col-6">
-                                <p>Benjamin Muñoz</p>
+                                <p>
+                                    <span><?= $_SESSION['pedido']['hora'] ?></span>
+                                    <span><?= $_SESSION['pedido']['fecha'] ?></span>
+                                </p>
                             </div>
                             <div class="col-6">
                                 <p class="text-end fw-bold">Estado del pedido:</p>
                             </div>
                             <div class="col-6">
-                                <p>En preparación</p>
+                                <p><?= ucwords($_SESSION['pedido']['estado']) ?></p>
                             </div>
                             <div class="col-6">
                                 <p class="text-end fw-bold">Metodo de pago:</p>
                             </div>
                             <div class="col-6">
-                                <p>Efectivo</p>
+                                <p><?= ucwords($_SESSION['pedido']['metodo_pago']) ?></p>
                             </div>
                             <div class="col-6">
                                 <p class="text-end fw-bold">Monto:</p>
                             </div>
                             <div class="col-6">
-                                <p>$6000</p>
+                                <p>$<?= $_SESSION['pedido']['monto'] ?></p>
                             </div>
                         </div>
                     </div>

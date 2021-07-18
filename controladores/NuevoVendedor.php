@@ -70,7 +70,7 @@ class NuevoVendedor{
             'rut_negocio'=>$this->rut_negocio,
             'nombreNegocio'=>$this->nombreNegocio,
             'direccionNegocio'=>$this->direccionNegocio,
-            'imagenNegocio'=>"https://localhost/BECMarket/img/noimg.png",
+            'imagenNegocio'=>"http://localhost/BECMarket/img/noimg.png",
             'estadoNegocio'=>0,
             'costoEnvio'=>0,
             'tipoNegocio'=>$this->tipoNegocio,

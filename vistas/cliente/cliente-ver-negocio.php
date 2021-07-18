@@ -1,4 +1,11 @@
-<?php session_start(); ?>
+<?php 
+    session_start(); 
+    use modelo\Producto as Producto;
+    require_once("../../modelo/Producto.php");
+    $rutN = $_SESSION['ne']['rut_negocio'];
+    $model = new Producto();
+    $productos = $model->buscarProductos($rutN);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -63,7 +70,7 @@
             <div class="container mt-3">
                 <div class="row justify-content-center">
                     <div class="col-lg-12 border p-3 border-dark rounded-3 mb-3 d-flex align-items-center" style="max-width: 500px;">
-                        <img src="../../img/lider.png" class="card-img py-2" alt="" style="max-width: 200px;">
+                        <img src="<?= $_SESSION['ne']['imagen'] ?>" class="card-img py-2" alt="" style="max-width: 200px;">
                         <div class="container">
                             <div class="row">
                                 <div class="col-10">
@@ -76,26 +83,26 @@
                                     <i class="fas fa-cash-register fs-5"></i>
                                 </div>
                                 <div class="col-10">
-                                    <span class="h5 fw-bold"><?= $_SESSION['ne'] ?></span>
+                                    <span class="h5 fw-bold"><?= $_SESSION['ne']['nombre'] ?></span>
                                 </div>
                                 <div class="col-2">
                                     <i class="fas fa-map-marker-alt fs-5"></i>
                                 </div>
                                 <div class="col-10">
-                                    <span>Direccion</span>
+                                    <span><?= $_SESSION['ne']['direccion'] ?></span>
                                 </div>
                                 <div class="col-2">
                                     <i class="fas fa-phone fs-5"></i>
                                 </div>
                                 <div class="col-10">
-                                    <span>Numero</span>
+                                    <span>+56 <?= $_SESSION['ne']['telefono'] ?></span>
                                 </div>
                                 <div class="col-2">
                                     <i class="far fa-money-bill-alt fs-5"></i>
                                 </div>
                                 <div class="col-10">
                                     Costo envío <br>
-                                    <span class="fw-bold">$890</span>
+                                    <span class="fw-bold">$<?= $_SESSION['ne']['costoEnvio'] ?></span>
                                 </div>
                             </div>
                         </div>
@@ -103,6 +110,7 @@
                 </div>
             </div>
             <!-- INFORMACION NEGOCIO -->
+
             <hr style="height:3px; max-width: 1000px;" class="mx-auto">
 
             <!-- PRODUCTOS -->
@@ -117,42 +125,17 @@
                     <div class="col-lg-8">
                         <p class="text-center fw-bold h5 mt-3 mb-4">PRODUCTOS</p>
                         <div class="row d-flex justify-content-center justify-content-lg-evenly">
-                            <div class="col-xxl-5 d-flex align-items-center border p-3 border-dark rounded-3 mb-5" style="max-width: 500px;">
-                                <img src="../../uploads/choco.png" class="card-img py-2" alt="" style="max-width: 140px;">
-                                <div class="ps-3">
-                                    <p class="h5 fw-bold">Chocolate Vizzio</p>
-                                    <p>Almendras cubiertas de chocolate, 120g.</p>
-                                    <p class="fw-bold">$1700</p>
-                                    <button class="btn btn-dark">Agregar al pedido</button>
+                            <?php foreach($productos as $p){ ?>
+                                <div class="col-xxl-5 d-flex align-items-center border p-3 border-dark rounded-3 mb-5" style="max-width: 500px;">
+                                    <img src="<?= $p['imagen'] ?>" class="card-img py-2" alt="" style="max-width: 140px;">
+                                    <div class="ps-3">
+                                        <p class="h5 fw-bold"><?= $p['nombre'] ?></p>
+                                        <p><?= $p['descripcion'] ?></p>
+                                        <p class="fw-bold">$<?= $p['precio'] ?></p>
+                                        <button class="btn btn-dark">Agregar al pedido</button>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-xxl-5  d-flex align-items-center border p-3 border-dark rounded-3 mb-5" style="max-width: 500px;">
-                                <img src="../../uploads/nectar.png" class="card-img py-2" alt="" style="max-width: 140px;">
-                                <div class="ps-3">
-                                    <p class="h5 fw-bold">Néctar Durazno</p>
-                                    <p>Néctar Watts sabor durazno, 1.5L</p>
-                                    <p class="fw-bold">$1300</p>
-                                    <button class="btn btn-dark">Agregar al pedido</button>
-                                </div>
-                            </div>
-                            <div class="col-xxl-5  d-flex align-items-center border p-3 border-dark rounded-3 mb-5" style="max-width: 500px;">
-                                <img src="../../uploads/nectar.png" class="card-img py-2" alt="" style="max-width: 140px;">
-                                <div class="ps-3">
-                                    <p class="h5 fw-bold">Néctar Durazno</p>
-                                    <p>Néctar Watts sabor durazno, 1.5L</p>
-                                    <p class="fw-bold">$1300</p>
-                                    <button class="btn btn-dark">Agregar al pedido</button>
-                                </div>
-                            </div>
-                            <div class="col-xxl-5  d-flex align-items-center border p-3 border-dark rounded-3 mb-5" style="max-width: 500px;">
-                                <img src="../../uploads/nectar.png" class="card-img py-2" alt="" style="max-width: 140px;">
-                                <div class="ps-3">
-                                    <p class="h5 fw-bold">Néctar Durazno</p>
-                                    <p>Néctar Watts sabor durazno, 1.5L</p>
-                                    <p class="fw-bold">$1300</p>
-                                    <button class="btn btn-dark">Agregar al pedido</button>
-                                </div>
-                            </div>
+                            <?php } ?>
                         </div>
                     </div>
                     

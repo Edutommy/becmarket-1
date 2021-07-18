@@ -6,6 +6,7 @@ session_start();
 require_once("../../modelo/Negocio.php");
 $model = new Negocio();
 $negocios = $model->getAllNegocio();
+unset($_SESSION['ne']);
 
 ?>
 <!DOCTYPE html>

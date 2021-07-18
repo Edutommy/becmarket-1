@@ -48,7 +48,7 @@ class nuevoUsuario
             'direccion'=>$this->direccion,
             'estado'=>1,
             'tipo'=>1,
-            'imagen'=>"https://localhost/BECMarket/img/noimg.png",
+            'imagen'=>"http://localhost/BECMarket/img/noimg.png",
             'fechaCreacion'=>$this->fechaCreacion,
         ];
         

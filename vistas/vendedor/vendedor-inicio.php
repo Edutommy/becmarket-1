@@ -114,7 +114,7 @@
                                             <i class="fas fa-phone fs-5 pb-3"></i>
                                         </div>
                                         <div class="col-5">
-                                            <span>+<?= $_SESSION['negocio']['telefono'] ?></span>
+                                            <span>+56 <?= $_SESSION['negocio']['telefono'] ?></span>
                                         </div>
                                         <div class="col-1 pb-3">
                                             <i class="far fa-calendar-alt fs-5"></i>

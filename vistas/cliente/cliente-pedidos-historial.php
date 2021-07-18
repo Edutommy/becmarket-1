@@ -65,6 +65,7 @@
             <!-- TERCERA BARRA -->
 
             <!-- TABLA PEDIDOS -->
+        <form action="../../controladores/VerDetalle.php" method="POST">
             <div class="container mt-5 d-none d-lg-block">
                 <table class="table table-hover table-bordered text-center mx-auto" style="max-width: 1100px;">
                     <thead class="table-dark">
@@ -130,7 +131,8 @@
                     </div>
                 </div>
             <!-- PEDIDOS PANTALLA CHICA -->
-
+        </form>                    
+        
         <?php } else { ?>
             <?php header("Location: ../vendedor/vendedor-inicio.php"); ?>
         <?php } ?>

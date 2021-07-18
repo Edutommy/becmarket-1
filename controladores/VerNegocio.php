@@ -13,16 +13,15 @@ class VerNegocio{
     }
 
     public function verNegocio(){
+        #AWEONA 
+        session_start();
         $negocio = new Negocio();
         $rut = $this->rutNegocio;
         $n = $negocio->buscarNegocio($rut);
-        if($n == 1){
+
             $_SESSION['ne'] = $n[0];
             header("Location: ../vistas/cliente/cliente-ver-negocio.php");
-        }else{
-            $_SESSION['error'] = "NO SEEEEEEEEEEEEEEE";
-            header("Location: ../vistas/cliente/cliente-negocio.php");
-        }
+        
         
     }
 }
