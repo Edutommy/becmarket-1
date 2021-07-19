@@ -21,12 +21,14 @@ class NuevoProducto{
     public function agregar(){
         $nombre_foto = $_FILES['foto']['name'];
         $temp = $_FILES['foto']['tmp_name'];
+        //$tmp = explode('.',$nombre_foto);
+        //$extension = end($tmp);
 
-        $extension = end(explode('.', $nombre_foto));
-        $nuevoNombre = $_POST['nombre'] . "_" . date("Y-m-d_H:i:s", time()) . "." . $extension;
+        $nombre_foto = date('YmdHis',time()).$nombre_foto;
 
-        if (move_uploaded_file($temp, '../uploads/' . $nuevoNombre)) {
-            $foto = 'http://localhost/BECMarket/uploads/' . $nuevoNombre;
+        if (is_uploaded_file($temp)) {
+            move_uploaded_file($temp,'../uploads/'.$nombre_foto);
+            $foto = 'http://localhost/BECMarket/uploads/' . $nombre_foto;
         } else {
             $foto = 'http://localhost/BECMarket/img/noimg.png';
         }

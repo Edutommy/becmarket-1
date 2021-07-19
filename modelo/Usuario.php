@@ -66,4 +66,10 @@ class Usuario{
         return $stm->fetchAll(\PDO::FETCH_ASSOC);
     }
 
+    public function cambiarFoto($foto,$codigo){
+        $stm = Conexion::conector()->prepare("UPDATE usuario SET imagen=:A WHERE codigo_usuario=:B");
+        $stm->bindParam(":A",$foto);
+        $stm->bindParam(":B",$codigo);
+        return $stm->execute();
+    }
 }

@@ -60,7 +60,7 @@
                             <div class="col-md-6">
                                 <img src="../../img/noimg.png" class="card-img py-2 mx-auto d-block" alt="" style="max-width: 200px;">
                                 <div class="mb-3 d-flex justify-content-center flex-column">   
-                                    <input name="foto" class="form-control form-control-sm mx-auto" id="formFileSm" type="file" style="max-width: 200px;">
+                                    <input class="mx-auto" name="foto" type="file" style="max-width: 200px;">
                                 </div>
                             </div>
                             <div class="col-md-6 px-5">
