@@ -1,7 +1,7 @@
 new Vue({
     el:'#app',
     data:{
-        url: "http://localhost/BECMarket/",
+        url: "https://becmarketing.herokuapp.com/",
         
         //datos negocio
         nombreNegocio:'',
