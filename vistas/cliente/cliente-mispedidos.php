@@ -19,7 +19,7 @@
     <title>Mis Pedidos | BEC Market</title>
 </head>
 
-<body>
+<body style="background-image: url(../../img/fondo.jpg);">
     <?php if (isset($_SESSION['user'])) { ?>
 
         <?php if ($_SESSION['user']['tipo'] == 1) { ?>
@@ -71,7 +71,7 @@
             <!-- TABLA PEDIDOS -->
             <div class="container mt-5 d-none d-lg-block">
                 <form action="../../controladores/VerDetalle.php" method="POST">
-                    <table class="table table-hover table-bordered text-center mx-auto" style="max-width: 1100px;">
+                    <table class="bg-light table table-hover table-bordered text-center mx-auto" style="max-width: 1100px;">
                         <thead class="table-dark">
                             <tr>
                                 <th scope="col">Fecha y hora</th>
@@ -116,7 +116,7 @@
                         $arr = $n->buscarNegocio($codeN);
                         $negocio = $arr[0];
                     ?>
-                        <div class="col-lg-7 border p-3 border-dark rounded-3 mb-3 d-flex align-items-center" style="max-width: 440px;">
+                        <div class="bg-light col-lg-7 border p-3 border-dark rounded-3 mb-3 d-flex align-items-center" style="max-width: 440px;">
                             <img src="<?= $negocio['imagen'] ?>" class="card-img py-2" alt="" style="max-width: 150px;">
                             <div class="ps-3">
                                 <p class="h5 fw-bold"><?= $negocio['nombre'] ?></p>

@@ -74,4 +74,11 @@ class Negocio{
         $stm->execute();
         return $stm->fetchAll(\PDO::FETCH_ASSOC);
     }
+
+    public function tipoNegocio($tipo){
+        $stm = Conexion::conector()->prepare("SELECT * FROM negocio WHERE tipoNegocio=:A");
+        $stm->bindParam(":A",$tipo);
+        $stm->execute();
+        return $stm->fetchAll(\PDO::FETCH_ASSOC);
+    }
 }

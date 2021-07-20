@@ -17,7 +17,7 @@ unset($_SESSION['ne']);
     <title>Negocios | BEC Market</title>
 </head>
 
-<body>
+<body style="background-image: url(../../img/fondo.jpg);">
     <?php if (isset($_SESSION['user'])) { ?>
 
         <?php if ($_SESSION['user']['tipo'] == 1) { ?>
@@ -61,7 +61,7 @@ unset($_SESSION['ne']);
             <div class="container mt-5" id="app">
                 <div class="row">
                     <div class="col-sm-6">
-                        <form action="../../controladores/BuscarNegocio.php">
+                        <form action="../../controladores/BuscarNegocio.php" method="POST">
                             <div class="d-flex flex-row bd-highlight justify-content-center">
                                 <div class="p-2 bd-highlight">
                                     <input name="nombre" type="text" class="form-control mb-3" placeholder="Nombre negocio" style="max-width: 168px;">
@@ -70,80 +70,89 @@ unset($_SESSION['ne']);
                                     <button class="btn btn-dark px-4">BUSCAR</button>
                                 </div>
                             </div>
-                            <p class="text-danger text-center">
-                                <?php
-                                if (isset($_SESSION['error'])) {
-                                    echo $_SESSION['error'];
-                                    unset($_SESSION['error']);
-                                }
-                                ?>
-                            </p>
                         </form>
                     </div>
                     <div class="col-sm-6">
-                        <div class="d-flex flex-row bd-highlight justify-content-center">
-                            <div class="p-2 bd-highlight">
-                                <select class="form-select mb-3" style="max-width: 300px;">
-                                    <option selected>Filtrar negocios</option>
-                                    <option value="1">Supermercado</option>
-                                    <option value="2">Panadería</option>
-                                    <option value="3">Comida rápida</option>
-                                </select>
+                        <form action="../../controladores/FiltrarNegocio.php" method="POST">
+                            <div class="d-flex flex-row bd-highlight justify-content-center">
+                                <div class="p-2 bd-highlight">
+                                    <select name="tipo" class="form-select mb-3" style="max-width: 300px;">
+                                        <option selected>Filtrar negocios</option>
+                                        <option value="supermercado">Supermercado</option>
+                                        <option value="panaderia">Panadería</option>
+                                        <option value="comida rapida">Comida rápida</option>
+                                        <option value="restaurante">Restaurante</option>
+                                    </select>
+                                </div>
+                                <div class="p-2 bd-highlight">
+                                    <button type="button" class="btn btn-dark px-4">FILTRAR</button>
+                                </div>
                             </div>
-                            <div class="p-2 bd-highlight">
-                                <button type="button" class="btn btn-dark px-4">FILTRAR</button>
-                            </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
+                <p class="text-danger text-center bg-light">
+                    <?php
+                        if (isset($_SESSION['error'])) {
+                            echo $_SESSION['error'];
+                            unset($_SESSION['error']);
+                        }
+                    ?>
+                </p>
             </div>
             <!-- BUSQUEDA -->
+            
             <!-- CONTENIDO  -->
             <div class="container mt-4">
                 <form action="../../controladores/VerNegocio.php" method="POST">
                     <?php if (!isset($_SESSION['buscar'])) { ?>
                         <?php foreach ($negocios as $n) { ?>
-                            <div class="row justify-content-center mx-2">
-                                <div class="col-lg-7 border p-3 border-dark rounded-3 mb-3 d-flex align-items-center" style="max-width: 700px;">
-                                    <img src="<?= $n['imagen'] ?>" class="card-img py-2" alt="" style="max-width: 140px;">
-                                    <div class="container">
-                                        <div class="row align-items-center">
-                                            <div class="col-lg-6">
-                                                <span class="h5 fw-bold"> <?= $n['nombre'] ?></span>
+                            <?php if ($n['abierto_cerrado'] == 'abierto') { ?>
+                                <div class="row justify-content-center mx-2">
+                                    <div class="bg-light col-lg-7 border p-3 border-dark rounded-3 mb-3 d-flex align-items-center" style="max-width: 700px;">
+                                        <img src="<?= $n['imagen'] ?>" class="card-img py-2" alt="" style="max-width: 140px;">
+                                        <div class="container">
+                                            <div class="row align-items-center">
+                                                <div class="col-lg-6">
+                                                    <span class="h5 fw-bold"> <?= $n['nombre'] ?></span>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <span><?= $n['direccion'] ?></span>
-                                        <br>
-                                        <span class="text-success">Abierto desde las
-                                            <?= $n['horarioAtencion'] ?>
-                                            hrs.
-                                        </span>
-                                        <div class="row mt-2">
-                                            <div class="col-lg-4">
-                                                <span>N° de contacto</span>
-                                                <br>
-                                                <span class="fw-bold">+56 <?= $n['telefono'] ?></span>
-                                            </div>
-                                            <div class="col-lg-4">
-                                                <span>Costo de envío</span>
-                                                <br>
-                                                <span class="fw-bold">$<?= $n['costoEnvio'] ?></span>
-                                            </div>
-                                            <div class="col-lg-4">
-                                                <button name="rutNegocio" class="btn btn-dark mt-2" value="<?= $n['rut_negocio'] ?>">Ver negocio</button>
+                                            <span><?= $n['direccion'] ?></span>
+                                            <br>
+                                            <span class="text-success">Abierto desde las
+                                                <?= $n['horarioAtencion'] ?>
+                                                hrs.
+                                            </span>
+                                            <div class="row mt-2">
+                                                <div class="col-lg-4">
+                                                    <span>N° de contacto</span>
+                                                    <br>
+                                                    <span class="fw-bold">+56 <?= $n['telefono'] ?></span>
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <span>Costo de envío</span>
+                                                    <br>
+                                                    <span class="fw-bold">$<?= $n['costoEnvio'] ?></span>
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <button name="rutNegocio" class="btn btn-dark mt-2" value="<?= $n['rut_negocio'] ?>">Ver negocio</button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            <?php } ?>
                         <?php } ?>
                     <?php } else {
                         $nombre = $_SESSION['buscar'];
                         $buscar = $model->buscarNombre($nombre);
+                        if($buscar == null){
+                            $buscar = $model->tipoNegocio($nombre);
+                        }
                     ?>
                         <?php foreach ($buscar as $b) { ?>
                             <div class="row justify-content-center mx-2">
-                                <div class="col-lg-7 border p-3 border-dark rounded-3 mb-3 d-flex align-items-center" style="max-width: 700px;">
+                                <div class="bg-light col-lg-7 border p-3 border-dark rounded-3 mb-3 d-flex align-items-center" style="max-width: 700px;">
                                     <img src="<?= $b['imagen'] ?>" class="card-img py-2" alt="" style="max-width: 140px;">
                                     <div class="container">
                                         <div class="row align-items-center">
@@ -154,7 +163,7 @@ unset($_SESSION['ne']);
                                         <span><?= $b['direccion'] ?></span>
                                         <br>
                                         <span class="text-success">Abierto desde las
-                                            <?= $n['horarioAtencion'] ?>
+                                            <?= $b['horarioAtencion'] ?>
                                             hrs.
                                         </span>
                                         <div class="row mt-2">
@@ -166,7 +175,7 @@ unset($_SESSION['ne']);
                                             <div class="col-lg-4">
                                                 <span>Costo de envío</span>
                                                 <br>
-                                                <span class="fw-bold"><?= $n['costoEnvio'] ?></span>
+                                                <span class="fw-bold">$<?= $b['costoEnvio'] ?></span>
                                             </div>
                                             <div class="col-lg-4">
                                                 <button name="rutNegocio" class="btn btn-dark mt-2" value="<?=$n['rut_negocio'] ?>">Ver negocio</button>

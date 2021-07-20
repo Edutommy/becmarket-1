@@ -16,12 +16,17 @@ class VerDetalle{
     public function verDetalle(){
         #AWEONA 
         session_start();
+        
         $code = $this->codigo;
         $pedido = new Pedidos();
         $p = $pedido->pedido($code);
         $_SESSION['pedido'] = $p[0];
 
-        header("Location: ../vistas/cliente/cliente-pedido-detalle.php");
+        if($_SESSION['user']['tipo']==1){
+            header("Location: ../vistas/cliente/cliente-pedido-detalle.php");
+        }else{
+            header("Location: ../vistas/vendedor/vendedor-pedido-detalle.php");
+        }
 
     }
 

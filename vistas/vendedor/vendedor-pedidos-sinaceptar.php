@@ -8,6 +8,7 @@
     $estado = 'sin aceptar';
     $modelo = new Pedidos();
     $pedidos = $modelo->pedidosNegocio($estado,$negocio);
+    unset($_SESSION['pedido']);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -68,7 +69,8 @@
                 </nav>
             </div>
             <!-- TERCERA BARRA -->
-
+            
+        
             <!-- PEDIDOS -->
             <div class="container mt-5 d-none d-lg-block">
                 <table class="table bg-light table-hover table-bordered text-center mx-auto align-middle" style="max-width: 1100px;">
@@ -98,7 +100,9 @@
                                     <span><?= $cliente['apellidos'] ?></span>
                                 </td>
                                 <td>$<?= $p['precio_Total'] ?></td>
-                                <td><a href="vendedor-pedido-detalle.php">Ver detalles</a></td>
+                                <form action="../../controladores/VerDetalle.php" method="POST">  
+                                    <td><button name="detalle" class="btn fs-6 link-primary btn-sm text-decoration-underline" value="<?= $p['codigo_pedido'] ?>">Ver detalles</button></td>
+                                </form>
                                 <td class="text-success"><?= ucwords($p['estado']) ?><button class="btn ms-2"><i class="far fa-edit fs-2 text-primary"></i></button></td>
                             </tr>
                         <?php } ?>
@@ -132,14 +136,15 @@
                                     <button class="btn ms-2"><i class="far fa-edit fs-4 text-primary"></i></button>
                                 </span>
                                 <br>
-                                <a href="vendedor-pedido-detalle.php">Ver detalles</a>
-                            </div>
+                                <form action="../../controladores/VerDetalle.php" method="POST">  
+                                    <td><button name="detalle" class="btn fs-6 link-primary btn-sm text-decoration-underline" value="<?= $p['codigo_pedido'] ?>">Ver detalles</button></td>
+                                </form>                            </div>
                         </div>
                     <?php } ?>
                 </div>
             </div>
             <!-- PEDIDOS PANTALLA CHICA -->
-            
+        
         <?php } else { ?>
             <?php header("Location: ../cliente/cliente-inicio.php"); ?>
         <?php } ?>

@@ -37,4 +37,13 @@ class Pedidos{
         return $stm->fetchAll(\PDO::FETCH_ASSOC);
     }
 
+    //BUSCAR PEDIDO POR ESTADO
+    public function buscarPorEstado($estado,$negocio){
+        $stm = Conexion::conector()->prepare("SELECT * FROM pedido WHERE estado=:A AND negociofk=:B");
+        $stm->bindParam(":A",$estado);
+        $stm->bindParam(":B",$negocio);
+        $stm->execute();
+        return $stm->fetchAll(\PDO::FETCH_ASSOC);
+    }
+
 }

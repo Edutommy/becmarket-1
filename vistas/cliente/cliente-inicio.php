@@ -7,7 +7,7 @@
     <title>Inicio | BEC Market</title>
 </head>
 
-<body>
+<body style="background-image: url(../../img/fondo.jpg);">
     <?php if (isset($_SESSION['user'])) { ?>
 
         <?php if ($_SESSION['user']['tipo'] == 1) { ?>
@@ -49,9 +49,9 @@
 
             <!-- CONTENIDO -->
             <div class="container mt-5">
-                <h5 class="h4 text-center pb-4 mb-4">PRODUCTOS MÁS POPULARES</h5>
+                <h5 class="h4 text-center pb-4 mb-4" style="background-color: rgba(255, 255, 255, 0.55);">PRODUCTOS MÁS POPULARES</h5>
                 <div class="row d-flex justify-content-center justify-content-lg-between">
-                    <div class="col-lg-4 border p-3 border-dark rounded-3 d-flex align-items-center mb-4" style="max-width: 400px;">
+                    <div class="bg-light col-lg-4 border p-3 border-dark rounded-3 d-flex align-items-center mb-4" style="max-width: 400px;">
                         <img src="../../img/papas.jpg" class="card-img py-2" alt="" style="max-width: 140px;">
                         <div class="ps-3">
                             <p class="h5 fw-bold">Producto</p>
@@ -64,7 +64,7 @@
                             <button class="btn btn-dark">Ver negocio</button>
                         </div>
                     </div>
-                    <div class="col-lg-4 border p-3 border-dark rounded-3 d-flex align-items-center mb-4" style="max-width: 400px;">
+                    <div class="bg-light col-lg-4 border p-3 border-dark rounded-3 d-flex align-items-center mb-4" style="max-width: 400px;">
                         <img src="../../img/papas.jpg" class="card-img py-2" alt="" style="max-width: 140px;">
                         <div class="ps-3">
                             <p class="h5 fw-bold">Producto</p>
@@ -77,7 +77,7 @@
                             <button class="btn btn-dark">Ver negocio</button>
                         </div>
                     </div>
-                    <div class="col-lg-4 border p-3 border-dark rounded-3 d-flex align-items-center mb-4" style="max-width: 400px;">
+                    <div class="bg-light col-lg-4 border p-3 border-dark rounded-3 d-flex align-items-center mb-4" style="max-width: 400px;">
                         <img src="../../img/papas.jpg" class="card-img py-2" alt="" style="max-width: 140px;">
                         <div class="ps-3">
                             <p class="h5 fw-bold">Producto</p>

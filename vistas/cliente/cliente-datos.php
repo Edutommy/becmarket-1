@@ -7,7 +7,7 @@
     <?php include_once '../../header.php' ?>
 </head>
 
-<body>
+<body style="background-image: url(../../img/fondo.jpg);">
     <?php if (isset($_SESSION['user'])) { ?>
 
         <?php if ($_SESSION['user']['tipo'] == 1) { ?>
@@ -39,9 +39,9 @@
 
             <!-- DATOS -->
             <div class="container mt-5">
-                <p class="h3 text-center">Mis datos</p>
+                <p class="h3 text-center" style="background-color: rgba(255, 255, 255, 0.55);">Mis datos</p>
                 <div class="row mt-5 mx-5 d-flex justify-content-center justify-content-lg-evenly">
-                    <div class="col-xl-4 mb-4" style="max-width: 400px;">
+                    <div class="bg-light col-xl-4 mb-4" style="max-width: 400px;">
                         <div class="row d-flex justify-content-center border p-3 border-dark rounded">
                             <div class="col-xl-7">
                                 <img src="../../img/papas.jpg" class="card-img py-2 mx-auto d-block" alt="" style="max-width: 230px;">
@@ -82,7 +82,7 @@
                         </div>
                     </div>
                     <!-- EDITAR DATOS -->
-                    <div id="app" class="col-xl-6 border p-3 border-dark rounded mb-4" style="max-width: 500px;">
+                    <div id="app" class="bg-light col-xl-6 border p-3 border-dark rounded mb-4" style="max-width: 500px;">
                         <form @submit.prevent="editar">
                             <div class="row mt-2">
                                 <div class="col-md-10 mx-auto mb-2">

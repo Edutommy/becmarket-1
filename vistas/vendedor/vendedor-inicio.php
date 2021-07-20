@@ -221,11 +221,37 @@
                                 <div class="col-md-10 d-flex mx-auto">
                                     <div class="col-md-6 text-end d-flex me-1">
                                         <label for="desde" class="form-label me-2">Desde:</label>
-                                        <input required name="h1" v-model="h1" class="form-control form-control-sm" type="text" id="desde" placeholder="Hora" style="max-width: 70px;">
+                                        <select required name="h1" class="form-select mb-3" id="desde" style="max-width: 80px;" v-model="h1">
+                                            <option value="7:00">7:00</option>
+                                            <option value="8:00">8:00</option>
+                                            <option value="9:00">9:00</option>
+                                            <option value="10:00">10:00</option>
+                                            <option value="11:00">11:00</option>
+                                            <option value="12:00">12:00</option>
+                                            <option value="13:00">13:00</option>
+                                            <option value="14:00">14:00</option>
+                                            <option value="15:00">15:00</option>
+                                            <option value="16:00">16:00</option>
+                                            <option value="17:00">17:00</option>
+                                            <option value="18:00">18:00</option>
+                                        </select>   
                                     </div>
                                     <div class="col-md-6 d-flex">
                                         <label for="hasta" class="form-label me-2">Hasta:</label>
-                                        <input required name="h2" v-model="h2" class="form-control form-control-sm" type="text" id="hasta" placeholder="Hora" style="max-width: 70px;">
+                                        <select required name="h2" class="form-select mb-3" id="hasta" style="max-width: 80px;" v-model="h1">
+                                            <option value="13:00">13:00</option>
+                                            <option value="14:00">14:00</option>
+                                            <option value="15:00">15:00</option>
+                                            <option value="16:00">16:00</option>
+                                            <option value="17:00">17:00</option>
+                                            <option value="18:00">18:00</option>
+                                            <option value="19:00">19:00</option>
+                                            <option value="20:00">20:00</option>
+                                            <option value="21:00">21:00</option>
+                                            <option value="22:00">22:00</option>
+                                            <option value="23:00">23:00</option>
+                                            <option value="00:00">00:00</option>
+                                        </select> 
                                     </div>
                                 </div>
                                 <div class="col-md-10 mx-auto mt-3">

@@ -8,6 +8,7 @@
     $estado = 'entregado';
     $modelo = new Pedidos();
     $pedidos = $modelo->pedidosNegocio($estado,$negocio);
+    unset($_SESSION['pedido']);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -70,17 +71,7 @@
 
             <!-- BUSQUEDA -->
             <div class="container mt-4">
-                <div class="row">
-                    <div class="col-sm-6">
-                        <div class="d-flex flex-row bd-highlight justify-content-center">
-                            <div class="p-2 bd-highlight">
-                                <input type="text" class="form-control mb-3" placeholder="Buscar por cliente" style="max-width: 168px;">    
-                            </div>
-                            <div class="p-2 bd-highlight">
-                                <button type="button" class="btn btn-dark px-4">BUSCAR</button>
-                            </div>           
-                        </div>
-                    </div>
+                <div class="row justify-content-end">
                     <div class="col-sm-6">
                         <div class="d-flex flex-row bd-highlight justify-content-center">
                             <div class="p-2 bd-highlight">
@@ -94,7 +85,8 @@
                 </div>
             </div>
             <!-- BUSQUEDA -->
-
+            
+        <form action="../../controladores/VerDetalle.php" method="POST">
             <!-- TABLA PEDIDOS -->
             <div class="container mt-3 d-none d-lg-block" id="app">
                 <table class="bg-light table table-hover table-bordered text-center mx-auto align-middle" style="max-width: 1100px;">
@@ -124,7 +116,9 @@
                                     <span><?= $cliente['apellidos'] ?></span>
                                 </td>
                                 <td>$<?= $p['precio_Total'] ?></td>
-                                <td><a href="vendedor-pedido-detalle.php">Ver detalles</a></td>
+                                <form action="../../controladores/VerDetalle.php" method="POST">  
+                                    <td><button name="detalle" class="btn fs-6 link-primary btn-sm text-decoration-underline" value="<?= $p['codigo_pedido'] ?>">Ver detalles</button></td>
+                                </form>
                                 <td class="text-success"><?= ucwords($p['estado']) ?></td>
                             </tr>
                         <?php } ?>
@@ -156,13 +150,15 @@
                                 <span>$<?= $p['precio_Total'] ?></span> <br>
                                 <span class="text-success"><?= ucwords($p['estado']) ?></span>
                                 <br>
-                                <a href="vendedor-pedido-detalle.php">Ver detalles</a>
+                                <button name="detalle" class="btn fs-6 link-primary btn-sm text-decoration-underline" value="<?= $p['codigo_pedido'] ?>">Ver detalles</button>
                             </div>
                         </div>
                     <?php } ?>
                 </div>
             </div>
             <!-- PEDIDOS PANTALLA CHICA -->
+        </form>
+        
         <?php } else { ?>
             <?php header("Location: ../cliente/cliente-inicio.php"); ?>
         <?php } ?>

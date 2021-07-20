@@ -38,7 +38,7 @@
 
                 <div class="col-sm-6 px-4">
                     <label for="inputcelu" class="form-label">Celular</label>
-                    <input type="text" class="form-control mb-3" id="inputcelu" style="max-width: 400px;" placeholder="+56987654321" v-model="telefono" required>
+                    <input type="text" class="form-control mb-3" id="inputcelu" style="max-width: 400px;" placeholder="987654321" v-model="telefono" required>
 
                     <label for="inputemail" class="form-label">Email</label>
                     <input type="text" class="form-control mb-3" id="inputemail" style="max-width: 400px;" placeholder="correo@example.com" v-model="email" required>

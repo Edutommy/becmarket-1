@@ -16,7 +16,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.gstatic.com">
 </head>
-<body>
+<body style="background-image: url(../../img/fondo.jpg);">
     <?php if (isset($_SESSION['user'])) { ?>
         <?php if ($_SESSION['user']['tipo'] == 1) { ?>
         <!-- BARRA DE NAVEGACION -->
@@ -69,7 +69,7 @@
 
             <div class="container mt-3">
                 <div class="row justify-content-center">
-                    <div class="col-lg-12 border p-3 border-dark rounded-3 mb-3 d-flex align-items-center" style="max-width: 500px;">
+                    <div class="bg-light col-lg-12 border p-3 border-dark rounded-3 mb-3 d-flex align-items-center" style="max-width: 500px;">
                         <img src="<?= $_SESSION['ne']['imagen'] ?>" class="card-img py-2" alt="" style="max-width: 200px;">
                         <div class="container">
                             <div class="row">
@@ -126,7 +126,7 @@
                         <p class="text-center fw-bold h5 mt-3 mb-4">PRODUCTOS</p>
                         <div class="row d-flex justify-content-center justify-content-lg-evenly">
                             <?php foreach($productos as $p){ ?>
-                                <div class="col-xxl-5 d-flex align-items-center border p-3 border-dark rounded-3 mb-5" style="max-width: 500px;">
+                                <div class="bg-light col-xxl-5 d-flex align-items-center border p-3 border-dark rounded-3 mb-5" style="max-width: 500px;">
                                     <img src="<?= $p['imagen'] ?>" class="card-img py-2" alt="" style="max-width: 140px;">
                                     <div class="ps-3">
                                         <p class="h5 fw-bold"><?= $p['nombre'] ?></p>

@@ -17,7 +17,7 @@
     <title>Detalle | BEC Market</title>
 </head>
 
-<body>
+<body style="background-image: url(../../img/fondo.jpg);">
     <?php if (isset($_SESSION['user'])) { ?>
 
         <?php if ($_SESSION['user']['tipo'] == 1) { ?>
@@ -69,7 +69,7 @@
             <!-- DETALLES PEDIDO -->
             <div class="container mt-3">
                 <a href="cliente-mispedidos.php"><i class="fas fa-chevron-circle-left fs-1 text-dark ms-5 mb-3"></i></a>
-                <div class="border border-2 border-dark rounded mx-auto pb-3" style="max-width: 800px;">
+                <div class="bg-light border border-2 border-dark rounded mx-auto pb-3" style="max-width: 800px;">
                     <?php 
                         $rut = $_SESSION['pedido']['negociofk'];
                         $nombre = $ne->nombreNegocio($rut);

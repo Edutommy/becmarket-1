@@ -8,6 +8,7 @@
     $estado = 'aceptado';
     $modelo = new Pedidos();
     $pedidos = $modelo->pedidosNegocio($estado,$negocio);
+    unset($_SESSION['pedido']);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -71,71 +72,106 @@
 
             <!-- BUSQUEDA -->
             <div class="container mt-4">
-                <div class="row">
-                    <div class="col-sm-6">
-                        <div class="d-flex flex-row bd-highlight justify-content-center">
-                            <div class="p-2 bd-highlight">
-                                <input type="text" class="form-control mb-3" placeholder="Buscar por cliente" style="max-width: 168px;">    
+                <form action="../../controladores/BuscarPedidoEstado.php" method="POST">
+                    <div class="row justify-content-end">
+                        <div class="col-sm-6">
+                            <div class="d-flex flex-row bd-highlight justify-content-center">
+                                <div class="p-2 bd-highlight">
+                                    <select name="estado" class="form-select mb-3" style="max-width: 300px;">
+                                        <option value="aceptado">Aceptado</option>
+                                        <option value="en preparacion">En preparación</option>
+                                        <option value="en reparto">En reparto</option>
+                                    </select>
+                                </div>
+                                <div class="p-2 bd-highlight">
+                                    <button type="button" class="btn btn-dark px-4">BUSCAR</button>
+                                </div>
                             </div>
-                            <div class="p-2 bd-highlight">
-                                <button type="button" class="btn btn-dark px-4">BUSCAR</button>
-                            </div>           
+                            <p class="text-danger text-center">
+                                <?php 
+                                    if(isset($_SESSION['error'])){
+                                        echo $_SESSION['error'];
+                                        unset($_SESSION['error']);
+                                    }
+                                ?>
+                            </p>  
                         </div>
                     </div>
-                    <div class="col-sm-6">
-                        <div class="d-flex flex-row bd-highlight justify-content-center">
-                            <div class="p-2 bd-highlight">
-                                <select class="form-select mb-3" style="max-width: 300px;">
-                                    <option selected>Buscar por estado</option>
-                                    <option value="1">Aceptado</option>
-                                    <option value="2">En preparación</option>
-                                    <option value="3">Entregado</option>
-                                </select>
-                            </div>
-                            <div class="p-2 bd-highlight">
-                                <button type="button" class="btn btn-dark px-4">BUSCAR</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                    
+                </form>
             </div>
             <!-- BUSQUEDA -->
 
+          
             <!-- TABLA PEDIDOS -->
             <div class="container mt-3 d-none d-lg-block">
-                <table class="table bg-light table-hover table-bordered text-center mx-auto align-middle" style="max-width: 1100px;">
-                    <thead class="table-dark">
-                        <tr>
-                            <th scope="col">Fecha y hora</th>
-                            <th scope="col">Cliente</th>
-                            <th scope="col">Total</th>
-                            <th scope="col">Detalles</th>
-                            <th scope="col">Estado</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach($pedidos as $p){ 
-                            $c =  new Usuario();
-                            $codigoC = $p['compradorfk'];
-                            $arr = $c->actualizar($codigoC);
-                            $cliente = $arr[0];
-                            ?>
+                
+                    <table class="table bg-light table-hover table-bordered text-center mx-auto align-middle" style="max-width: 1100px;">
+                        <thead class="table-dark">
                             <tr>
-                                <th>
-                                    <span><?= $p['fecha'] ?></span>
-                                    <span><?= $p['hora'] ?></span>
-                                </th>
-                                <td>
-                                    <span><?= $cliente['nombre'] ?></span>
-                                    <span><?= $cliente['apellidos'] ?></span>
-                                </td>
-                                <td>$<?= $p['precio_Total'] ?></td>
-                                <td><a href="vendedor-pedido-detalle.php">Ver detalles</a></td>
-                                <td class="text-success"><?= ucwords($p['estado']) ?><button class="btn ms-2"><i class="far fa-edit fs-2 text-primary"></i></button></td>
+                                <th scope="col">Fecha y hora</th>
+                                <th scope="col">Cliente</th>
+                                <th scope="col">Total</th>
+                                <th scope="col">Detalles</th>
+                                <th scope="col">Estado</th>
                             </tr>
-                        <?php } ?>
-                    </tbody>
-                </table>    
+                        </thead>
+                        <tbody>
+                            <?php if(!isset($_SESSION['buscar'])){ ?>
+                                <?php foreach($pedidos as $p){ 
+                                    $c =  new Usuario();
+                                    $codigoC = $p['compradorfk'];
+                                    $arr = $c->actualizar($codigoC);
+                                    $cliente = $arr[0];
+                                    ?>
+                                    <tr>
+                                        <th>
+                                            <span><?= $p['fecha'] ?></span>
+                                            <span><?= $p['hora'] ?></span>
+                                        </th>
+                                        <td>
+                                            <span><?= $cliente['nombre'] ?></span>
+                                            <span><?= $cliente['apellidos'] ?></span>
+                                        </td>
+                                        <td>$<?= $p['precio_Total'] ?></td>
+                                        <form action="../../controladores/VerDetalle.php" method="POST">  
+                                            <td><button name="detalle" class="btn fs-6 link-primary btn-sm text-decoration-underline" value="<?= $p['codigo_pedido'] ?>">Ver detalles</button></td>
+                                        </form>
+                                        <td class="text-success"><?= ucwords($p['estado']) ?><button class="btn ms-2"><i class="far fa-edit fs-2 text-primary"></i></button></td>
+                                    </tr>
+                                <?php } ?>
+                            <?php }else{ 
+                                    $estado = $_SESSION['buscar'];
+                                    $buscar = $modelo->buscarPorEstado($estado,$negocio);
+                                    
+                                foreach($buscar as $b){ 
+                                    $c =  new Usuario();
+                                    $codigoC = $b['compradorfk'];
+                                    $arr = $c->actualizar($codigoC);
+                                    $cliente = $arr[0];
+                                    ?>
+
+                                    <tr>
+                                        <th>
+                                            <span><?= $b['fecha'] ?></span>
+                                            <span><?= $b['hora'] ?></span>
+                                        </th>
+                                        <td>
+                                            <span><?= $cliente['nombre'] ?></span>
+                                            <span><?= $cliente['apellidos'] ?></span>
+                                        </td>
+                                        <td>$<?= $b['precio_Total'] ?></td>
+                                        <form action="../../controladores/VerDetalle.php" method="POST">  
+                                            <td><button name="detalle" class="btn fs-6 link-primary btn-sm text-decoration-underline" value="<?= $p['codigo_pedido'] ?>">Ver detalles</button></td>
+                                        </form>
+                                        <td class="text-success"><?= ucwords($p['estado']) ?><button class="btn ms-2"><i class="far fa-edit fs-2 text-primary"></i></button></td>
+                                    </tr>
+                                <?php } ?>
+
+                            <?php } ?>
+                        </tbody>
+                    </table>   
+                </form> 
             </div>  
             <!-- TABLA PEDIDOS -->
             
@@ -164,13 +200,17 @@
                                     <button class="btn ms-2"><i class="far fa-edit fs-4 text-primary"></i></button>
                                 </span>
                                 <br>
-                                <a href="vendedor-pedido-detalle.php">Ver detalles</a>
+                                <form action="../../controladores/VerDetalle.php" method="POST">  
+                                    <td><button name="detalle" class="btn fs-6 link-primary btn-sm text-decoration-underline" value="<?= $p['codigo_pedido'] ?>">Ver detalles</button></td>
+                                </form>
                             </div>
                         </div>
                     <?php } ?>
                 </div>
             </div>
             <!-- PEDIDOS PANTALLA CHICA -->
+        
+        
         <?php } else { ?>
             <?php header("Location: ../cliente/cliente-inicio.php"); ?>
         <?php } ?>

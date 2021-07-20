@@ -7,7 +7,7 @@
     <?php include_once '../../header.php' ?>
     <title>Información | BEC Market</title>
 </head>
-<body>
+<body style="background-image: url(../../img/fondo.jpg);">
     <?php if (isset($_SESSION['user'])) { ?>
 
         <?php if ($_SESSION['user']['tipo'] == 1) { ?>
@@ -61,7 +61,7 @@
 
             <div class="container mt-5">
                 <div class="row justify-content-center">
-                    <div class="col-lg-6 border p-3 border-dark rounded-3 mb-3 d-flex align-items-center">
+                    <div class="bg-light col-lg-6 border p-3 border-dark rounded-3 mb-3 d-flex align-items-center">
                         <img src="<?= $_SESSION['ne']['imagen'] ?>" class="card-img py-2" alt="" style="max-width: 250px;">
                         <div class="container">
                             <div class="row">

@@ -72,4 +72,11 @@ class Usuario{
         $stm->bindParam(":B",$codigo);
         return $stm->execute();
     }
+
+    public function buscarCliente($nombre){
+        $stm = Conexion::conector()->prepare("SELECT * FROM usuario WHERE nombre OR apellido LIKE '%' :A '%'");
+        $stm->bindParam(":A",$nombre);
+        $stm->execute();
+        return $stm->fetchAll(\PDO::FETCH_ASSOC);
+    }
 }
