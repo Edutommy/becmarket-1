@@ -10,7 +10,7 @@ class FiltrarNegocio{
 
     public function __construct()
     {
-        $this->tipo = $_SESSION['tipo'];
+        $this->tipo = $_POST['tipo'];
     }
 
     public function filtrar(){

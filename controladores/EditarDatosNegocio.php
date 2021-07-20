@@ -5,7 +5,7 @@ namespace controladores;
 require_once("../modelo/Negocio.php");
 use modelo\Negocio as Negocio;
 
-class EditarDatosNegocio{
+/*class EditarDatosNegocio{
     private $dias;
     private $h1;
     private $h2;
@@ -61,3 +61,5 @@ class EditarDatosNegocio{
 }
 $obj = new EditarDatosNegocio();
 $obj->editar();
+*/
+

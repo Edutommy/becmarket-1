@@ -68,17 +68,18 @@ class Negocio{
         return $stm->fetchAll(\PDO::FETCH_ASSOC);
     }
 
-    public function nombreNegocio($codigo){
-        $stm = Conexion::conector()->prepare("SELECT nombre FROM negocio WHERE rut_negocio=:A");
-        $stm->bindParam(":A",$codigo);
-        $stm->execute();
-        return $stm->fetchAll(\PDO::FETCH_ASSOC);
-    }
 
     public function tipoNegocio($tipo){
         $stm = Conexion::conector()->prepare("SELECT * FROM negocio WHERE tipoNegocio=:A");
         $stm->bindParam(":A",$tipo);
         $stm->execute();
         return $stm->fetchAll(\PDO::FETCH_ASSOC);
+    }
+
+    public function cambiarImagen($imagen,$codigo){
+        $stm = Conexion::conector()->prepare("UPDATE negocio SET imagen=:A WHERE rut_negocio=:B");
+        $stm->bindParam(":A",$imagen);
+        $stm->bindParam(":B",$codigo);
+        return $stm->execute();
     }
 }

@@ -57,10 +57,12 @@
                         <div class="row d-flex justify-content-center">
                             <div class="col-xl-7">
                                 <img src="<?= $_SESSION['negocio']['imagen'] ?>" class="card-img py-2 mx-auto d-block" alt="" style="max-width: 230px;">
-                                <div class="mb-3 d-flex justify-content-center flex-column">
-                                    <input class="form-control form-control-sm mx-auto" id="formFileSm" type="file" style="max-width: 200px;">
-                                    <button class="btn btn-dark mt-2 mx-auto btn-sm" style="max-width: 200px;">Cambiar imagen</button>
-                                </div>
+                                <form action="../../controladores/CambiarImagenNegocio.php" method="POST" enctype="multipart/form-data">
+                                    <div class="mb-3 d-flex justify-content-center flex-column">
+                                        <input name="foto" class="mx-auto" type="file" style="max-width: 200px;">
+                                        <button class="btn btn-dark mt-2 mx-auto btn-sm" style="max-width: 200px;">Cambiar imagen</button>
+                                    </div>
+                                </form>
                             </div>
                             <div class="col-xl-12">
                                 <!--VISTA >LG -->
@@ -238,7 +240,7 @@
                                     </div>
                                     <div class="col-md-6 d-flex">
                                         <label for="hasta" class="form-label me-2">Hasta:</label>
-                                        <select required name="h2" class="form-select mb-3" id="hasta" style="max-width: 80px;" v-model="h1">
+                                        <select required name="h2" class="form-select mb-3" id="hasta" style="max-width: 80px;" v-model="h2">
                                             <option value="13:00">13:00</option>
                                             <option value="14:00">14:00</option>
                                             <option value="15:00">15:00</option>

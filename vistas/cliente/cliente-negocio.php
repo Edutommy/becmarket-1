@@ -99,6 +99,9 @@ unset($_SESSION['ne']);
                         }
                     ?>
                 </p>
+                <p>
+                    <?php echo session_id(); ?> 
+                </p>
             </div>
             <!-- BUSQUEDA -->
             

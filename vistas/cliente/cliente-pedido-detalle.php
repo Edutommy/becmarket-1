@@ -5,9 +5,9 @@
     require_once("../../modelo/Negocio.php");
     use modelo\Negocio as Negocio;
     $ne = new Negocio();
-    #$pedido = $_SESSION['pedido']['codigo_pedido'];
-    #$md = new Detalle();
-    #$detalle = $md->detalleCliente($pedido);
+    $pedido = $_SESSION['pedido']['codigo_pedido'];
+    $md = new Detalle();
+    $detalle = $md->detalleCliente($pedido);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -72,10 +72,10 @@
                 <div class="bg-light border border-2 border-dark rounded mx-auto pb-3" style="max-width: 800px;">
                     <?php 
                         $rut = $_SESSION['pedido']['negociofk'];
-                        $nombre = $ne->nombreNegocio($rut);
-                        $n = $nombre[0];
+                        $nombre = $ne->buscarNegocio($rut);
+                        $neg = $nombre[0];
                     ?>
-                    <h5 class="h5 text-center mt-3 mb-4">Pedido a <span><?=  $n['nombre'] ?></span></h5>
+                    <h5 class="h5 text-center mt-3 mb-4">Pedido a <span><?=  $neg['nombre'] ?></span></h5>
                     <!-- VISTA <LG -->
                     <div class="d-none d-md-block">
                         <div class="row">
@@ -167,26 +167,26 @@
                         </thead>
                         <tbody>
                             <?php
-                                #foreach($detalle as $d){
+                                foreach($detalle as $d){
                             ?>
                                 <tr>
-                                    <td>Chocolate Vizzio</td>
-                                    <td>2</td>
-                                    <td>$1700</td>
-                                    <td>$3400</td>
+                                    <td><?= $d['nombre_producto'] ?></td>
+                                    <td><?= $d['cantidad'] ?></td>
+                                    <td>$<?= $d['precioUnit'] ?></td>
+                                    <td>$<?= $d['precioUnit'] * $d['cantidad'] ?></td>
                                 </tr>
-                            <?php #} ?>
+                            <?php } ?>
                             <tr>
                                 <td></td>
                                 <td></td>
-                                <td class="fw-bold text-end">Envio:</td>
-                                <td>$890</td>
+                                <td class="fw-bold text-end">Envío:</td>
+                                <td>$<?= $neg['costoEnvio'] ?></td>
                             </tr>
                             <tr>
                                 <td></td>
                                 <td></td>
                                 <td class="fw-bold text-end">Total a pagar:</td>
-                                <td>$5700</td>
+                                <td>$<?= $_SESSION['pedido']['precio_Total'] ?></td>
                             </tr>
                         </tbody>
                     </table>

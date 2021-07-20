@@ -13,6 +13,7 @@ class EditarDatosUsuario{
 
     public function __construct()
     {
+        
         header('Access-Control-Allow-Origin: *');
         header("Access-Control-Allow-Headers: X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method");
         header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE");
@@ -23,7 +24,8 @@ class EditarDatosUsuario{
     }
 
     public function editar(){
-        session_start(); 
+        session_id($_POST['session']);
+        session_start();
         //if(isset($_SESSION['user'])){
             $codigo = $_SESSION['user']['codigo_usuario'];
             $usuario = new Usuario();
@@ -47,6 +49,6 @@ class EditarDatosUsuario{
 
     }
 
-}
+} 
 $obj = new EditarDatosUsuario();
 $obj->editar();

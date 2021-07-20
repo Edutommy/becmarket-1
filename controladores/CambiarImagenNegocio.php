@@ -2,15 +2,15 @@
 
 namespace controladores;
 
-require_once('../modelo/Usuario.php');
-use modelo\Usuario as Usuario;
+require_once('../modelo/Negocio.php');
+use modelo\Negocio as Negocio;
 
-class CambiarImagen{
+class CambiarImagenNegocio{
     private $modelo;
 
     public function __construct()
     {
-        $this->modelo = new Usuario();
+        $this->modelo = new Negocio();
     }
 
     public function cambiar(){
@@ -27,20 +27,15 @@ class CambiarImagen{
             $foto = $_SESSION['user']['imagen'];
         }
 
-        $codigo = $_SESSION['user']['codigo_usuario'];
-        $this->modelo->cambiarFoto($foto,$codigo);
+        $codigo = $_SESSION['negocio']['rut_negocio'];
+        $this->modelo->cambiarImagen($foto,$codigo);
 
-        $n = $this->modelo->actualizar($codigo);
-        $_SESSION['user'] = $n[0];
+        $n = $this->modelo->buscarNegocio($codigo);
+        $_SESSION['negocio'] = $n[0];
 
-        if($_SESSION['user']['tipo'] == 2){
-            header("Location: ../vistas/vendedor/vendedor-datos.php");
-        }else{
-            header("Location: ../vistas/cliente/cliente-datos.php");
-        }
+        header("Location: ../vistas/vendedor/vendedor-inicio.php");
         
     }
-
 }
-$obj = new CambiarImagen();
+$obj = new CambiarImagenNegocio();
 $obj->cambiar();

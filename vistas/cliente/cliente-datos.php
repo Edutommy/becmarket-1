@@ -39,16 +39,18 @@
 
             <!-- DATOS -->
             <div class="container mt-5">
-                <p class="h3 text-center" style="background-color: rgba(255, 255, 255, 0.55);">Mis datos</p>
+                <p class="h3 text-center" style="background-color: rgba(255, 255, 255, 0.55);">MIS DATOS</p>
                 <div class="row mt-5 mx-5 d-flex justify-content-center justify-content-lg-evenly">
                     <div class="bg-light col-xl-4 mb-4" style="max-width: 400px;">
                         <div class="row d-flex justify-content-center border p-3 border-dark rounded">
                             <div class="col-xl-7">
-                                <img src="../../img/papas.jpg" class="card-img py-2 mx-auto d-block" alt="" style="max-width: 230px;">
+                                <img src="<?= $_SESSION['user']['imagen'] ?>" class="card-img py-2 mx-auto d-block" alt="" style="max-width: 230px;">
+                                <form action="../../controladores/CambiarImagen.php" method="POST" enctype="multipart/form-data">
                                 <div class="mb-3 d-flex justify-content-center flex-column">
-                                    <input class="form-control form-control-sm mx-auto" id="formFileSm" type="file" style="max-width: 200px;">
+                                    <input name="foto" class="mx-auto" type="file" style="max-width: 200px;">
                                     <button class="btn btn-dark mt-2 mx-auto btn-sm" style="max-width: 200px;">Cambiar imagen</button>
                                 </div>
+                            </form>
                             </div>
                             <div class="col-xl-7">
                                 <div class="row mt-2">
@@ -85,6 +87,7 @@
                     <div id="app" class="bg-light col-xl-6 border p-3 border-dark rounded mb-4" style="max-width: 500px;">
                         <form @submit.prevent="editar">
                             <div class="row mt-2">
+                                <input type="hidden" id="session_id" name="session_id" value="<?= session_id() ?>">
                                 <div class="col-md-10 mx-auto mb-2">
                                     <p class="h5">Editar datos</p>
                                 </div>

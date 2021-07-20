@@ -47,7 +47,7 @@
                     <div class="row d-flex justify-content-center border p-3 border-dark rounded">
                         <div class="col-xl-7">
                             <img src="<?= $_SESSION['user']['imagen'] ?>" class="card-img py-2 mx-auto d-block" alt="" style="max-width: 230px;">
-                            <form action="../../controladores/CambiarImagen.php" method="POST">
+                            <form action="../../controladores/CambiarImagen.php" method="POST" enctype="multipart/form-data">
                                 <div class="mb-3 d-flex justify-content-center flex-column">
                                     <input name="foto" class="mx-auto" type="file" style="max-width: 200px;">
                                     <button class="btn btn-dark mt-2 mx-auto btn-sm" style="max-width: 200px;">Cambiar imagen</button>
