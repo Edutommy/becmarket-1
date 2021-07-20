@@ -4,12 +4,9 @@ namespace modelo;
 
 class Conexion
 {
-    //public static $user = "root";
-    //public static $pass = "";
-    //public static $URL = "mysql:host=localhost;dbname=bec_market";
-    public static $user = "ulm4l5swki0hwcha";
-    public static $pass = "009fuXN7wWhk06knzs9E";
-    public static $URL = "mysql:host=lbnzijwm0kgzvfe4lamqr-mysql.services.clever-cloud.com;dbname=bnzijwm0kgzvfe4lamqr";
+    public static $user = "root";
+    public static $pass = "";
+    public static $URL = "mysql:host=localhost;dbname=bec_market";
 
     public static function conector()
     {
