@@ -103,7 +103,14 @@
                                 <form action="../../controladores/VerDetalle.php" method="POST">  
                                     <td><button name="detalle" class="btn fs-6 link-primary btn-sm text-decoration-underline" value="<?= $p['codigo_pedido'] ?>">Ver detalles</button></td>
                                 </form>
-                                <td class="text-success"><?= ucwords($p['estado']) ?><button class="btn ms-2"><i class="far fa-edit fs-2 text-primary"></i></button></td>
+                                <td>
+                                    <form action="../../controladores/AceptarPedido.php" method="POST">
+                                        <div class="d-flex justify-content-evenly">
+                                            <button name="aceptar" value="<?= $p['codigo_pedido'] ?>" class="btn fs-6 link-success btn-sm"> <i class="fas fa-check"></i> Aceptar</button>
+                                            <button name="rechazar" value="<?= $p['codigo_pedido'] ?>" class="btn fs-6 link-danger btn-sm"><i class="fas fa-times me-2"></i>Rechazar</button>
+                                        </div>
+                                    </form>
+                                </td>
                             </tr>
                         <?php } ?>
                     </tbody>
@@ -131,14 +138,17 @@
                                     <?= $p['hora'] ?>
                                 </span> 
                                 <br>
-                                <span>$<?= $p['precio_Total'] ?></span> <br>
-                                <span class="text-success"><?= ucwords($p['estado']) ?>
-                                    <button class="btn ms-2"><i class="far fa-edit fs-4 text-primary"></i></button>
+                                <span>$<?= $p['precio_Total'] ?></span> 
+                                <br>
+                                <span class="text-success">
+                                    <button class="btn fs-6 link-success btn-sm me-3 my-2"> <i class="fas fa-check"></i> ACEPTAR</button>
+                                    <button class="btn fs-6 link-danger btn-sm my-2"><i class="fas fa-times me-2"></i>RECHAZAR</button>
                                 </span>
                                 <br>
                                 <form action="../../controladores/VerDetalle.php" method="POST">  
                                     <td><button name="detalle" class="btn fs-6 link-primary btn-sm text-decoration-underline" value="<?= $p['codigo_pedido'] ?>">Ver detalles</button></td>
-                                </form>                            </div>
+                                </form>                            
+                            </div>
                         </div>
                     <?php } ?>
                 </div>

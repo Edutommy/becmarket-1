@@ -5,9 +5,8 @@
     use modelo\Usuario as Usuario;
     require_once("../../modelo/Usuario.php");
     $negocio = $_SESSION['negocio']['rut_negocio'];
-    $estado = 'entregado';
     $modelo = new Pedidos();
-    $pedidos = $modelo->pedidosNegocio($estado,$negocio);
+    $pedidos = $modelo->historialNegocio($negocio);
     unset($_SESSION['pedido']);
 ?>
 <!DOCTYPE html>
@@ -119,7 +118,11 @@
                                 <form action="../../controladores/VerDetalle.php" method="POST">  
                                     <td><button name="detalle" class="btn fs-6 link-primary btn-sm text-decoration-underline" value="<?= $p['codigo_pedido'] ?>">Ver detalles</button></td>
                                 </form>
-                                <td class="text-success"><?= ucwords($p['estado']) ?></td>
+                                <?php if($p['estado']=='entregado'){?>
+                                    <td class="text-success"><?= ucwords($p['estado']) ?></td>
+                                <?php }else{ ?>
+                                    <td class="text-danger"><?= ucwords($p['estado']) ?></td>
+                                <?php } ?>
                             </tr>
                         <?php } ?>
                     </tbody>
@@ -148,7 +151,11 @@
                                 </span> 
                                 <br>
                                 <span>$<?= $p['precio_Total'] ?></span> <br>
-                                <span class="text-success"><?= ucwords($p['estado']) ?></span>
+                                <?php if($p['estado']=='entregado'){?>
+                                    <span class="text-success"><?= ucwords($p['estado']) ?></span>
+                                <?php }else{ ?>
+                                    <span class="text-danger"><?= ucwords($p['estado']) ?></span>
+                                <?php } ?>
                                 <br>
                                 <button name="detalle" class="btn fs-6 link-primary btn-sm text-decoration-underline" value="<?= $p['codigo_pedido'] ?>">Ver detalles</button>
                             </div>

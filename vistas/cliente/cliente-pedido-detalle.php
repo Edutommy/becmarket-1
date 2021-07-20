@@ -7,7 +7,7 @@
     $ne = new Negocio();
     $pedido = $_SESSION['pedido']['codigo_pedido'];
     $md = new Detalle();
-    $detalle = $md->detalleCliente($pedido);
+    $detalle = $md->detallePedido($pedido);
 ?>
 <!DOCTYPE html>
 <html lang="en">

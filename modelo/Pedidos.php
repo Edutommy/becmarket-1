@@ -14,9 +14,23 @@ class Pedidos{
         return $stm->fetchAll(\PDO::FETCH_ASSOC);
     }
 
+    public function historialNegocio($negocio){
+        $stm = Conexion::conector()->prepare("SELECT * FROM pedido WHERE negociofk=:A AND estado='entregado' OR estado='rechazado'");
+        $stm->bindParam(":A",$negocio);
+        $stm->execute();
+        return $stm->fetchAll(\PDO::FETCH_ASSOC);
+    }
+
+    public function enCursoNegocio($negocio){
+        $stm = Conexion::conector()->prepare("SELECT * FROM pedido WHERE negociofk=:A AND estado NOT LIKE 'entregado' AND estado NOT LIKE 'rechazado' AND estado NOT LIKE 'sin aceptar' ");
+        $stm->bindParam(":A",$negocio);
+        $stm->execute();
+        return $stm->fetchAll(\PDO::FETCH_ASSOC);
+    }
+
     //PEDIDOS DEL CLIENTE | ESTADO != ENTREGADO
     public function pedidosEnCursoCliente($cliente){
-        $stm = Conexion::conector()->prepare("SELECT * FROM pedido WHERE compradorfk=:A AND estado NOT LIKE 'entregado'");
+        $stm = Conexion::conector()->prepare("SELECT * FROM pedido WHERE compradorfk=:A AND estado NOT LIKE 'entregado' AND estado NOT LIKE 'rechazado'");
         $stm->bindParam(":A",$cliente);
         $stm->execute();
         return $stm->fetchAll(\PDO::FETCH_ASSOC);
@@ -24,7 +38,7 @@ class Pedidos{
 
     //PEDIDOS DEL CLIENTE | ESTADO = ENTREGADO
     public function pedidosEntregadosCliente($cliente){
-        $stm = Conexion::conector()->prepare("SELECT * FROM pedido WHERE compradorfk=:A AND estado LIKE 'entregado'");
+        $stm = Conexion::conector()->prepare("SELECT * FROM pedido WHERE compradorfk=:A AND estado='entregado' OR estado='rechazado'");
         $stm->bindParam(":A",$cliente);
         $stm->execute();
         return $stm->fetchAll(\PDO::FETCH_ASSOC);
@@ -44,6 +58,14 @@ class Pedidos{
         $stm->bindParam(":B",$negocio);
         $stm->execute();
         return $stm->fetchAll(\PDO::FETCH_ASSOC);
+    }
+
+    //CAMBIAR ESTADO DEL PEDIDO
+    public function cambiarEstado($estado,$pedido){
+        $stm = Conexion::conector()->prepare("UPDATE pedido SET estado=:A WHERE codigo_pedido=:B");
+        $stm->bindParam(":A", $estado);
+        $stm->bindParam(":B", $pedido);
+        return $stm->execute();
     }
 
 }

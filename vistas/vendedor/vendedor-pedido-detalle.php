@@ -8,6 +8,11 @@
     $cFK = $_SESSION['pedido']['compradorfk'];
     $cl = $us->actualizar($cFK);
     $cliente = $cl[0];
+
+    $pedido = $_SESSION['pedido']['codigo_pedido'];
+    $d = new Detalle();
+    $detalle = $d->detallePedido($pedido);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -197,13 +202,15 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>CHO123</td>
-                            <td>Chocolate Vizzio</td>
-                            <td>2</td>
-                            <td>$1700</td>
-                            <td>$3400</td>
-                        </tr>
+                        <?php foreach($detalle as $d){ ?>
+                            <tr>
+                                <td><?= $d['codigo_producto'] ?></td>
+                                <td><?= $d['nombre_producto'] ?></td>
+                                <td><?= $d['cantidad'] ?></td>
+                                <td>$<?= $d['precioUnit'] ?></td>
+                                <td>$<?= $d['cantidad'] * $d['precioUnit'] ?></td>
+                            </tr>
+                        <?php } ?>
                         <tr>
                             <td></td>
                             <td></td>
@@ -216,25 +223,53 @@
                             <td></td>
                             <td></td>
                             <td class="fw-bold text-end">Total a pagar:</td>
-                            <td>$5700</td>
+                            <td>$<?= $_SESSION['pedido']['precio_Total'] ?></td>
                         </tr>
                     </tbody>
                 </table>  
-                <div class="row">
-                    <div class="col-sm-6">
-                        <div class="d-flex flex-row bd-highlight justify-content-center">
-                            <div class="p-2 bd-highlight">
-                                <button class="btn btn-success px-4"> <i class="fas fa-check me-2"></i> Aceptar pedido</button>
-                            </div>           
+                <div class="row">               
+                    <?php if($_SESSION['pedido']['estado']=='sin aceptar'){ ?>
+                        <div class="col-sm-6">
+                            <form action="../../controladores/AceptarPedido.php" method="POST">
+                                <div class="d-flex flex-row bd-highlight justify-content-center">
+                                    <div class="p-2 bd-highlight">
+                                        <button name="aceptar" value="<?= $_SESSION['pedido']['codigo_pedido'] ?>" class="btn btn-success px-4"><i class="fas fa-check me-2"></i> Aceptar pedido</button>
+                                    </div>           
+                                </div>
                         </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="d-flex flex-row bd-highlight justify-content-center">
-                            <div class="p-2 bd-highlight">
-                                <button class="btn btn-danger px-4"> <i class="fas fa-times me-2"></i>Rechazar pedido</button>
+                        <div class="col-sm-6">
+                            <div class="d-flex flex-row bd-highlight justify-content-center">
+                                <div class="p-2 bd-highlight">
+                                    <button name="rechazar" value="<?= $_SESSION['pedido']['codigo_pedido'] ?>" class="btn btn-danger px-4"><i class="fas fa-times me-2"></i>Rechazar pedido</button>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                            </form>
+                    <?php } ?>
+
+                    <?php if($_SESSION['pedido']['estado']!='sin aceptar' && $_SESSION['pedido']['estado']!='entregado'){ ?>
+                        <form action="../../controladores/CambiarEstadoPedido.php" method="POST">
+                            <div class="d-flex flex-row bd-highlight justify-content-center">
+                                <div class="p-2 bd-highlight">
+                                    <select name="estado" class="form-select mb-3" style="max-width: 300px;">
+                                        <option value="en preparacion">En preparación</option>
+                                        <option value="en reparto">En reparto</option>
+                                        <option value="entregado">Entregado</option>
+                                    </select>
+                                </div>
+                                <div class="p-2 bd-highlight">
+                                    <button name="pedido" value="<?= $_SESSION['pedido']['codigo_pedido'] ?>" class="btn btn-sm btn-dark mt-1">CAMBIAR ESTADO</button>
+                                </div>
+                            </div>
+                        </form>
+                    <?php } ?>
+                    
+                    <p>
+                        <?php if(isset($_SESSION['acceso'])){
+                            echo $_SESSION['acceso'];
+                            unset($_SESSION['acceso']);
+                        }?>
+                    </p>
                 </div>
             </div>
         </div>

@@ -94,7 +94,11 @@
                                 <td>
                                     <button name="detalle" class="btn fs-6 link-primary btn-sm text-decoration-underline" value="<?= $p['codigo_pedido'] ?>">Ver detalles</button>
                                 </td>
-                                <td class="text-success"><?= ucwords($p['estado']) ?></td>
+                                <?php if($p['estado']=='entregado'){?>
+                                    <td class="text-success"><?= ucwords($p['estado']) ?></td>
+                                <?php }else{ ?>
+                                    <td class="text-danger"><?= ucwords($p['estado']) ?></td>
+                                <?php } ?>
                             </tr>
                         <?php } ?>
                     </tbody>
@@ -122,7 +126,11 @@
                                     <br>
                                     <span>$<?= $p['precio_Total'] ?></span>
                                     <br>
-                                    <span class="text-success"><?= ucwords($p['estado']) ?></span>
+                                    <?php if($p['estado']=='entregado'){?>
+                                        <span class="text-success"><?= ucwords($p['estado']) ?></span>
+                                    <?php }else{ ?>
+                                        <span class="text-danger"><?= ucwords($p['estado']) ?></span>
+                                    <?php } ?>
                                     <br>
                                     <button name="detalle" class="fs-6 mt-2 btn link-primary btn-sm text-decoration-underline" value="<?= $p['codigo_pedido'] ?>">Ver detalles</button>
                                 </div>

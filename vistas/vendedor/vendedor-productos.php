@@ -73,7 +73,7 @@
                                     <button class="btn btn-dark px-4">BUSCAR</button>
                                 </div> 
                             </div>
-                            <p class="text-danger text-center">
+                            <p class="bg-light text-danger text-center">
                                 <?php 
                                     if(isset($_SESSION['error'])){
                                         echo $_SESSION['error'];

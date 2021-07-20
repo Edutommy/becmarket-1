@@ -5,9 +5,8 @@
     use modelo\Usuario as Usuario;
     require_once("../../modelo/Usuario.php");
     $negocio = $_SESSION['negocio']['rut_negocio'];
-    $estado = 'aceptado';
     $modelo = new Pedidos();
-    $pedidos = $modelo->pedidosNegocio($estado,$negocio);
+    $pedidos = $modelo->enCursoNegocio($negocio);
     unset($_SESSION['pedido']);
 ?>
 <!DOCTYPE html>
@@ -137,7 +136,23 @@
                                         <form action="../../controladores/VerDetalle.php" method="POST">  
                                             <td><button name="detalle" class="btn fs-6 link-primary btn-sm text-decoration-underline" value="<?= $p['codigo_pedido'] ?>">Ver detalles</button></td>
                                         </form>
-                                        <td class="text-success"><?= ucwords($p['estado']) ?><button class="btn ms-2"><i class="far fa-edit fs-2 text-primary"></i></button></td>
+                                        <td>
+                                            <form action="../../controladores/CambiarEstadoPedido.php" method="POST">
+                                                <div class="d-flex justify-content-center">
+                                                    <div class="p-2 bd-highlight">
+                                                        <select name="estado" class="form-select mt-1">
+                                                            <option value="<?= $p['estado'] ?>"><?= ucfirst($p['estado']) ?></option>
+                                                            <option value="en preparacion">En preparación</option>
+                                                            <option value="en reparto">En reparto</option>
+                                                            <option value="entregado">Entregado</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="p-2 bd-highlight">
+                                                        <button name="pedido" value="<?= $p['codigo_pedido'] ?>" class="btn btn-sm"><i class="far fa-edit fs-2 text-primary"></i></button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </td>
                                     </tr>
                                 <?php } ?>
                             <?php }else{ 
