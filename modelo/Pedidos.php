@@ -5,6 +5,28 @@ require_once("Conexion.php");
 
 class Pedidos{
 
+    //NUEVO PEDIDO
+    public function nuevoPedido($data){
+        $stm = Conexion::conector()->prepare("INSERT INTO pedido VALUES(:A,:B,:C,:D,:E,:F,:G,:H,:I)");
+        $stm->bindParam(":A",$data['codigo_pedido']);
+        $stm->bindParam(":B",$data['fecha']);
+        $stm->bindParam(":C",$data['hora']);
+        $stm->bindParam(":D",$data['precio_Total']);
+        $stm->bindParam(":E",$data['metodo_pago']);
+        $stm->bindParam(":F",$data['monto']);
+        $stm->bindParam(":G",$data['estado']);
+        $stm->bindParam(":H",$data['compradorfk']);
+        $stm->bindParam(":I",$data['negociofk']);
+        return $stm->execute();
+    }
+
+    //quitar pedido
+    public function quitarPedido($codigo){
+        $stm = Conexion::conector()->prepare("DELETE FROM pedido WHERE codigo_pedido=:A");
+        $stm->bindParam(":A",$codigo);
+        return $stm->execute();
+    }
+
     //PEDIDOS DEL NEGOCIO
     public function pedidosNegocio($estado,$negocio){
         $stm = Conexion::conector()->prepare("SELECT * FROM pedido WHERE estado=:A AND negociofk=:B");

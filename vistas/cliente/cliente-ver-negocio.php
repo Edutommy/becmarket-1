@@ -5,6 +5,7 @@
     $rutN = $_SESSION['ne']['rut_negocio'];
     $model = new Producto();
     $productos = $model->buscarProductos($rutN);
+    #unset($_SESSION['newPedido']);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -62,7 +63,7 @@
                         <a href="cliente-negocio.php"><i class="fas fa-chevron-circle-left fs-1 text-dark me-3"></i></a>
                     </div>
                     <div class="mx-auto bd-highlight pt-2">
-                        <p class="h5 fw-bold">Información del negocio</p>
+                        <p class="h5 fw-bold bg-light">Información del negocio</p>
                     </div>
                 </div>
             </div>
@@ -120,21 +121,66 @@
                         <div class="mx-auto mt-3" style="background-color: #e0e0e0; max-width: 350px; border:2px dotted #212121;">
                             <p class="text-center fw-bold mt-2 h5">TU PEDIDO</p>
                             <hr style="max-width: 250px;" class="mx-auto">
+                            <div class="row">
+                                <?php if (isset($_SESSION['newPedido'])) {
+                                    $count = count($_SESSION['newPedido']);
+                                    $total = 0;
+                                    for ($i=0; $i < $count ; $i++) { 
+                                        $prd = $_SESSION['newPedido'][$i]['codigo'];
+                                        $a = $model->buscarCodigo($prd);
+                                        $aw = $a[0];
+                                        $qty = $_SESSION['newPedido'][$i]['cantidad'];
+                                        $prc = $_SESSION['newPedido'][$i]['precio'];
+                                        $total = $total + ($qty * $prc);
+                                        ?>
+                                        <div class="col-3 text-end">
+                                            <span><?= $_SESSION['newPedido'][$i]['cantidad'] ?></span>
+                                        </div>
+                                        <div class="col-9">
+                                            <span><?= $aw['nombre'] ?></span>
+                                        </div>
+                                    <?php } ?>
+                                    <div class="row mt-3">
+                                        <div class="col-6 text-end">
+                                            <span>Envío: </span>
+                                        </div>
+                                        <div class="col-6">
+                                            <span>$<?= $_SESSION['ne']['costoEnvio'] ?></span>
+                                        </div>
+                                        <div class="col-6 text-end">
+                                            <span>Total a pagar: </span>
+                                        </div>
+                                        <div class="col-6">
+                                            <span>$<?= $_SESSION['ne']['costoEnvio'] + $total ?></span>
+                                        </div>
+                                    </div>
+                                    
+                                    <p class="text-center mt-3">
+                                        <a href="cliente-realizar-pedido.php" class="btn btn-dark btn-sm">Realizar Pedido</a>
+                                    </p>
+                                <?php } ?>
+                            </div>
+                            
+                           
+                            
                         </div>
                     </div>
                     <div class="col-lg-8">
-                        <p class="text-center fw-bold h5 mt-3 mb-4">PRODUCTOS</p>
+                        <p class="text-center fw-bold h5 mt-3 mb-4 bg-light">PRODUCTOS</p>
                         <div class="row d-flex justify-content-center justify-content-lg-evenly">
                             <?php foreach($productos as $p){ ?>
-                                <div class="bg-light col-xxl-5 d-flex align-items-center border p-3 border-dark rounded-3 mb-5" style="max-width: 500px;">
-                                    <img src="<?= $p['imagen'] ?>" class="card-img py-2" alt="" style="max-width: 140px;">
-                                    <div class="ps-3">
-                                        <p class="h5 fw-bold"><?= $p['nombre'] ?></p>
-                                        <p><?= $p['descripcion'] ?></p>
-                                        <p class="fw-bold">$<?= $p['precio'] ?></p>
-                                        <button class="btn btn-dark">Agregar al pedido</button>
+                                <form  action="../../controladores/AgregarPedido.php" method="POST">
+                                    <div class="bg-light col-xxl-5 d-flex align-items-center border p-3 border-dark rounded-3 mb-5" style="max-width: 500px;">
+                                        <img src="<?= $p['imagen'] ?>" class="card-img py-2" alt="" style="max-width: 140px;">
+                                        <div class="ps-3">
+                                            <p class="h5 fw-bold"><?= $p['nombre'] ?></p>
+                                            <p><?= $p['descripcion'] ?></p>
+                                            <p class="fw-bold">$<?= $p['precio'] ?></p>
+                                            <input name="precio" type="hidden" value="<?= $p['precio'] ?>">
+                                            <button name="codeProducto" class="btn btn-dark" value="<?= $p['codigo_producto'] ?>">Agregar al pedido</button>
+                                        </div>
                                     </div>
-                                </div>
+                                </form>
                             <?php } ?>
                         </div>
                     </div>
