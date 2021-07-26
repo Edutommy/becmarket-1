@@ -55,7 +55,7 @@
             <div class="container mt-3">
                 <a href="vendedor-productos.php"><i class="fas fa-chevron-circle-left fs-1 text-dark ms-5 mb-3"></i></a>
                 <div class="border bg-light border-2 border-dark rounded mx-auto pb-3" style="max-width: 600px;">
-                    <form action="../../controladores/EditarProducto.php" method="POST">
+                    <form action="../../controladores/EditarProducto.php" method="POST" enctype="multipart/form-data">
                         <h5 class="h5 text-center mt-3 mb-4">ACTUALIZAR PRODUCTO</h5>
                         <div class="row">
                             <div class="col-md-6">

@@ -77,13 +77,13 @@
                             <div class="d-flex flex-row bd-highlight justify-content-center">
                                 <div class="p-2 bd-highlight">
                                     <select name="estado" class="form-select mb-3" style="max-width: 300px;">
-                                        <option value="aceptado">Aceptado</option>
-                                        <option value="en preparacion">En preparación</option>
-                                        <option value="en reparto">En reparto</option>
+                                        <option>Aceptado</option>
+                                        <option>En preparación</option>
+                                        <option>En reparto</option>
                                     </select>
                                 </div>
                                 <div class="p-2 bd-highlight">
-                                    <button type="button" class="btn btn-dark px-4">BUSCAR</button>
+                                    <button class="btn btn-dark px-4">BUSCAR</button>
                                 </div>
                             </div>
                             <p class="text-danger text-center">
@@ -179,7 +179,7 @@
                                         <form action="../../controladores/VerDetalle.php" method="POST">  
                                             <td><button name="detalle" class="btn fs-6 link-primary btn-sm text-decoration-underline" value="<?= $p['codigo_pedido'] ?>">Ver detalles</button></td>
                                         </form>
-                                        <td class="text-success"><?= ucwords($p['estado']) ?><button class="btn ms-2"><i class="far fa-edit fs-2 text-primary"></i></button></td>
+                                        <td class="text-success"><?= ucwords($b['estado']) ?><button class="btn ms-2"><i class="far fa-edit fs-2 text-primary"></i></button></td>
                                     </tr>
                                 <?php } ?>
 

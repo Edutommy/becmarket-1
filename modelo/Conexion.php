@@ -5,7 +5,7 @@ namespace modelo;
 class Conexion
 {
     public static $user = "root";
-    public static $pass = "";
+    public static $pass = "root";
     public static $URL = "mysql:host=localhost;dbname=bec_market";
 
     public static function conector()

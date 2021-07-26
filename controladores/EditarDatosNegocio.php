@@ -5,7 +5,7 @@ namespace controladores;
 require_once("../modelo/Negocio.php");
 use modelo\Negocio as Negocio;
 
-/*class EditarDatosNegocio{
+class EditarDatosNegocio{
     private $dias;
     private $h1;
     private $h2;
@@ -27,6 +27,7 @@ use modelo\Negocio as Negocio;
     }
 
     public function editar(){
+        session_id($_POST['session']);
         session_start();
         //if (isset($_SESSION['user'])) {
             if($_SESSION['user']['tipo'] == 2){
@@ -61,5 +62,5 @@ use modelo\Negocio as Negocio;
 }
 $obj = new EditarDatosNegocio();
 $obj->editar();
-*/
+
 

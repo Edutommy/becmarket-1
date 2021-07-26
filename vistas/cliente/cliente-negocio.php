@@ -7,6 +7,7 @@ require_once("../../modelo/Negocio.php");
 $model = new Negocio();
 $negocios = $model->getAllNegocio();
 unset($_SESSION['ne']);
+unset($_SESSION['newPedido']);
 
 ?>
 <!DOCTYPE html>
@@ -85,7 +86,7 @@ unset($_SESSION['ne']);
                                     </select>
                                 </div>
                                 <div class="p-2 bd-highlight">
-                                    <button type="button" class="btn btn-dark px-4">FILTRAR</button>
+                                    <button class="btn btn-dark px-4">FILTRAR</button>
                                 </div>
                             </div>
                         </form>

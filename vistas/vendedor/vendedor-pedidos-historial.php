@@ -77,7 +77,7 @@
                                 <input type="date" class="p-2">
                             </div>
                             <div class="p-2 bd-highlight">
-                                <button type="button" class="btn btn-dark px-4">BUSCAR</button>
+                                <button class="btn btn-dark px-4">BUSCAR</button>
                             </div>
                         </div>
                     </div>
