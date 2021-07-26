@@ -2,6 +2,9 @@
 namespace controladores;
 
 require_once('../modelo/Pedidos.php');
+
+use DateTime;
+use DateTimeZone;
 use modelo\Pedidos as Pedido;
 
 require_once('../modelo/Detalle.php');
@@ -23,6 +26,8 @@ class RealizarPedido{
     }
 
     public function realizar(){
+        $objeto = new DateTime();
+        $objeto->setTimezone(new DateTimeZone('America/Santiago'));
         session_start();
         if (isset($_SESSION['user'])) {
             if ($_SESSION['user']['tipo'] == 1) {
@@ -30,8 +35,8 @@ class RealizarPedido{
                 $detalle = new Detalle();
                 $producto = new Producto();
                 $codePedido = rand(111111,999999);
-                $fecha = date('Y-m-d');
-                $hora =  date('H:i');
+                $fecha = $objeto->format('Y-m-d');
+                $hora =  $objeto->format('H:i');
                 $estado = 'sin aceptar';
                 $metodo = 'efectivo';
                 $cliente = $_SESSION['user']['codigo_usuario'];

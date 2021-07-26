@@ -169,18 +169,19 @@
                         <p class="text-center fw-bold h5 mt-3 mb-4 bg-light">PRODUCTOS</p>
                         <div class="row d-flex justify-content-center justify-content-lg-evenly">
                             <?php foreach($productos as $p){ ?>
-                                <form  action="../../controladores/AgregarPedido.php" method="POST">
-                                    <div class="bg-light col-xxl-5 d-flex align-items-center border p-3 border-dark rounded-3 mb-5" style="max-width: 500px;">
-                                        <img src="<?= $p['imagen'] ?>" class="card-img py-2" alt="" style="max-width: 140px;">
-                                        <div class="ps-3">
-                                            <p class="h5 fw-bold"><?= $p['nombre'] ?></p>
-                                            <p><?= $p['descripcion'] ?></p>
-                                            <p class="fw-bold">$<?= $p['precio'] ?></p>
+                                <div class="bg-light col-xxl-5 d-flex align-items-center border p-3 border-dark rounded-3 mb-5" style="max-width: 500px;">
+                                    <img src="<?= $p['imagen'] ?>" class="card-img py-2" alt="" style="max-width: 140px;">
+                                    <div class="ps-3">
+                                        <p class="h5 fw-bold"><?= $p['nombre'] ?></p>
+                                        <p><?= $p['descripcion'] ?></p>
+                                        <p class="fw-bold">$<?= $p['precio'] ?></p>
+                                        <form  action="../../controladores/AgregarPedido.php" method="POST">
                                             <input name="precio" type="hidden" value="<?= $p['precio'] ?>">
                                             <button name="codeProducto" class="btn btn-dark" value="<?= $p['codigo_producto'] ?>">Agregar al pedido</button>
-                                        </div>
+                                        </form>
                                     </div>
-                                </form>
+                                </div>
+                                
                             <?php } ?>
                         </div>
                     </div>
